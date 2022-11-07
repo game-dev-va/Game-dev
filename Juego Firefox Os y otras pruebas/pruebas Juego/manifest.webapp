@@ -1,0 +1,31 @@
+
+		{
+"name": "Lil' Ape Rush",
+"description": "Lil' Ape Rush",
+"launch_path" : "/index.html",
+
+
+"icons": {
+
+     "64"  : "/img/img_64.png",
+     "128"  : "/img/img_128.png"
+},
+
+
+
+"type": "web",
+"developer": {
+"name": "Wicket Games",
+"url" : ""
+},
+
+
+
+"default_locale": "es",
+
+"fullscreen":"true",
+
+"orientation": "landscape",
+
+"version": "1.0"
+}

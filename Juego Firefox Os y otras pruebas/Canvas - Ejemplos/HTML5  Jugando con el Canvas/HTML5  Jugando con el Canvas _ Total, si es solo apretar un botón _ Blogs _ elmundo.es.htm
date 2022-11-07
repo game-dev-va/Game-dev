@@ -1,0 +1,840 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-15">
+<link rel="icon" href="http://estaticos02.elmundo.es/favicon.png" type="image/png">
+<link rel="shortcut icon" href="http://estaticos03.elmundo.es/favicon.png" type="image/png">
+<meta name="lang" content="es">
+<meta name="author" content="Unidad Editorial Internet">
+<meta name="organization" content="Unidad Editorial Internet - Unidad Editorial S.A.">
+<meta name="locality" content="Madrid, España">
+<title>HTML5: Jugando con el Canvas | Total, si es solo apretar un botón | Blogs | elmundo.es</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<link rel="stylesheet" href="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/comun.css" type="text/css" media="all">
+<!--[if IE]>
+<link href="http://estaticos01.elmundo.es/elmundo/estilos/v5.x/v5.01/ie.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<link rel="stylesheet" href="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/blogs_v2.css" type="text/css" media="all">
+<link rel="stylesheet" href="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/comentarios.css" type="text/css" media="all">
+<script src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/cx.js" async="" type="text/javascript"></script><script language="javascript" type="text/javascript" src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/accordian.js"></script>
+<script language="javascript" type="text/javascript" src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/pestanas_portal.js"></script>
+<link rel="alternate" title="RSS de Total, si es solo apretar un botón " href="http://estaticos04.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/index.xml" type="application/rss+xml">
+</head>
+<body id="blogs" class="noticia_blog totalsiessoloapretarunboton"><script src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/451852416.js" type="text/javascript"></script><script src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/ako.js" type="text/javascript"></script><style type="text/css">     .bloque-cookies { background: #555; color:#fff; padding:2em 1em 1.5em; text-align: center; width:100%; clear:both; float:left; font-size: 80%;}     .bloque-cookies h2 {color:#fff; text-align:left; font-size:1.8em; font-weight:normal; letter-spacing: 0; margin-bottom: 0.3em; }     .bloque-cookies .envuelve-cookies{ width:40%; margin:0 auto; }     .bloque-cookies p{text-align: left;color:#BFBFBF; line-height: 1.5em;float:left; }     .bloque-cookies span {width:30%; float:right; display:block; }     .bloque-cookies a.mas-info { border-bottom:1px dotted #fff;}     .bloque-cookies p a, .bloque-cookies a.mas-info{color:#0099CC;}     .bloque-cookies p a:hover, .bloque-cookies a:hover.mas-info{color:#4FB7D9;}     .bloque-cookies .continuar{ background:#0099CC; font-size: 1.2em; margin: 0.3em auto 1em auto; display:block; border-radius:3px;padding:4px; color:#fff; width:auto; text-align:center;     -moz-transition: all 0.4s ease-in-out;     -o-transition: all 0.4s ease-in-out;     -ms-transition: all 0.4s ease-in-out;     transition: all 0.4s ease-in-out;     }     .bloque-cookies .continuar:hover { color:#fff; background:#4FB7D9; }     @media screen and (max-width:1280px) { .bloque-cookies .envuelve-cookies{ width:78%; } }     </style> <div id="privacyPolicyLayer" class="bloque-cookies">     <div class="envuelve-cookies">     <h2>Uso de cookies</h2>     <p>
+     Utilizamos cookies propias y de terceros para mejorar nuestros 
+servicios y mostrarle publicidad relacionada con sus preferencias 
+mediante el análisis de sus hábitos de navegación.     Si continúa 
+navegando, consideramos que acepta su uso. Puede obtener más 
+información, o bien conocer cómo cambiar la configuración, en nuestra <a class="mas-info" href="http://cookies.unidadeditorial.es/">Política de cookies</a>     </p>     </div>     </div><div id="pixelcontabilizacionelmundo" class="pixelcontabilizacion" style="position:absolute;top:0px;left:0px;width:1px;height:1px;z-Index:1">
+<img src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/pixelcontabilizacion.gif" alt="" height="1" width="1">
+<!-- SiteCatalyst code version: H.21.
+Copyright 1996-2010 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/s_code.js"></script>
+<script language="JavaScript" type="text/javascript"><!--
+if (window['s_omniture']) {for(var i in s_omniture) {s[i]=s_omniture[i];}}
+try {omniture_fill_vars_reg_user_metrics('REGMUNDO','UEMeter',s);} catch (omniture_fill_vars_reg_user_exception) {}
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'!-'+'-')
+//--></script><noscript><img src="http://metrics.el-mundo.net/b/ss/uevistatest/1/H.21--NS/0"
+height="1" width="1" border="0" alt="" /></noscript><!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.21. -->
+<script type="text/javascript">
+function DM_prepClient(csid,client) {
+var cat=document.location.href.split('/');
+url_section = cat[6];
+client.DM_addEncToLoc("as_section",url_section);
+}
+</script>
+<script type="text/javascript" language="javascript" src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/policy.js"></script>
+</div>
+<script type="text/javascript" language="JavaScript" src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/comunes.js"></script>
+<div id="pixelcontabilizacionblogs" style="position:absolute;top:0px;left:0px;width:1px;height:1px;z-Index:1"><img src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/pixel.gif" alt="" height="1" width="1"></div>
+<div class="bloque bloque_publicidad">
+<div id="publicidad_principal" class="wrap">
+<div class="publicidad publicidad_730"></div>
+</div>
+</div>
+<div id="contenedor">
+<div id="cabecera"><h1><a class="seccion" title="Ir a indice de Blogs" href="http://www.elmundo.es/blogs/elmundo/index.html">Blogs</a><span>|</span><a href="http://www.elmundo.es/elmundo/" title="Ir a portada de elmundo.es" id="logo">elmundo.es</a></h1>
+<script type="text/javascript" language="Javascript">
+<!--
+ escribeGlobo(null,false);
+//-->
+</script><object id="mundo_girando" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab" height="46" width="40">
+      <param name="movie" value="http://estaticos.elmundo.es/iconos/flash/mundo_girando.swf"> 
+      <param name="wmode" value="transparent">
+      <param name="quality" value="high">
+      <param name="allowScriptAccess" value="always">
+      <embed wmode="transparent" src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/mundo_girando.swf" quality="high" allowscriptaccess="always" menu="false" name="mundo_girando" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" height="46" width="40">  </object>
+<div id="cabecera_info">
+<p class="tagline">Líder mundial en español</p>
+<p class="update">
+Miércoles 30/
+03/
+2011
+Actualizado <strong>11:31<abbr title="horas">h.</abbr></strong></p>
+</div>
+</div>
+<div id="navegacion"> <a href="#contenido" id="saltar_nav">Saltar a contenido</a>
+<div id="nav_edicion_espana" class="nav_edicion">
+<p class="label">Edición <strong class="edicion">España</strong></p>
+<ul id="nav_principal" class="nav">
+<li id="nav_index"><a href="http://www.elmundo.es/elmundo/" accesskey="p"><img src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/home.png" alt="Portada" title="Portada"></a></li>
+<li id="nav_espana"><a href="http://www.elmundo.es/elmundo/espana.html" accesskey="s">E<span class="accesskey">s</span>paña</a>
+<ul class="nav nav_sub">
+<li id="nav_madrid" class="first_child"><a href="http://www.elmundo.es/elmundo/madrid.html">Madrid</a></li>
+<li id="nav_andalucia" class="last_child" onmouseover="addClassRetardo('nav_sub_andalucia','desplegado');" onmouseout="delClassRetardo('nav_sub_andalucia','desplegado');"><a href="http://www.elmundo.es/elmundo/andalucia.html">Andalucía</a>
+<ul class="nav nav_sub_b" id="nav_sub_andalucia">
+<li id="nav_sevilla"><a href="http://www.elmundo.es/elmundo/andalucia_sevilla.html">Sevilla</a></li>
+<li id="nav_malaga"><a href="http://www.elmundo.es/elmundo/andalucia_malaga.html">Málaga</a></li>
+</ul>
+</li>
+<li id="nav_baleares"><a href="http://www.elmundo.es/elmundo/baleares.html">Baleares</a></li>
+<li id="nav_barcelona"><a href="http://www.elmundo.es/elmundo/barcelona.html">Barcelona</a></li>
+<li id="nav_castillayleon" onmouseover="addClassRetardo('nav_sub_castillayleon','desplegado');" onmouseout="delClassRetardo('nav_sub_castillayleon','desplegado');"><a href="http://www.elmundo.es/elmundo/castillayleon.html">Castilla y León</a>
+<ul id="nav_sub_castillayleon" class="nav nav_sub_b  desplegado">
+<li id="nav_leon"><a href="http://www.elmundo.es/elmundo/leon.html">León</a></li>
+<li id="nav_valladolid"><a href="http://www.elmundo.es/elmundo/valladolid.html">Valladolid</a></li>
+</ul>
+</li>
+<li id="nav_cvalenciana" onmouseover="addClassRetardo('nav_sub_cvalenciana','desplegado');" onmouseout="delClassRetardo('nav_sub_cvalenciana','desplegado');"><a href="http://www.elmundo.es/elmundo/valencia.html"><abbr title="Comunidad">C.</abbr> Valenciana</a>
+<ul id="nav_sub_cvalenciana" class="nav nav_sub_b">
+<li id="nav_alicante"><a href="http://www.elmundo.es/elmundo/alicante.html">Alicante</a></li>
+<li id="nav_castellon"><a href="http://www.elmundo.es/elmundo/castellon.html">Castellón</a></li>
+</ul>
+</li>
+<li id="nav_galicia"><a href="http://www.elmundo.es/elmundo/galicia.html">Galicia</a></li>
+<li id="nav_paisvasco"><a href="http://www.elmundo.es/elmundo/paisvasco.html">País Vasco</a></li>
+</ul>
+</li>
+<li id="nav_mundo"><a href="http://www.elmundo.es/elmundo/internacional.html" accesskey="u">M<span class="accesskey">u</span>ndo</a></li>
+<li id="nav_europa"><a href="http://www.elmundo.es/elmundo/union_europea.html" accesskey="n">Europa</a></li>
+<li id="nav_opinion"><a href="http://www.elmundo.es/elmundo/opinion.html" accesskey="o">Op-Blogs</a></li>
+<li id="nav_deportes"><a href="http://www.elmundo.es/elmundodeporte/index.html" accesskey="d">Deportes</a>
+<ul class="nav nav_sub">
+<li class="first_child" id="nav_futbol"><a href="http://www.elmundo.es/elmundodeporte/futbol.html">Fútbol</a></li>
+<li id="nav_motor"><a href="http://www.elmundo.es/elmundodeporte/motor.html">Motor</a></li>
+<li id="nav_baloncesto"><a href="http://www.elmundo.es/elmundodeporte/baloncesto.html">Baloncesto</a></li>
+<li id="nav_tenis"><a href="http://www.elmundo.es/elmundodeporte/tenis.html">Tenis</a></li>
+<li id="nav_ciclismo"><a href="http://www.elmundo.es/elmundodeporte/ciclismo.html">Ciclismo</a></li>
+<li id="nav_mas_deporte"><a href="http://www.elmundo.es/elmundodeporte/masdeporte.html">Más deporte</a></li>
+<li id="nav_sec_america"><a href="http://www.elmundo.es/america/deportes.html">América</a></li>
+</ul>
+</li>
+<li id="nav_economia"><a href="http://www.elmundo.es/mundodinero/index.html" accesskey="e">Economía</a></li>
+<li id="nav_vivienda"><a href="http://www.elmundo.es/elmundo/suvivienda.html" accesskey="v">Vivienda</a></li>
+<li id="nav_cultura"><a href="http://www.elmundo.es/elmundo/cultura.html" accesskey="t">Cultura</a>
+<ul class="nav nav_sub">
+<li id="nav_negra" class="first_child"><a href="http://www.elmundo.es/elmundo/novelanegra.html">Novela negra</a></li>
+<li id="nav_comic"><a href="http://www.elmundo.es/elmundo/comic.html">Cómic</a></li>
+<li id="nav_trailers"><a href="http://www.elmundo.es/elmundo/trailers/index.html">Tráileres</a></li>
+<li id="nav_estrenos"><a href="http://www.elmundo.es/elmundo/trailers/estrenos.html">Estrenos</a></li>
+<li id="nav_cartelera"><a href="http://www.elmundo.es/cartelera/index.html">Cartelera</a></li>
+<li id="nav_videoclub" class="last_child"><a href="http://www.elmundo.es/elmundo/videoclub.html">Videoclub</a></li>
+<li id="nav_toros"><a href="http://www.elmundo.es/elmundo/toros.html">Toros</a></li>
+<li id="nav_goya"><a href="http://www.elmundo.es/especiales/premios_goya/index.html">Premios Goya</a></li>
+<li id="nav_oscar"><a href="http://www.elmundo.es/especiales/premios_oscar/index.html">Premios Oscar</a></li>
+</ul>
+</li>
+<li id="nav_toros"><a href="http://www.elmundo.es/elmundo/toros.html">Toros</a></li>
+<li id="nav_ciencia"><a href="http://www.elmundo.es/elmundo/ciencia.html" accesskey="c">Ciencia</a></li>
+<li id="nav_salud"><a href="http://www.elmundo.es/elmundosalud/index.html" accesskey="l">Sa<span class="accesskey">l</span>ud</a></li>
+<li id="nav_tecnologia"><a href="http://www.elmundo.es/elmundo/navegante.html" accesskey="g">Tecnología</a></li>
+<li id="nav_comunicacion"><a href="http://www.elmundo.es/elmundo/comunicacion.html" accesskey="m">Medios</a></li>
+<li id="nav_tv"><a href="http://www.elmundo.es/elmundo/television.html" accesskey="t"><acronym title="Televisión">TV</acronym></a></li>
+<li id="nav_multimedia"><a href="http://www.elmundo.es/multimedia/">Multimedia</a></li>
+<li id="nav_solidaridad"><a href="http://www.elmundo.es/elmundo/solidaridad.html">Solidaridad</a></li>
+<li id="nav_siguenos" class="last_child">
+<ul>
+<li class="twitter"><a title="Síguenos en twitter" href="http://twitter.com/elmundoes">twitter</a></li>
+<li class="facebook"><a title="Síguenos en facebook" href="http://www.facebook.com/mundo.es">facebook</a></li>
+</ul>
+</li>
+</ul>
+<div id="nav-2">
+<ul>
+<li class="orbyt"><a href="http://elmundo.orbyt.es/" title="El mundo en Orbyt"><img src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/orbyt.png" alt="Orbyt"></a></li>
+</ul>
+<ul id="clasificados">
+<li class="clasificados vivienda"><a href="http://suvivienda.globaliza.com/" target="_blank" title="Suvivienda (Abre ventana nueva)">SuVivienda</a></li>
+<li class="clasificados empleo"><a href="http://www.expansionyempleo.com/" target="_blank" title="Expansión y Empleo (Abre ventana nueva)">Empleo</a></li>
+<li class="clasificados motor"><a href="http://www.marcamotoranuncios.com/" target="_blank" title="Marca motor anuncios (Abre ventana nueva)">Coches</a></li>
+</ul>
+<ul id="suplementos">
+<li id="nav_moto"><a href="http://www.elmundo.es/elmundomotor/" title="elmundomotor">Motor</a></li>
+<li><a href="http://www.elmundo.es/elmundo/tendencias.html" title="Tendencias">Tendencias</a></li>
+<li><a href="http://nauta360.expansion.com/" title="Náutica">Náutica</a></li>
+<li><a href="http://www.ocholeguas.com/" title="Ocholeguas.com - Viajes">Viajes</a></li>
+<li><a href="http://www.elmundo.es/yodona/" title="Yodona.com - Moda y Belleza">Yodona</a></li>
+<li><a href="http://www.elmundo.es/metropoli/" title="Metrópoli, la guía de Madrid - Ocio">Metrópoli</a></li>
+<li><a href="http://www.elmundo.es/elmundo/gentes.html" title="Gentes! - Corazón, Sociedad...">Gentes!</a></li>
+<li><a href="http://www.elmundo.es/elmundo/hemeroteca/" title="Hemeroteca">Hemeroteca</a></li>
+</ul>
+</div>
+<p class="edicion"><a href="http://www.elmundo.es/america/">elmundo.es <strong>América</strong></a></p>
+</div>
+<div id="nav_edicion_america" class="nav_edicion">
+<p class="label">Edición <strong class="edicion">América</strong></p>
+<ul id="nav_america" class="nav nav_sub">
+<li class="first_child" id="nav_america_index"><a class="nav_seccion" href="http://www.elmundo.es/america/index.html">Portada</a></li>
+<li id="nav_mexico"><a href="http://www.elmundo.es/america/mexico.html">México</a></li>
+<li id="nav_argentina"><a href="http://www.elmundo.es/america/argentina.html">Argentina</a></li>
+<li id="nav_brasil"><a href="http://www.elmundo.es/america/brasil.html">Brasil</a></li>
+<li id="nav_usa"><a href="http://www.elmundo.es/america/estados_unidos.html">EEUU</a></li>
+<li id="nav_cuba"><a href="http://www.elmundo.es/america/cuba.html">Cuba</a></li>
+<li id="nav_colombia"><a href="http://www.elmundo.es/america/colombia.html">Colombia</a></li>
+<li id="nav_deportes_america"><a class="nav_seccion" href="http://www.elmundo.es/america/deportes.html">Deportes</a></li>
+<li id="nav_economia_america"><a class="nav_seccion" href="http://www.elmundo.es/america/economia.html">Economía</a></li>
+<li id="nav_gentes_america"><a class="nav_seccion" href="http://www.elmundo.es/america/gentes.html">Gentes!</a></li>
+<li id="nav_blogs_america"><a class="nav_seccion" href="http://www.elmundo.es/america/blogs.html">Blogs</a></li>
+</ul>
+<p class="edicion"><a href="http://www.elmundo.es/elmundo/">elmundo.es <strong>España</strong></a></p>
+</div>
+<ul id="nav_herramientas" class="nav nav_secundaria">
+<li id="nav_busqueda">
+<form action="http://buscador.elmundo.es/perl/busca-generico.html" method="post">
+<label>Buscar en</label>
+<ul>
+<li class="buscar_google">
+<input id="eninternet" value="2" name="donde" class="botonradio" type="radio">
+<label for="eninternet"><span>Google</span></label>
+</li>
+<li class="buscar_elmundo">
+<input checked="checked" id="enelmundoes" value="11" name="donde" class="botonradio" type="radio">
+<label for="enelmundoes">ELMUNDO.es</label>
+</li>
+</ul>
+<input class="text" name="cadena" type="text">
+<input value="Buscar" class="submit" name="Submit" type="submit">
+</form>
+</li>
+<li id="nav_meteo" class="last_child">
+<p><a href="http://www.elmundo.es/tiempo/index.html"><span class="label" title="Personalizar">El tiempo</span> en <span class="localizacion">Madrid</span>: <span class="meteo_prediccion chubasco_debil">Chubasco débil</span>. <span class="meteo_min">7.5°C</span> de mínima y <span class="meteo_max">9.5°C</span> de máxima.</a></p>
+</li>
+</ul> 
+</div> 
+<div id="contenido">
+<div class="bloque bloque_noticias">
+<div class="wrap">
+<div class="alerta"></div>
+<div class="cabecera_blog">
+<h2><a href="http://www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/" title="Total, si es solo apretar un botón">Total, si es solo apretar un botón</a></h2>
+<p><a href="" title="CATEGORIA">CATEGORIA</a></p>
+</div>
+<div id="contenido_principal" class="col col_01">
+<div class="noticia post">
+<div class="contenido_noticia_01_post">
+<h3>HTML5: Jugando con el Canvas</h3>
+<p class="fecha_blog">
+<span class="dia"> 30</span>
+<span class="mes">MAR</span>
+<span class="anio"> 2011</span>
+<span class="hora"> 11:31</span>
+</p>
+<div id="desarrollo_noticia">
+<div id="tamano">
+<p><em><strong>Por Ricardo Moreno</strong></em></p> <p>Después de 
+teorizar en dos posts anteriores, toca 'darle a la tecla'. Es el momento
+ de un experimento rápido y divertido que puede dar alguna idea para 
+posteriores desarrollos en HTML5.</p> <p>Hoy voy a hablar del elemento 
+Canvas y voy a realizar un ejemplo paso a paso de cómo representar y 
+animar un 'sprite' de un videojuego. El ejemplo es relativamente 
+sencillo y no está depurado al 100%, pero puede ser un buen comienzo 
+para desarrollar temas más complejos de los que, evidentemente, quiero 
+un porcentaje.</p> <p>Antes de nada, quiero dejar claro el resultado final. <a href="http://www.elmundo.es/imasd/docs/demos/canvashtml5/" target="_blank">Cuando todo acabe deberá verse como en este enlace</a>. Y con las flechas del cursor podremos hacer que el muñeco ande hacia adelante y hacia atrás.</p> <p><strong>Ahora, un par de líneas de historia</strong></p> <p>El
+ elemento Canvas lo introdujo en el HTML, como muchas otras cosas, 
+Apple. Después de ser 'implementado' en Safari y Chrome, 'los Gecko' 
+comenzaron a incluir este elemento. Actualmente es un elemento incluido 
+dentro de HTML5 y que puede ser utilizado -y traduzco de la 
+documentación 'The Markup Language Reference'- para representar 
+"gráficos" de forma dinámica -y por lo tanto, nos vale para nuestro 
+propósito-.</p> <p><strong>¿Qué necesitamos?</strong></p> <p>Como vamos a hacer una animación de un 'sprite', necesitamos los 'frames' que representan las posiciones del 'sprite' a animar. <a href="http://sdb.drshnaps.com/display.php?object=5320" target="_blank">Aquí</a>&nbsp;pordemos
+ ver un ejemplo de la hoja completa de, en este caso, una tanqueta del 
+famoso juego Metal Slug (gracias a Javier del Moral por la referencia). 
+En nuestro caso, os dejo <a href="http://estaticos.elmundo.es/imasd/docs/demos/canvashtml5/img/imagenes.zip" target="_blank">este enlace</a>
+ con los siete 'frames' de nuestro personaje que, evidentemente, se 
+utilizará exclusivamente con fines pedagógicos para este post.</p> <p><strong>Primeros pasos</strong></p> <p>Lo
+ que haremos será crear una animación del personaje. Esta animación será
+ representada en un Canvas y será lanzada cuando el usuario pulse 
+'cursor derecha' o 'cursor izquierda'. Evidentemente, también 
+desplazaremos el 'sprite' en la coordenada 'X' y así daremos la 
+sensación de movimiento. A su vez, comprobaremos que no se salga de los 
+límites horizontales.</p> <p>Para ello comenzamos creando el código HTML que alojará nuestro ejemplo.</p> <blockquote> <p>&lt;!DOCTYPE html&gt;<br> &lt;html&gt;<br> &lt;head&gt;<br> &nbsp; &lt;meta charset="iso-8859-15" /&gt;<br> &nbsp; &lt;title&gt;Jugando con el Canvas&lt;/title&gt;<br> &nbsp; &lt;script src="js/canvas_animacion.js"&gt;&lt;/script&gt;<br> &nbsp; &lt;style type="text/css"&gt;<br> &nbsp;&nbsp;&nbsp; canvas { position: relative; }<br> &nbsp;&nbsp;&nbsp; .precarga { position: absolute; left: -9999px; }<br> &nbsp; &lt;/style&gt;&nbsp; <br> &lt;/head&gt;<br> <br> &lt;body onload="init()"&gt;<br> &nbsp; &lt;div id="wrapper"&gt;&lt;/div&gt;<br> &lt;/body&gt;<br> <br> &lt;/html&gt;</p> </blockquote> <p>Como
+ se puede ver, es muy sencillo. Únicamente incluyo el fichero javascript
+ que contendrá todas las funciones para nuestro fin; después creo un div
+ con identificador 'wrapper' para crear el Canvas posteriormente y llamo
+ a la función 'init' cuando se carga la página.</p> <p><strong>¡Vamos al lio!</strong></p> <p><strong>1.</strong> Creo el elemento canvas desde javascript:</p> <blockquote> <p>var canvas = document.createElement('canvas');</p> </blockquote> <p><strong>2.</strong>
+ Recupero el contexto, que podemos definir como el lugar de operaciones.
+ Es decir, donde vamos a disponer de un objeto en el que están definidas
+ todas las propiedades y funciones de 'pintado', transformaciones, etc:</p> <blockquote> <p>var ctx = canvas.getContext('2d');</p> </blockquote> <p><strong>3.</strong> Inicio la lista de imágenes, índices y coordenadas:</p> <blockquote> <p>var imgList = new Array();<br> var wrapper = null; <br> var spriteIndex = 0;<br> var spriteX = 0;<br> var spriteY = 0;</p> </blockquote> <p><strong>4.</strong>
+ Implemento el método 'init' que llamábamos desde el evento de carga de 
+la página. En el ejemplo, creo una precarga para la primera imagen 
+(solución pactada con Raúl Martín, uno de los expertos en javascript de 
+la empresa). Así, en los navegadores comentados se da el mismo 
+comportamiento. Una vez cargada la imagen, deshacemos el nodo creado 
+para la precarga:</p> <blockquote> <p>init = function() {<br> &nbsp; for (var i=0; i&lt;7; ++i)<br> &nbsp; {<br> &nbsp;&nbsp;&nbsp; imgList.push(new Image());<br> &nbsp;&nbsp;&nbsp; imgList[i].src = "http://estaticos.elmundo.es/pruebas/ricky/html5/img/Frame" + i + ".png"; <br> &nbsp; }<br> <br> &nbsp; var img = document.createElement('IMG');<br> &nbsp; img.src=&nbsp; "http://estaticos.elmundo.es/pruebas/ricky/html5/img/Frame0.png";<br> &nbsp; img.className = 'precarga';<br> &nbsp; img.elemento = imgList[0];<br> <br> &nbsp; document.getElementsByTagName('BODY')[0].appendChild(img);<br> <br> &nbsp; canvas.width = 1000; <br> &nbsp; canvas.height = 130;<br> &nbsp; img.onload = function(){<br> &nbsp;&nbsp;&nbsp; ctx.fillStyle = "rgba(255,0,0,1)";<br> &nbsp;&nbsp;&nbsp; ctx.fillRect(0,0,canvas.width,canvas.height);<br> &nbsp;&nbsp;&nbsp; ctx.drawImage(this.elemento,0,0,this.width,this.height);<br> &nbsp;&nbsp;&nbsp; this.parentNode.removeChild(this);<br> &nbsp; }<br> &nbsp; wrapper = document.getElementById("wrapper");<br> &nbsp; wrapper.appendChild(canvas);<br> }</p> </blockquote> <p>Como podéis ver, desde esta función inicio todo el escenario:</p> <blockquote> <p>- Relleno la lista de imágenes,</p> <p>- doy valores al canvas,</p> <p>- lo dibujo</p> <p>- y lo añado como hijo del 'wrapper' (sí, suena muy castizo) que creamos en el HTML, previamente.</p> </blockquote> <p><strong>5.</strong>
+ Capturamos los eventos de teclado necesarios. Para que el 'sprite' se 
+mueva, como dije, el usuario ha de pulsar los cursores derecha o 
+izquierda:</p> <blockquote> <p>document.onkeydown = function (event) {<br> &nbsp;&nbsp;&nbsp; var teclaC; <br> <br> &nbsp;&nbsp;&nbsp; if ( event == null ) {<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; teclaC = window.event.keyCode;<br> &nbsp;&nbsp;&nbsp; }<br> &nbsp;&nbsp;&nbsp; else {&nbsp; <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; teclaC = event.keyCode;<br> &nbsp;&nbsp;&nbsp; }<br> <br> &nbsp;&nbsp;&nbsp; switch (teclaC) {<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 39:animateFrame(1);<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;&nbsp; <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 37:animateFrame(-1);<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;&nbsp; <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; default: resetFrames();<br> &nbsp;&nbsp;&nbsp; }<br> }</p> </blockquote> <p>Ahora,
+ cada vez que mantegamos pulsado uno de los dos cursores, habrá por 
+detrás un señor bajito dibujando muy rápidamente -cada cuadro- para 
+mostrarlo después. Esto, en animación, lo llaman intercalador.</p> <p><strong>6.</strong> Vamos a animarlo un poco:</p> <blockquote> <p>animateFrame = function (dir) {<br> &nbsp;&nbsp; if ( dir &gt; 0) <br> &nbsp;&nbsp; {<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; spriteIndex = ( spriteIndex &gt;= 6 ) ? 0 : ++ spriteIndex;<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; spriteX = ( spriteX &gt;= 1000 ) ? 1000 : spriteX + 5;<br> &nbsp;&nbsp; }<br> &nbsp;&nbsp; else <br> &nbsp;&nbsp; {<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; spriteIndex = ( spriteIndex &lt;= 0 ) ? 6 : -- spriteIndex;<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; spriteX = ( spriteX &lt;= 0 ) ? 0 : spriteX + 5;<br> &nbsp;&nbsp; }<br> &nbsp;&nbsp; ctx.clearRect(0,0,canvas.width, canvas.height); <br> &nbsp; <br> &nbsp;&nbsp; ctx.fillStyle = "rgba(255,0,0,1)";<br> &nbsp;&nbsp; ctx.fillRect(0,0,canvas.width,canvas.height); <br> &nbsp;&nbsp; ctx.drawImage(imgList[spriteIndex],spriteX,spriteY,imgList[spriteIndex].width,imgList[spriteIndex].height);<br> }</p> </blockquote> <p>Al
+ igual que en animación tradicional, la sensación de movimiento la 
+generamos mostrando distintos 'frames' en el tiempo.&nbsp;Lo primero que
+ tengo en cuenta es la dirección hacia la que se está moviendo. Si es 
+hacia adelante, sumamos la coordenada 'X'. Si es hacia atrás, restamos.</p> <p>Utilizo
+ la misma lógica, en este básico caso, para el índice del 'sprite' a 
+mostrar. Es decir, incremento el frame o lo decremento.</p> <p>Como se 
+puede observar, también, 'repintamos' de nuevo todo con la nueva imagen.
+ Al hacerlo tan rápido, a no ser que estéis aún con un 386, una 
+calculadora científica, un terminal android (es coña, a mi me encantan 
+también) o algo similar, no nos damos ni cuenta.</p> <p><strong>7.</strong> Volviendo al estado inicial:</p> <p>Cada
+ vez que soltemos el teclado, debemos volver al 'sprite' inicial, para 
+dar coherencia a la animación. Si no realizamos esta acción, el sprite 
+quedaría en la última posición representada. Eso es un error de 
+concepto, así que lo inicializamos de nuevo:</p> <blockquote> <p>resetFrames = function()<br> {<br> &nbsp;&nbsp; ctx.clearRect(0,0,canvas.width, canvas.height);<br> &nbsp;&nbsp; spriteIndex = 0;<br> &nbsp;&nbsp; <br> &nbsp;&nbsp; ctx.fillStyle = "rgba(255,0,0,1)";<br> &nbsp;&nbsp; ctx.fillRect(0,0,canvas.width,canvas.height);<br> &nbsp;&nbsp; ctx.drawImage(imgList[spriteIndex],spriteX,spriteY,imgList[spriteIndex].width,imgList[spriteIndex].height);<br> }</p> </blockquote> <p><strong>8.</strong> Refactorizando:</p> <p>Como podemos observar, hay 3 líneas que -continuamente- se repiten. Podemos refactorizar el código para que quede mejor:<br>updateCanvas = function ()</p> <blockquote> <p>{&nbsp; <br> &nbsp; ctx.fillStyle = "rgba(255,0,0,1)";<br> &nbsp; ctx.fillRect(0,0,canvas.width,canvas.height);<br> &nbsp; ctx.drawImage(imgList[spriteIndex],spriteX,spriteY,imgList[spriteIndex].width,imgList[spriteIndex].height);<br> }</p> </blockquote> <p>Es decir, donde se encuentren estas tres líneas podemos sustituirlas por una llamada a esta función. Enr esumen: updateCanvas();</p> <p><strong>NOTA</strong>: Recordad que esta última función es posible gracias a que declaramos globales ciertas variables.</p> <p><strong>9.</strong> Hilando fino, fino:</p> <p>Si
+ queréis, para que nuestro ejemplo quede completo, lo lógico sería que 
+comprobásemos que el navegador de nuestro usuario soporta el elemento 
+Canvas. Para ello, os mando <a href="http://diveintohtml5.org/detect.html#canvas" target="_blank">una referencia a Dive into HTML</a>&nbsp;donde existe una documentación muy interesante que habla de esto y de HTML 5 en general.</p> <p>Aún así, la comprobación podría resumirse en:&nbsp;</p> <blockquote> <p>return !!document.createElement('canvas').getContext; // El resultado de la función nos da la respuesta</p> </blockquote> <p><br><strong>10.</strong> Finalizando:</p> <p>Resumiendo:
+ con el elemento Canvas podemos controlar lo que mostramos muy 
+dinámicamente, con interacción y de una manera sencilla para realizar 
+operaciones más complejas de representación gráfica.</p> <p><strong>Enlaces de utilidad</strong>:</p> <blockquote> <p>- <a href="http://www.elmundo.es/imasd/docs/demos/canvashtml5/" target="_blank">Resultado final</a></p> <p>-&nbsp;<a href="http://estaticos.elmundo.es/imasd/docs/demos/canvashtml5/img/imagenes.zip" target="_blank">Descarga del set de imágenes</a></p> <p>- <a href="http://diveintohtml5.org/" target="_blank">Dive into HTML 5</a></p> <p><a href="http://diveintohtml5.org/" target="_blank"></a>- <a href="http://dev.w3.org/html5/spec/Overview.html" target="_blank">HTML 5 Spec.</a></p> </blockquote>
+</div>
+</div>
+<div id="comentarios">
+<script language="javascript" type="text/javascript" src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/comentarios_blogs_comunidad.js"></script>
+<div id="comentarios_lectores">
+<form name="formulario_paginar_comentarios" id="formulario_paginar_comentarios" method="post">
+<input name="post" value="34919" type="hidden">
+<input name="portal" value="1" type="hidden">
+<input name="pagina" value="1" type="hidden">
+</form>
+<div id="comentarios_lectores_listado">
+<div class="comentarios_nav">
+<ul class="comentarios_nav not_logged">
+<li class="seleccionado"><a href="#comentarios" class="msg_all" onclick="javascript:return false;" title="Ver todos los mensajes">Todos</a></li>
+<li><a href="#comentarios" onclick="javascript:pasarPaginaComentariosMejorValorados(1);return false;" class="msg_best" title="Ver los mensajes mejor valorados">Mejor valorados</a></li>
+<li class="msg_mention" title="Entra con tu usuario para ver las menciones que has recibido"><span>Te mencionan</span></li>
+<li class="msg_net" title="Entra con tu usuario para ver los mensajes de las personas a las que sigues"><span>Tu red</span></li>
+</ul>
+</div>
+<h3>
+<span>8 »</span> Comentarios
+<span class="links_comentar">¿Quieres comentar? <a href="#comentar">Entra</a> o <a target="_blank" href="http://app.elmundo.es/elmundo/registro/registro.html">regístrate</a></span>
+</h3>
+<div class="num_comentarios estirar">
+<ul class="nav nav_comentarios">
+</ul>
+</div>
+<ol>
+<li style="z-index: 16;">
+<div class="usuario">
+<div class="usuario_nombre">
+<img class="avatar" src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/medium-comments_default_004.png">
+<strong>Anónimo</strong>
+<span class="fecha_hora">30.mar.2011 | 12:52</span>
+</div>
+<h4>#1</h4>
+</div>
+<p>¿Con qué navegador funciona? He probado con Chrome 10, Firefox 4 y 
+Explorer 8 y no veo más que una imagen fija del sprite y una banda de 
+color rojo. ¿Hay que hacer algo especial?<br><br>Ah, el enlace de los 7 frames no tira: "Access denied"</p>
+<div class="interact">
+<span class="responder">Responder</span>
+<a title="Responder citando mensaje" href="#comentar" onclick="javascript:comentarReferenciaComentario('1');" class="citar">Citar mensaje</a>
+<span class="valorar" id="valoracion_comentario_1406687">
+<p>Valorar</p>
+<a href="#" class="valorar_positivo" title="Positivo" onclick="javascript:enviarValoracionComentario(1406687,1);return false;"><span>Positivo</span></a>
+<span class="separador"></span>
+<a href="#" class="valorar_negativo" title="Negativo" onclick="javascript:enviarValoracionComentario(1406687,-1);return false;"><span>Negativo</span></a>
+</span>
+<div id="denuncia_comentario_1406687" class="float_right">
+<span class="denunciar">Denunciar</span>
+</div>
+</div>
+</li>
+<li style="z-index: 14;">
+<div class="usuario">
+<div class="usuario_nombre">
+<img class="avatar" src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/medium-comments_default.png">
+<strong>Anónimo</strong>
+<span class="fecha_hora">30.mar.2011 | 13:03</span>
+</div>
+<h4>#2</h4>
+</div>
+<p><a onmouseover="document.getElementById('comentarios_lectores_referencia_2_1_0').style.display='block'" onmouseout="document.getElementById('comentarios_lectores_referencia_2_1_0').style.display='none';" onclick="document.getElementById('comentarios_lectores_referencia_2_1_0').style.display='none';" class="ancla_referencia">#1<span class="referencia" id="comentarios_lectores_referencia_2_1_0" style="display:none">¿Con
+ qué navegador funciona? He probado con Chrome 10, Firefox 4 y Explorer 8
+ y no veo más que una imagen fija del sprite y una banda de color rojo. 
+¿Hay que hacer algo especial?<br><br>Ah, el enlace de los 7 frames no tira: "Access denied"</span></a> has probado a darle a las flechas de movimiento del teclado como dicen en el artículo (arrow keys)?<br>Yo en firefox 4 veo que funciona bien.</p>
+<div class="interact">
+<span class="responder">Responder</span>
+<a title="Responder citando mensaje" href="#comentar" onclick="javascript:comentarReferenciaComentario('2');" class="citar">Citar mensaje</a>
+<span class="valorar" id="valoracion_comentario_1406706">
+<p>Valorar</p>
+<a href="#" class="valorar_positivo" title="Positivo" onclick="javascript:enviarValoracionComentario(1406706,1);return false;"><span>Positivo</span></a>
+<span class="separador"></span>
+<a href="#" class="valorar_negativo" title="Negativo" onclick="javascript:enviarValoracionComentario(1406706,-1);return false;"><span>Negativo</span></a>
+</span>
+<div id="denuncia_comentario_1406706" class="float_right">
+<span class="denunciar">Denunciar</span>
+</div>
+</div>
+</li>
+<li style="z-index: 12;">
+<div class="usuario">
+<div class="usuario_nombre">
+<img class="avatar" src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/medium-comments_default_003.png">
+<strong>Anónimo</strong>
+<span class="fecha_hora">30.mar.2011 | 13:00</span>
+</div>
+<h4>#3</h4>
+</div>
+<p>Muy interesante, me parecen muy instructivos estos posts, aunque 
+entren más en la categoría de tutoriales (o posts) que de noticias, lo 
+que no quita que me parezca mal que ElMundo no me deje darle a valorar 
+este artículo por "no estar incluido en la categoría de últimas nocias".</p>
+<div class="interact">
+<span class="responder">Responder</span>
+<a title="Responder citando mensaje" href="#comentar" onclick="javascript:comentarReferenciaComentario('3');" class="citar">Citar mensaje</a>
+<span class="valorar" id="valoracion_comentario_1406702">
+<p>Valorar</p>
+<a href="#" class="valorar_positivo" title="Positivo" onclick="javascript:enviarValoracionComentario(1406702,1);return false;"><span>Positivo</span></a>
+<span class="separador"></span>
+<a href="#" class="valorar_negativo" title="Negativo" onclick="javascript:enviarValoracionComentario(1406702,-1);return false;"><span>Negativo</span></a>
+</span>
+<div id="denuncia_comentario_1406702" class="float_right">
+<span class="denunciar">Denunciar</span>
+</div>
+</div>
+</li>
+<li style="z-index: 10;">
+<div class="usuario">
+<div class="usuario_nombre">
+<img class="avatar" src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/medium-comments_default_002.png">
+<strong>Anónimo</strong>
+<span class="fecha_hora">30.mar.2011 | 13:10</span>
+</div>
+<h4>#4</h4>
+</div>
+<p>Al anónimo anterior, como te quedes esperando mirando la pantalla a 
+que haga algo te vas a hacer viejo, como dice en este artículo hay que 
+pulsar las flechas izquierda y derecha para que se mueva el dibujo</p>
+<div class="interact">
+<span class="responder">Responder</span>
+<a title="Responder citando mensaje" href="#comentar" onclick="javascript:comentarReferenciaComentario('4');" class="citar">Citar mensaje</a>
+<span class="valorar" id="valoracion_comentario_1406724">
+<p>Valorar</p>
+<a href="#" class="valorar_positivo" title="Positivo" onclick="javascript:enviarValoracionComentario(1406724,1);return false;"><span>Positivo</span></a>
+<span class="separador"></span>
+<a href="#" class="valorar_negativo" title="Negativo" onclick="javascript:enviarValoracionComentario(1406724,-1);return false;"><span>Negativo</span></a>
+</span>
+<div id="denuncia_comentario_1406724" class="float_right">
+<span class="denunciar">Denunciar</span>
+</div>
+</div>
+</li>
+<li style="z-index: 8;">
+<div id="mensaje_privado_1409932" class="mensaje_privado" style="display: none;">
+<span class="info_top"></span>
+<span class="info_flecha"></span>
+<a class="cerrar_ventana" href="#" onclick="javascript:cerrarMensajePrivado(1409932);return false;"><span>Cerrar ventana</span></a>
+<div class="contenido_mensaje_privado">
+<h5>Redactar mensaje privado</h5>
+<p>Enviar mensaje a <strong>Dennis</strong></p>
+<form id="formulario_mensaje_privado_1409932" name="formulario_mensaje_privado_1409932">
+<input id="mensaje_privado_destinatario_1409932" name="mensaje_privado_destinatario" value="3608469" type="hidden">
+<label>Asunto:</label>
+<input id="mensaje_privado_asunto_1409932" name="mensaje_privado_asunto" type="text">
+<label>Texto:</label>
+<textarea id="mensaje_privado_texto_1409932" name="mensaje_privado_texto"></textarea>
+<input class="boton" value="Enviar" name="enviar" onclick="javascript:enviarMensajePrivado(1409932);return false;" type="button">
+</form>
+</div>
+<span class="info_bottom"></span>
+</div>
+<div class="usuario">
+<div class="usuario_nombre">
+<img class="avatar" src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/medium-comments_3608469.png" title="Entra con tu usuario para poder ver su perfil completo">
+<strong title="Entra con tu usuario para poder ver su perfil completo">Dennis</strong>
+<span class="fecha_hora">31.mar.2011 | 23:04</span>
+</div>
+<h4>#5</h4>
+</div>
+<p>Me parece interesante este post ya que de una forma muy sencilla se 
+explica este elemento Canvas que es a mi parecer unos de los elementos 
+que revoluciona lo que era HTML anteriormente.</p>
+<div class="interact">
+<a class="responder" title="Responder al usuario" href="#comentar" onclick="javascript:comentarReferenciaUsuario('Dennis');">Responder</a>
+<a title="Responder citando mensaje" href="#comentar" onclick="javascript:comentarReferenciaComentario('5');" class="citar">Citar mensaje</a>
+<span class="valorar" id="valoracion_comentario_1409932">
+<p>Valorar</p>
+<a href="#" class="valorar_positivo" title="Positivo" onclick="javascript:enviarValoracionComentario(1409932,1);return false;"><span>Positivo</span></a>
+<span class="separador"></span>
+<a href="#" class="valorar_negativo" title="Negativo" onclick="javascript:enviarValoracionComentario(1409932,-1);return false;"><span>Negativo</span></a>
+</span>
+<div id="denuncia_comentario_1409932" class="float_right">
+<span class="denunciar">Denunciar</span>
+</div>
+</div>
+</li>
+<li style="z-index: 6;">
+<div id="mensaje_privado_1410219" class="mensaje_privado" style="display: none;">
+<span class="info_top"></span>
+<span class="info_flecha"></span>
+<a class="cerrar_ventana" href="#" onclick="javascript:cerrarMensajePrivado(1410219);return false;"><span>Cerrar ventana</span></a>
+<div class="contenido_mensaje_privado">
+<h5>Redactar mensaje privado</h5>
+<p>Enviar mensaje a <strong>eduardomgallo</strong></p>
+<form id="formulario_mensaje_privado_1410219" name="formulario_mensaje_privado_1410219">
+<input id="mensaje_privado_destinatario_1410219" name="mensaje_privado_destinatario" value="3610024" type="hidden">
+<label>Asunto:</label>
+<input id="mensaje_privado_asunto_1410219" name="mensaje_privado_asunto" type="text">
+<label>Texto:</label>
+<textarea id="mensaje_privado_texto_1410219" name="mensaje_privado_texto"></textarea>
+<input class="boton" value="Enviar" name="enviar" onclick="javascript:enviarMensajePrivado(1410219);return false;" type="button">
+</form>
+</div>
+<span class="info_bottom"></span>
+</div>
+<div class="usuario">
+<div class="usuario_nombre">
+<img class="avatar" src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/medium-comments_3610024.png" title="Entra con tu usuario para poder ver su perfil completo">
+<strong title="Entra con tu usuario para poder ver su perfil completo">Eduardo Martín Gallo </strong>
+<small>eduardomgallo</small>
+<span class="fecha_hora">01.abr.2011 | 04:50</span>
+</div>
+<h4>#6</h4>
+</div>
+<p>Con Opera 11 funciona, pero con IE 8 no jajajaja. Que aplicacion va a
+ tener esto?? Quieren sacarle el liderazgo a Adobe Flash player en 
+interacciones en internet, pero esto no funciona!!!!</p>
+<div class="interact">
+<a class="responder" title="Responder al usuario" href="#comentar" onclick="javascript:comentarReferenciaUsuario('eduardomgallo');">Responder</a>
+<a title="Responder citando mensaje" href="#comentar" onclick="javascript:comentarReferenciaComentario('6');" class="citar">Citar mensaje</a>
+<span class="valorar" id="valoracion_comentario_1410219">
+<p>Valorar</p>
+<a href="#" class="valorar_positivo" title="Positivo" onclick="javascript:enviarValoracionComentario(1410219,1);return false;"><span>Positivo</span></a>
+<span class="separador"></span>
+<a href="#" class="valorar_negativo" title="Negativo" onclick="javascript:enviarValoracionComentario(1410219,-1);return false;"><span>Negativo</span></a>
+</span>
+<div id="denuncia_comentario_1410219" class="float_right">
+<span class="denunciar">Denunciar</span>
+</div>
+</div>
+</li>
+<li style="z-index: 4;">
+<div id="mensaje_privado_1410429" class="mensaje_privado" style="display: none;">
+<span class="info_top"></span>
+<span class="info_flecha"></span>
+<a class="cerrar_ventana" href="#" onclick="javascript:cerrarMensajePrivado(1410429);return false;"><span>Cerrar ventana</span></a>
+<div class="contenido_mensaje_privado">
+<h5>Redactar mensaje privado</h5>
+<p>Enviar mensaje a <strong>RiMoCa</strong></p>
+<form id="formulario_mensaje_privado_1410429" name="formulario_mensaje_privado_1410429">
+<input id="mensaje_privado_destinatario_1410429" name="mensaje_privado_destinatario" value="3110243" type="hidden">
+<label>Asunto:</label>
+<input id="mensaje_privado_asunto_1410429" name="mensaje_privado_asunto" type="text">
+<label>Texto:</label>
+<textarea id="mensaje_privado_texto_1410429" name="mensaje_privado_texto"></textarea>
+<input class="boton" value="Enviar" name="enviar" onclick="javascript:enviarMensajePrivado(1410429);return false;" type="button">
+</form>
+</div>
+<span class="info_bottom"></span>
+</div>
+<div class="usuario">
+<div class="usuario_nombre">
+<img class="avatar" src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/medium-comments_default_003.png" title="Entra con tu usuario para poder ver su perfil completo">
+<strong title="Entra con tu usuario para poder ver su perfil completo">RiMoCa</strong>
+<span class="fecha_hora">01.abr.2011 | 11:05</span>
+</div>
+<h4>#7</h4>
+</div>
+<p><a onmouseover="document.getElementById('comentarios_lectores_referencia_7_6_0').style.display='block'" onmouseout="document.getElementById('comentarios_lectores_referencia_7_6_0').style.display='none';" onclick="document.getElementById('comentarios_lectores_referencia_7_6_0').style.display='none';" class="ancla_referencia">#6<span class="referencia" id="comentarios_lectores_referencia_7_6_0" style="display:none">Con
+ Opera 11 funciona, pero con IE 8 no jajajaja. Que aplicacion va a tener
+ esto?? Quieren sacarle el liderazgo a Adobe Flash player en 
+interacciones en internet, pero esto no funciona!!!!</span></a> Con IE8 
+se puede simular con alguna librería Js existente. Evidentemente este 
+elemento no está a la altura de Flash, empezando por los vectores, pero 
+tiene muchas aplicaciones. Se me ocurre, así rapidamente, la posibilidad
+ de tener un pequeño sistema de edición de imágenes lite dentro de un 
+CMS, sin una herramienta externa como pueda ser PS Lite.</p>
+<div class="interact">
+<a class="responder" title="Responder al usuario" href="#comentar" onclick="javascript:comentarReferenciaUsuario('RiMoCa');">Responder</a>
+<a title="Responder citando mensaje" href="#comentar" onclick="javascript:comentarReferenciaComentario('7');" class="citar">Citar mensaje</a>
+<span class="valorar" id="valoracion_comentario_1410429">
+<p>Valorar</p>
+<a href="#" class="valorar_positivo" title="Positivo" onclick="javascript:enviarValoracionComentario(1410429,1);return false;"><span>Positivo</span></a>
+<span class="separador"></span>
+<a href="#" class="valorar_negativo" title="Negativo" onclick="javascript:enviarValoracionComentario(1410429,-1);return false;"><span>Negativo</span></a>
+</span>
+<div id="denuncia_comentario_1410429" class="float_right">
+<span class="denunciar">Denunciar</span>
+</div>
+</div>
+</li>
+<li style="z-index: 2;">
+<div id="mensaje_privado_1524446" class="mensaje_privado" style="display: none;">
+<span class="info_top"></span>
+<span class="info_flecha"></span>
+<a class="cerrar_ventana" href="#" onclick="javascript:cerrarMensajePrivado(1524446);return false;"><span>Cerrar ventana</span></a>
+<div class="contenido_mensaje_privado">
+<h5>Redactar mensaje privado</h5>
+<p>Enviar mensaje a <strong>aguasaj</strong></p>
+<form id="formulario_mensaje_privado_1524446" name="formulario_mensaje_privado_1524446">
+<input id="mensaje_privado_destinatario_1524446" name="mensaje_privado_destinatario" value="3738966" type="hidden">
+<label>Asunto:</label>
+<input id="mensaje_privado_asunto_1524446" name="mensaje_privado_asunto" type="text">
+<label>Texto:</label>
+<textarea id="mensaje_privado_texto_1524446" name="mensaje_privado_texto"></textarea>
+<input class="boton" value="Enviar" name="enviar" onclick="javascript:enviarMensajePrivado(1524446);return false;" type="button">
+</form>
+</div>
+<span class="info_bottom"></span>
+</div>
+<div class="usuario">
+<div class="usuario_nombre">
+<img class="avatar" src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/medium-comments_default_002.png" title="Entra con tu usuario para poder ver su perfil completo">
+<strong title="Entra con tu usuario para poder ver su perfil completo">aguasaj</strong>
+<span class="fecha_hora">29.jun.2011 | 22:54</span>
+</div>
+<h4>#8</h4>
+</div>
+<p>Hola, Podria alguien explicarme como obtener la posicion (x,y) de un 
+objeto Image()? Tengo unas imagenes creadas de ese modo es decir: vector
+ = new Array(1); vector[0] = new Image(); vector[0].src = 
+'images/tA.png'; ctx.drawImage(vector[0], posx, posy); Necesesito mover 
+una imagen asi de tal forma que llegue as una posicion especifica y se 
+vea en modo de animacion... Agradezco su atencion</p>
+<div class="interact">
+<a class="responder" title="Responder al usuario" href="#comentar" onclick="javascript:comentarReferenciaUsuario('aguasaj');">Responder</a>
+<a title="Responder citando mensaje" href="#comentar" onclick="javascript:comentarReferenciaComentario('8');" class="citar">Citar mensaje</a>
+<span class="valorar" id="valoracion_comentario_1524446">
+<p>Valorar</p>
+<a href="#" class="valorar_positivo" title="Positivo" onclick="javascript:enviarValoracionComentario(1524446,1);return false;"><span>Positivo</span></a>
+<span class="separador"></span>
+<a href="#" class="valorar_negativo" title="Negativo" onclick="javascript:enviarValoracionComentario(1524446,-1);return false;"><span>Negativo</span></a>
+</span>
+<div id="denuncia_comentario_1524446" class="float_right">
+<span class="denunciar">Denunciar</span>
+</div>
+</div>
+</li>
+</ol>
+<div class="num_comentarios estirar">
+<ul class="nav nav_comentarios">
+</ul>
+</div>
+</div>
+<div id="comentar" class="wrap">
+<div id="comentarios_lectores_caja_usuario">
+<h5>Queremos saber tu opinión</h5>
+<div id="comentarios_lectores_login">
+<div id="comentarios_lectores_login_formulario" class="comentarios_lectores_paso lock">
+<h5>Usuario registrado</h5>
+<form name="formulario_login_comentarios" id="formulario_login_comentarios" method="post">
+<input name="post" value="34919" type="hidden">
+<input name="portal" value="1" type="hidden">
+<label class="nick">Email: <input id="formulario_login_comentarios_usuario" name="usuario" maxlength="50" type="text"></label>
+<label class="pass">Contraseña: <input id="formulario_login_comentarios_clave" name="clave" maxlength="50" value="" onkeyup="if (event.keyCode==13) loginComentarios();" type="password"></label>
+<div class="aviso"><input checked="checked" class="check" id="formulario_login_comentarios_recordar" name="recordar" value="S" type="checkbox">Recordadme en este ordenador<br><a href="http://app.elmundo.es/ELMUNDO/RegistroUnico/Controlador?opcion=11" target="_blank">Recuperar contraseña »</a></div>
+<div class="nuevo_usuario">¿Eres un usuario nuevo? <a href="http://app.elmundo.es/ELMUNDO/RegistroUnico/Controlador" target="_blank">Regístrate</a></div>
+<div class="btn"><input id="formulario_login_comentarios_submit" name="submit" onclick="javascript:loginComentarios()" value="entrar »" type="button"></div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+inicializarComentarios(1);
+</script></div>
+</div>
+<div class="contenido_noticia_02_post">
+<div class="comentarios_post"> <a href="http://www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/2011/03/30/html5-jugando-con-el-canvas.html#comentarios" title="Comentar esta entrada">Comentarios (8)</a> </div>
+<div class="redes">
+<p class="titulo-columna">Compartir</p>
+<div id="facebooklikeelmundo" class="compartir facebook"><iframe src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/like.htm" allowtransparency="false" frameborder="0" height="40" scrolling="no" width="120"></iframe></div>
+<div id="tweetmeme_share" class="compartir twitter"><iframe src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/tweet_button.htm" allowtransparency="false" frameborder="0" height="40" scrolling="no" width="100"></iframe></div>
+<div class="compartir tuenti">
+<a onclick="window.open('http://www.tuenti.com/share?url=', '_blank', 'height=375,width=600'); return false;" href="http://www.tuenti.com/share?url=www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/2011/03/30/html5-jugando-con-el-canvas.html"><img src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/tuenti.gif"></a>
+</div>
+<ul class="nav nav_compartir compartir">
+<li class="meneame">
+<a href="http://meneame.net/submit.php?url=http://www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/2011/03/30/html5-jugando-con-el-canvas.html&amp;ei=UTF" target="_blank" title="Comparte esta noticia en meneane" rel="nofollow"></a>
+</li>
+<li class="delicious">
+<a href="http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url=http://www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/2011/03/30/html5-jugando-con-el-canvas.html&amp;title=" target="_blank" title="Comparte esta noticia en delicious" rel="nofollow"></a>
+</li>
+<li class="fresqui">
+<a href="http://tec.fresqui.com/post?url=http://www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/2011/03/30/html5-jugando-con-el-canvas.html&amp;title=" target="_blank" title="Comparte esta noticia en Fresqui" rel="nofollow"></a>
+</li>
+<li class="myspace">
+<a href="http://www.myspace.com/Modules/PostTo/Pages/?u=http://www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/2011/03/30/html5-jugando-con-el-canvas.html&amp;t=" target="_blank" title="Comparte esta noticia en MySpace" rel="nofollow"></a>
+</li>
+<li class="livespaces">
+<a href="https://favorites.live.com/quickadd.aspx?marklet=1&amp;mkt=en-us&amp;url=http://www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/2011/03/30/html5-jugando-con-el-canvas.html&amp;title=" target="_blank" title="Comparte esta noticia en Live Spaces" rel="nofollow"></a>
+</li>
+<li class="google">
+<a href="http://www.google.com/bookmarks/mark?op=edit&amp;bkmk=http://www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/2011/03/30/html5-jugando-con-el-canvas.html&amp;title=" target="_blank" title="Comparte esta noticia en Google Bookmarks" rel="nofollow"></a>
+</li>
+</ul>
+</div>
+<div class="herramientas">
+<p class="titulo-columna">Herramientas</p>
+<ul class="nav_herramientas">
+<li class="enviar"><a href="http://www.elmundo.es/elmundo/envia_noticia.html" title="Enviar a un amigo">Enviar a un amigo</a></li>
+<li class="valorar"><a href="http://www.elmundo.es/elmundo/graciasporvalorar.html" title="Recomendar">Valorar</a></li>
+<li class="imprimir"><a href="javascript:imprimir()" title="Imprimir esta noticia">Imprimir</a></li>
+<li class="movil"><a href="http://www.elmundo.es/servicios/palm.html" title="Móvil">En tu móvil</a></li>
+<li class="rectificar"><a title="Rectificar noticia" href="http://www.elmundo.es/elmundo/rectificaciones/enviar.html">Rectificar</a></li>
+</ul> 
+</div> 
+<script type="text/javascript">
+setTimeout("escribeIframe('facebooklikeelmundo','http://www.facebook.com/plugins/like.php?href=http://www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/2011/03/30/html5-jugando-con-el-canvas.html&page%2Fto%2Flike&amp;layout=button_count&amp;show_faces=true&amp;width=140&amp;action=like&amp;colorscheme=light&amp;height=100',120,40,'no','false')",2900);
+setTimeout("escribeIframe('tweetmeme_share','http://platform.twitter.com/widgets/tweet_button.html?url=http://www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/2011/03/30/html5-jugando-con-el-canvas.html&count=horizontal&lang=es&text=twittear&via=elmundoes',100,40,'no','false')",1900);
+</script>
+</div>
+</div>
+</div>
+<div id="contenido_secundario" class="col col_02">
+<div class="firma_blog">
+<h4>Sobre el autor</h4>
+<ul>
+<li>
+<div class="foto"><img alt="imasd" class="imagen-autor" title="Autor" src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/448.jpg"></div>
+<strong>imasd</strong>
+<p>
+Cavilaciones, curiosidades y novedades del equipo de I+D de ELMUNDO.es
+</p>
+</li>
+</ul>
+</div>
+<div class="publicidad publicidad_300a"></div>
+<div id="ultimos_posts" class="modulo modulo_blog"><article class="modulo ultimos-posts">
+<h2>Lo último</h2>
+<ul>
+<li>
+<a href="http://www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/2011/07/28/elmundoes-en-ipv6.html" class="nombre-blog"><time pubdate="" datetime="2011-07-28"><em>
+28 de
+julio de
+2011
+</em></time></a>
+<a href="http://www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/2011/07/28/elmundoes-en-ipv6.html" class="nombre-post">ELMUNDO.es, en IPv6</a>
+</li>
+<li>
+<a href="http://www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/2011/05/31/de-las-pestanas-al-portapapeles.html" class="nombre-blog"><time pubdate="" datetime="2011-05-31"><em>
+31 de
+mayo de
+2011
+</em></time></a>
+<a href="http://www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/2011/05/31/de-las-pestanas-al-portapapeles.html" class="nombre-post">De las pestañas, al portapapeles</a>
+</li>
+<li>
+<a href="http://www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/2011/04/06/una-galeria-hecha-solo-con-css.html" class="nombre-blog"><time pubdate="" datetime="2011-04-06"><em>
+6 de
+abril de
+2011
+</em></time></a>
+<a href="http://www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/2011/04/06/una-galeria-hecha-solo-con-css.html" class="nombre-post">Una galería hecha sólo con CSS</a>
+</li>
+<li>
+<a href="http://www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/2011/04/04/empaquetando-noticias.html" class="nombre-blog"><time pubdate="" datetime="2011-04-04"><em>
+4 de
+abril de
+2011
+</em></time></a>
+<a href="http://www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/2011/04/04/empaquetando-noticias.html" class="nombre-post">Empaquetando noticias</a>
+</li>
+<li>
+<a href="http://www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/2011/04/01/inyeccion-de-codigo-para-dummies.html" class="nombre-blog"><time pubdate="" datetime="2011-04-01"><em>
+1 de
+abril de
+2011
+</em></time></a>
+<a href="http://www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/2011/04/01/inyeccion-de-codigo-para-dummies.html" class="nombre-post">Inyección de código para Dummies</a>
+</li>
+</ul>
+</article>
+</div>
+<div id="archivo" class="modulo modulo_blog"><h5>Archivo</h5>
+<ul>
+<li class="modulo">
+<ol>
+<h6><a href="http://www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/archivo/2011/index.html" class="despliega" title="Desplegar año">2011</a></h6>
+<li class="archivo_mes">
+<p><a href="http://www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/archivo/2011/07/index.html">julio <span title="Número de entradas">(1)</span></a></p>
+</li>
+<li class="archivo_mes">
+<p><a href="http://www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/archivo/2011/05/index.html">mayo <span title="Número de entradas">(1)</span></a></p>
+</li>
+<li class="archivo_mes">
+<p><a href="http://www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/archivo/2011/04/index.html">abril <span title="Número de entradas">(3)</span></a></p>
+</li>
+<li class="archivo_mes">
+<p><a href="http://www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/archivo/2011/03/index.html">marzo <span title="Número de entradas">(2)</span></a></p>
+</li>
+<li class="archivo_mes">
+<p><a href="http://www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/archivo/2011/02/index.html">febrero <span title="Número de entradas">(1)</span></a></p>
+</li>
+<li class="archivo_mes">
+<p><a href="http://www.elmundo.es/blogs/elmundo/totalsiessoloapretarunboton/archivo/2011/01/index.html">enero <span title="Número de entradas">(3)</span></a></p>
+</li>
+</ol>
+</li>
+</ul></div>
+</div>
+</div>
+</div>
+</div>
+<div id="info_site"><img class="logo" src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/logo_elmundoes.gif" alt="logo elmundo.es"> <strong>© 2014 Unidad Editorial Internet, S.L.</strong>
+<div class="avisos"> <a href="http://www.elmundo.es/privacidad/avisolegal.html">Aviso legal</a> | <a href="http://www.elmundo.es/privacidad/">Política de privacidad</a> | Publicación digital controlada por <a href="http://www.ojd.es/" target="_blank">OJD</a></div>
+</div>
+</div>
+<script src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/gw.js"></script>
+<!-- cXense script begin -->
+<div id="cX-root" style="display:none"><div style="display: none;"><iframe src="HTML5%20%20Jugando%20con%20el%20Canvas%20_%20Total,%20si%20es%20solo%20apretar%20un%20bot%C3%B3n%20_%20Blogs%20_%20elmundo.es_files/rep.htm" name="cx_rep_iframe_0.4271663953145891" id="cx_rep_iframe_0.4271663953145891" frameborder="0" height="1" scrolling="no" width="1"></iframe><form action="http://comcluster.cxense.com/Repo/rep.html?ver=1&amp;typ=pgv&amp;rnd=4yqoj4gfvzp&amp;acc=9222274424412905874&amp;sid=9222274424412905877&amp;loc=http%3A%2F%2Fwww.elmundo.es%2Fblogs%2Felmundo%2Ftotalsiessoloapretarunboton%2F2011%2F03%2F30%2Fhtml5-jugando-con-el-canvas.html&amp;ref=&amp;gol=&amp;pgn=&amp;ltm=1389901156699&amp;new=1&amp;tzo=-60&amp;res=1360x768&amp;dpr=1&amp;col=24&amp;jav=1&amp;bln=es-ES&amp;cks=13899011568111651549547&amp;ckp=1389901156812902539213&amp;chs=&amp;wsz=1360x661&amp;fls=1&amp;flv=Shockwave%20Flash%2012.0%20r0" target="cx_rep_iframe_0.4271663953145891" method="post"></form></div></div>
+<script type="text/javascript">
+var cX = cX || {}; cX.callQueue = cX.callQueue || [];
+cX.callQueue.push(['setAccountId', '9222274424412905874']);
+cX.callQueue.push(['setSiteId', '9222274424412905877']);
+cX.callQueue.push(['sendPageViewEvent']);
+</script>
+<script type="text/javascript">
+(function() { try { var scriptEl = document.createElement('script'); scriptEl.type = 'text/javascript'; scriptEl.async = 'async';
+scriptEl.src = ('https:' == document.location.protocol) ? 'https://scdn.cxense.com/cx.js' : 'http://active.cache.el-mundo.net/banners/cxense/cx.js';
+var targetEl = document.getElementsByTagName('script')[0]; targetEl.parentNode.insertBefore(scriptEl, targetEl); } catch (e) {};} ());
+</script>
+<!-- cXense script end -->
+<script type="text/javascript">
+var digilant = (function(){
+var SP, iframeHTML, div;
+var divId = 'divDigilant';
+var iframeId = 'ifDigilant';
+if (typeof GetSiteAndPage === 'function') {
+SP = GetSiteAndPage();
+iframeHTML = "<ht" + "ml>\n<bo" + "dy>\n<scr" + "ipt type='text/javascript' src='http://www.wtp101.com/pixel?id=16302&pb=3100&rd=1&st=" + escape(SP.Site) + "&se=" + escape(SP.Page) + "'></scr" + "ipt>\n</bo" + "dy>\n</ht" + "ml>\n";
+div = document.createElement('div');
+div.setAttribute('id', divId);
+div.style.display = 'none';
+document.body.appendChild(div);
+setTimeout(function() {
+if (document.getElementById(divId)) {
+var iframe = document.createElement('iframe');
+iframe.setAttribute('id', iframeId);
+iframe.setAttribute('width', 1);
+iframe.setAttribute('height', 1);
+iframe.setAttribute('scrolling', 'no');
+iframe.frameBorder = 0;
+document.getElementById(divId).appendChild(iframe);
+var iframeDocument = document.getElementById(iframeId).contentWindow.document || document.getElementById(iframeId).contentDocument.document;
+iframeDocument.write(iframeHTML);
+iframeDocument.close();
+}
+}, 321);
+}
+})();
+</script><div style="display: none;" id="divDigilant"><iframe id="ifDigilant" frameborder="0" height="1" scrolling="no" width="1"></iframe></div>
+
+</body></html>

@@ -1,0 +1,267 @@
+<html>
+	<head>
+		<title>CANVAS</title>
+		<script>
+			window.onload = function dibujar(){
+				var lienzo = devolverLienzo("lienzo1");
+				if(lienzo){
+
+					//lineas en V
+					lienzo.strokeStyle = "rgb(200,0,0)";
+					lienzo.beginPath();
+
+					//grosor de las lineas
+					lienzo.lineWidth=7;
+					//modo de union de las mismas:
+					//"bevel" - cuadrado
+					//"round" - redondeado
+					//"miter" - en punta
+					lienzo.lineJoin="miter";
+
+					//Modo de finalización de estas:
+					//"butt" - inmediatamente
+					//"round" - semicirculo
+					//"square" - en cuadrado
+					lienzo.lineCap = "square"
+
+
+					lienzo.moveTo(0,0);
+					lienzo.lineTo(150,300);
+					lienzo.lineTo(300,0);
+					lienzo.stroke();
+				}
+
+				lienzo= devolverLienzo("lienzo2");
+
+				if(lienzo){
+
+					//contorno de rectangulo
+					lienzo.strokeStyle = "rgb(0,0,200)";
+					lienzo.strokeRect(50,110,200,100);
+
+					//rectangulo relleno
+					lienzo.fillStyle = "rgb(0,200,0)",
+					lienzo.fillRect(50,110,200,100);
+
+					//borrar rectangulo
+					lienzo.clearRect(60,120,100,20);
+				}
+
+				lienzo = devolverLienzo("lienzo3");
+
+				if(lienzo){
+
+					//dibujar lineas y rellenar el espacio
+					lienzo.fillStyle = "rgb(0,200,0)",
+					lienzo.strokeStyle = "rgb(200,0,0)";
+					lienzo.lineWidth= 5;
+					lienzo.beginPath();
+					lienzo.moveTo(0,0);
+					lienzo.lineTo(150,300);
+					lienzo.lineTo(300,0);
+					lienzo.lineTo(0,0);
+					lienzo.fill();
+					lienzo.stroke();
+				}
+
+				//ARCOS
+				lienzo=devolverLienzo("lienzo4");
+
+				if(lienzo){
+					//arc(x,y, radio, ángulo de comienzo, ángulo final, Sentido Antihorario)
+					//Nota!!! Angulo en radianes!!! Creo...
+					//Pi radianes = 180º
+
+					lienzo.strokeStyle = "rgb(200,0,0)";
+					lienzo.fillStyle= "rgb(0,0,200)";
+					lienzo.lineWidth= 5;
+					lienzo.beginPath();
+					lienzo.arc(100,100,50,0,Math.PI,true);
+					lienzo.stroke();
+					lienzo.fill();
+
+					lienzo.strokeStyle = "rgb(200,200,0)";
+					lienzo.fillStyle= "rgb(0,0,0)";
+					lienzo.beginPath();
+					lienzo.arc(100,100,50,0,Math.PI,false);
+					lienzo.stroke();
+					lienzo.fill();
+				}
+
+				//Curva de Bezier!!! Mirar en wikipedia!!! Trazar curva a partir de coordendas de puntos
+
+				//3 pares de coordendas: bezierCurveTo(x,y,x2,y2,x3,y3)
+
+				lienzo = devolverLienzo("lienzo5");
+
+				if(lienzo){
+					lienzo.strokeStyle = "rgb(200,200,0)";
+					lienzo.beginPath();
+					lienzo.moveTo(0,150);
+					lienzo.bezierCurveTo(100,50,200,250,290,150);
+					lienzo.stroke();
+				}
+
+				//curva cuadrática
+
+				//setInterval(dibujar,1000);
+
+				//TEXTO
+
+				lienzo=devolverLienzo("lienzo6");
+
+				if (lienzo){
+					//fillText("texto",x,y)
+					lienzo.fillText("",20,200);
+					lienzo.fillStyle = "rgb(255,0,0)";
+					lienzo.font= "bold 25px Arial";
+
+					//Ancho en pixeles segun la fuente actual
+					var ancho = lienzo.measureText("prueba de texto");
+
+					lienzo.textAlign = "left";
+					lienzo.strokeText(ancho,20,200);
+				}
+				
+
+				//IMAGENES
+
+				lienzo = devolverLienzo("lienzo15");
+
+				if(lienzo){
+					//transparencias: el cuarto valor de rgba es el grado de transparencia(0= totalmente transparente . 1=totalmente opaca)
+					lienzo.fillStyle = "rgba(255,0,0,0.3)";
+					lienzo.fillRect(0,0,600,600);
+					var img = new Image();
+					img.src = "pra4-1.png";
+					img.onload = function (){
+						//imagen en tamaño original en coordenadas 150,10
+						lienzo.drawImage(img,150,10);
+
+						//en coordenadas 300,150 -> Ancho de 100 y alto de 50
+						lienzo.drawImage(img,300,150,100,50);
+
+						//de la imagen original extraemos fragmento de 150x40 y la dibujamos en coordenada 100,350 con alto y ancho de 72
+						lienzo.drawImage(img,0,0,150,40,100,350,72,72);
+					}
+				}
+
+				//SOMBRAS 
+
+				lienzo=devolverLienzo("lienzo8");
+
+				if (lienzo){
+					//sombra en el eje X
+					//positivo hacia la derecha y negativo a la izda
+					lienzo.shadowOffsetX = -10;
+
+					//EJE Y. Pos hacia arriba y neg hacia abajo
+					lienzo.shadowOffsetY = 5;
+
+					//condensacion o difuminado de la sombra
+					lienzo.shadowBlur = 10;
+
+					lienzo.shadowColor = "rgba(0,0,255,0.5)";
+
+					lienzo.fillStyle = "rgb(0,0,255)";
+					lienzo.fillRect(20,20,150,100);
+					lienzo.shadowOffsetX = 5;
+					lienzo.fillRect(250,20,100,100);
+
+				}
+
+				//GRADIENTES
+				lienzo=devolverLienzo("lienzo9");
+
+				if (lienzo){
+
+					//GRADIENTES LINEALES
+					//coordenadas de comienzo y fin del degradado
+					var gradiente1= lienzo.createLinearGradient(0,0,200,0);
+
+					//Valor entre 0 y 1 y color
+					gradiente1.addColorStop(1,"rgb(255,0,0)"); //rojo
+					gradiente1.addColorStop(0,"rgb(0,0,255)");	//azul
+					lienzo.fillStyle = gradiente1;
+					lienzo.fillRect(0,0,200,200);
+
+					var gradiente2= lienzo.createLinearGradient(200,0,400,0);
+					gradiente2.addColorStop(0,"rgb(255,0,0)"); //rojo
+					gradiente2.addColorStop(1,"rgb(0,0,255)"); //azul
+					lienzo.fillStyle = gradiente2;
+					lienzo.fillRect(200,0,200,200);
+
+					var gradiente3= lienzo.createLinearGradient(0,200,600,600);
+					gradiente3.addColorStop(0,"rgb(255,0,0)"); //rojo
+					gradiente3.addColorStop(1,"rgb(0,0,255)"); //azul
+					gradiente3.addColorStop(0.5,"rgb(0,255,0)"); //verde
+					lienzo.fillStyle = gradiente3;
+					lienzo.fillRect(0,200,400,600);
+
+					//GRADIENTES RADIALES
+					//Coordenadas de inicio, radio de inicio, coordenadas de fin, radio de fin
+
+					var gradiente4= lienzo.createLinearGradient(200,200,0,200,200,200);
+					gradiente4.addColorStop(0,"rgb(0,255,0)"); //verde
+					gradiente4.addColorStop(1,"rgb(0,0,0)"); //negro
+					
+					lienzo.fillStyle = gradiente4;
+					lienzo.arc(200,200,100,0,Math.PI*2,true);
+					lienzo.fill();
+				}					
+			}
+
+
+			
+
+			function devolverLienzo(source){
+				var canvas=document.getElementById(source);
+				if(canvas && canvas.getContext){
+					var lienzo = canvas.getContext("2d");
+					return lienzo;
+				}else{
+					return false;
+				}
+			}
+
+
+
+			var fila = 0;
+			function dibujar(){
+				var lienzo = devolverLienzo("lienzo6");
+
+				if(lienzo){
+					lienzo.clearRect(0,0,300,300);
+					lienzo.strokeStyle = "rgb(255,0,0)";
+					lienzo.beginPath();
+					lienzo.moveTo(0,150)
+					lienzo.quadraticCurveTo(150,fila,300,150);
+					lienzo.stroke();
+					fila++;
+					if(fila>300)
+						fila=0;
+				}
+			}
+		</script>
+		<style>
+			#lienzo5{
+				border:black solid 1px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<canvas id="lienzo1" width="350" height="350">Actualiza</canvas>
+		<canvas id="lienzo2" width="350" height="350">Actualiza</canvas>
+		<canvas id="lienzo3" width="350" height="350">Actualiza</canvas>
+		<canvas id="lienzo4" width="350" height="350">Actualiza</canvas>
+		<canvas id="lienzo5" width="350" height="350">Actualiza</canvas>
+		<canvas id="lienzo6" width="350" height="350">Actualiza</canvas>
+		
+		<canvas id="lienzo8" width="600" height="600">Actualiza</canvas>
+		<canvas id="lienzo9" width="600" height="600">Actualiza</canvas>
+
+		<canvas id="lienzo15" width="600" height="600">Actualiza</canvas>
+	</body>
+
+</html>

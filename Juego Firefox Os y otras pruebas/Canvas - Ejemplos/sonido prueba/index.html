@@ -1,0 +1,293 @@
+<!DOCTYPE HTML>
+<html>  
+  <head>
+      <meta charset="utf-8"> 
+    <title>
+    Game Sounds
+    </title>
+
+    <script>
+       
+          // Global variables
+      var boardWidth = 320;
+      var boardHeight = 460;
+      var bwPixels = boardWidth + "px";
+      var bhPixels = boardHeight + "px";
+        var redBallHor = 60;
+      var redBallVer = 160;
+      var redBallRad = 10;
+      var howFast = 3;
+        var blueBoxHor = 270;
+      var blueBoxVer = 150;
+      var audMove;
+      var audJump;
+      var audEnd;
+      var flagJump = 0;
+      var flagEnd = 0;
+	  
+   
+          // Namespace for SVG.
+          svgNS = "http://www.w3.org/2000/svg";
+     
+      // Covers all bases for various browser support.
+        var requestAnimationFrame =
+          window.requestAnimationFrame ||
+          window.mozRequestAnimationFrame ||
+          window.webkitRequestAnimationFrame ||
+          window.msRequestAnimationFrame; 
+
+      // Event listeners
+      // Page load event listener
+      window.addEventListener("load", getLoaded, false);
+      // Mouse down event listener
+      window.addEventListener(
+          "mousedown", redBallJump, false);
+         
+      // Run this when the page loads.
+      function getLoaded(){
+
+        // Make sure we are loaded.
+        console.log("Page loaded!");    
+	
+
+ //------------------------------------------------------------------------------------------      
+        // Load audio.
+        audMove = new Audio("move.ogg");
+        audJump = new Audio("jump.ogg"); //Este es el que he puesto para probar. Para saltar hay que hacer clic con el ratón
+        audEnd = new Audio("1.ogg");       // Este suena cuando el cuadrado toca al circulo
+		myAudio = new Audio("audio.ogg"); //música de fondo
+       
+        // Set up audio event listeners.
+        audMove.addEventListener("canplaythrough",
+          moveAudioOK, false);
+        audJump.addEventListener("canplaythrough",
+          jumpAudioOK, false); 
+        audEnd.addEventListener("canplaythrough",
+          endAudioOK, false);  
+		  
+		myAudio.addEventListener("canplaythrough",
+          processMyAudio, false);		  //música de fondo
+  //------------------------------------------------------------------------------------------      
+        // Create SVG parent element.
+        myBoard = document.createElementNS(svgNS, "svg");
+        myBoard.style.setProperty("width",bwPixels);
+        myBoard.style.setProperty("height",bhPixels);
+        myBoard.style.setProperty("top","0px");
+        myBoard.style.setProperty("left","0px");
+        myBoard.style.setProperty("position","absolute");
+        
+        // You must append the board to the body.
+        document.getElementById("pageBody").
+             appendChild(myBoard);
+            
+        // Create blue box.
+        blueBox =
+          document.createElementNS(svgNS, "rect");
+         
+        // Width,  height, radius, and color of box.
+        blueBox.x.baseVal.valueAsString =
+          blueBoxHor + "px";
+        blueBox.y.baseVal.valueAsString =
+          blueBoxVer + "px";
+        blueBox.width.baseVal.valueAsString =
+          "20px";
+        blueBox.height.baseVal.valueAsString =
+          "20px";       
+        blueBox.style.
+          setProperty("fill","blue","");
+         
+        // Attach the box to the game board.
+        myBoard.appendChild(blueBox);
+
+        // Create red ball.
+        redBall =
+          document.createElementNS(svgNS, "circle");
+         
+        // Width,  height, radius, and color of ball.
+        redBall.cx.baseVal.valueAsString =
+          redBallHor + "px";
+        redBall.cy.baseVal.valueAsString =
+          redBallVer + "px";
+        redBall.r.baseVal.valueAsString =
+          redBallRad + "px";
+        redBall.style.
+          setProperty("fill","red","");
+         
+        // Attach the ball to the game board.
+        myBoard.appendChild(redBall);
+       
+        // Create ground.
+        myGround =
+          document.createElementNS(svgNS, "rect");
+         
+        // Width,  height, radius, and color of box.
+        myGround.x.baseVal.valueAsString =
+          "0px";
+        myGround.y.baseVal.valueAsString =
+          "170px";
+        myGround.width.baseVal.valueAsString =
+          "320px";
+        myGround.height.baseVal.valueAsString =
+          "230px";       
+        myGround.style.
+          setProperty("fill","chocolate","");
+         
+        // Attach the box to the game board.
+        myBoard.appendChild(myGround);
+
+        // Start the main loop.
+        doMainLoop();
+      }
+/*//----------------------------------------------------------------
+//música de fondo
+	  function processMyAudio() {
+
+        console.log("background music loaded");
+
+        // Play the audio.
+       
+		myAudio.loop = true;
+		myAudio.play();
+      }
+	  
+	  
+//----------------------------------------------------------------	  */
+	  
+      // Game loop
+      function doMainLoop() {
+               
+        // Loop within the loop.
+        // Outer loop
+        // Runs every second.
+            loopTimer = setTimeout(function() {
+       
+          // Inner loop
+          // Runs as fast as it can.
+          animTimer = requestAnimationFrame(doMainLoop);         
+      
+          // Drawing code goes here
+              console.log("Moving the box.");
+         
+              // Move the box
+              moveBlueBox();
+         
+        }, 50 / howFast); // Delay / how fast     
+      }
+           
+      // Move the blue box here.
+      function moveBlueBox() {
+     
+          // Subtract 10 from box horizontal value.
+          blueBoxHor = blueBoxHor - 1;
+     
+      // Draw the new blue box.
+      blueBox.x.baseVal.valueAsString =
+          blueBoxHor + "px";
+             
+          // If the blue box hits the left edge, restart.
+          if (blueBoxHor < 10) blueBoxHor = 270;   
+
+          // Get bounding box of box.
+      bbBox = blueBox.getBBox();
+      console.log(bbBox.x);
+
+      // Get bounding box of ball.
+      bbBall = redBall.getBBox();
+      console.log(bbBall.x);
+
+      // Is there an x collision?
+      if (bbBall.x + 20 == bbBox.x) {
+     
+        // Is there a y collision?
+        if (bbBall.y == bbBox.y) {
+       
+          // Collision!
+          blueBoxHor = 270;
+         
+          // Make the end sound.
+          if(flagEnd == 1) {
+       
+            // Play the end sound.
+            audEnd.play();    
+          }
+
+          alert("Bang");
+        }
+      }  
+      }
+
+    // Make the red ball jump up.
+    function redBallJump() {
+
+      // Calculate red ball jump and move it.
+      redBallVer = redBallVer - 50;  
+
+      // Draw the new red ball.
+      redBall.cy.baseVal.valueAsString =
+          redBallVer + "px"; 
+
+      // Make the jump sound.
+      if(flagJump == 1) {
+       
+        // Play the jump sound.
+        audJump.play();    
+      }
+ 
+      console.log("Ball up.");
+   
+      // Make the red ball fall after one second.
+      redBallTimer = setTimeout(redBallFall, 1000);     
+    } 
+
+    // Make the red ball fall down.
+    function redBallFall() {
+   
+      // Calculate the redBox fall and move it.
+      redBallVer = redBallVer + 50; 
+     
+      // Draw the new red box.
+      redBall.cy.baseVal.valueAsString =
+          redBallVer + "px";    
+      console.log("Ball down.");  
+    }
+   
+    // Process the move audio loaded event.
+    function moveAudioOK() {
+   
+      console.log("Move sound loaded.");
+     
+      // Loop and play the audio.
+      audMove.loop = true;
+      audMove.play(); 
+    }
+   
+    // Process the jump audio loaded event.
+    function jumpAudioOK() {
+   
+      console.log("Jump sound loaded.");
+     
+      // Set the jump audio flag.
+      flagJump = 1;    
+    }
+
+    // Process the end audio loaded event.
+    function endAudioOK() {
+   
+      console.log("End sound loaded.");
+     
+      // Set the end audio flag.
+      flagEnd = 1;      
+    }
+
+    </script>
+  </head>
+  
+  <body id="pageBody"> 
+<!-- //la musica de fondo solo la he conseguido meter así -->
+  	<audio  autoplay>   
+	  <source src="audio.ogg">
+	</audio> 
+
+  </body>
+
+</html>

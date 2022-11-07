@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="es"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><link rel="canonical" href="http://msdn.microsoft.com/es-es/library/windows/apps/hh465053.aspx">
+        <title>Cómo animar gráficos del Canvas (aplicaciones de la Tienda Windows con JavaScript y HTML) (Windows)</title>
+
+
+
+
+<meta name="DCS.dcsuri" content="/es-es/library/windows/apps/hh465053(d=default,l=es-es,v=win.10).aspx">
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/es-es/library/windows/apps/hh465053(d=default,l=es-es,v=win.10).aspx">
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/es-es/library/windows/apps/hh465053(d=default,l=es-es,v=win.10).aspx">
+
+<meta name="MN" content="FB361391-11:48:59 AM">
+
+<meta name="Search.ShortId" content="hh465053">
+
+<meta name="Ms.Locale" content="es-es">
+
+
+
+
+
+
+
+        
+    <link rel="shortcut icon" href="http://msdn.microsoft.com/Areas/Epx/Themes/Windows/Content/Winlogo_favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="C%C3%B3mo%20animar%20gr%C3%A1ficos%20del%20Canvas%20%28aplicaciones%20de%20la%20Tienda%20Windows%20con%20JavaScript%20y%20HTML%29%20%28Windows%29_files/Combined.css"><script src="C%C3%B3mo%20animar%20gr%C3%A1ficos%20del%20Canvas%20%28aplicaciones%20de%20la%20Tienda%20Windows%20con%20JavaScript%20y%20HTML%29%20%28Windows%29_files/ms2.js" async="" type="text/javascript"></script><script class="mtps-injected">try {
+/**/
+(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { 
+	"image": "http://i.msdn.microsoft.com", 
+	"js": "http://i2.msdn.microsoft.com", 
+	"css": "http://i3.msdn.microsoft.com"
+});
+/**/
+} finally { MTPS._injectNextScript_0 && MTPS._injectNextScript_0(); }</script><script src="C%C3%B3mo%20animar%20gr%C3%A1ficos%20del%20Canvas%20%28aplicaciones%20de%20la%20Tienda%20Windows%20con%20JavaScript%20y%20HTML%29%20%28Windows%29_files/jquery-1.js" class="mtps-injected"></script><script class="mtps-injected">try {
+//
+  var literalNormalizedUrl = '/es-es/library/windows/apps/hh465053(d=default,l=es-es,v=win.10).aspx';
+  var wt_nvr_ru = 'WT_NVR_RU';
+  var wt_fpcdom = '.microsoft.com';
+  var wt_domlist = 'msdn.microsoft.com';
+  var wt_pathlist = '';
+  var wt_paramlist = 'DCSext.mtps_devcenter';
+  var wt_siteid = 'MSDN';
+  var gDomain = 'm.webtrends.com';
+  var gDcsId = 'dcsmgru7m99k7mqmgrhudo0k8_8c6m';
+  var gFpc = 'WT_FPC';
+
+
+
+  if (document.cookie.indexOf(gFpc + "=") == -1) {
+    var wtidJs = document.createElement("script");
+    wtidJs.src = "//" + gDomain + "/" + gDcsId + "/wtid.js";
+    document.getElementsByTagName("head")[0].appendChild(wtidJs);
+  }
+
+
+
+  var detectedLocale = 'es-es';
+  var wtsp = '_msdn_';
+  var gTrackEvents = '0';
+/**/
+} finally { MTPS._injectNextScript_2 && MTPS._injectNextScript_2(); }</script><script src="C%C3%B3mo%20animar%20gr%C3%A1ficos%20del%20Canvas%20%28aplicaciones%20de%20la%20Tienda%20Windows%20con%20JavaScript%20y%20HTML%29%20%28Windows%29_files/wtid.js"></script><script class="mtps-injected">try {
+/**/
+  var omni_guid = "94051bbb-ef72-4be3-8cb9-5ba1084862ce";
+/**/
+} finally { MTPS._injectNextScript_3 && MTPS._injectNextScript_3(); }</script><script src="C%C3%B3mo%20animar%20gr%C3%A1ficos%20del%20Canvas%20%28aplicaciones%20de%20la%20Tienda%20Windows%20con%20JavaScript%20y%20HTML%29%20%28Windows%29_files/Combined.js" class="mtps-injected"></script><meta content="windows apps" name="ms.Center"><meta content="windows apps: learn" name="ms.Section"><meta content="hh465053" name="ms.ShortId"><meta content="windows apps: learn: hh465053" name="ms.TOC"><script src="C%C3%B3mo%20animar%20gr%C3%A1ficos%20del%20Canvas%20%28aplicaciones%20de%20la%20Tienda%20Windows%20con%20JavaScript%20y%20HTML%29%20%28Windows%29_files/SearchBox.js" class="mtps-injected"></script><script src="C%C3%B3mo%20animar%20gr%C3%A1ficos%20del%20Canvas%20%28aplicaciones%20de%20la%20Tienda%20Windows%20con%20JavaScript%20y%20HTML%29%20%28Windows%29_files/Combined_002.js" class="mtps-injected"></script><script src="C%C3%B3mo%20animar%20gr%C3%A1ficos%20del%20Canvas%20%28aplicaciones%20de%20la%20Tienda%20Windows%20con%20JavaScript%20y%20HTML%29%20%28Windows%29_files/broker.js"></script><script class="mtps-injected">try {
+$(document).ready(function() {
+        try {
+            var token = $("#globalRequestVerification input[name='__RequestVerificationToken']").clone();
+            $("#siteFeedbackForm").append(token);
+        } catch(err) {
+            
+        }
+    });
+} finally { MTPS._injectNextScript_7 && MTPS._injectNextScript_7(); }</script><link media="print" type="text/css" rel="stylesheet" href="C%C3%B3mo%20animar%20gr%C3%A1ficos%20del%20Canvas%20%28aplicaciones%20de%20la%20Tienda%20Windows%20con%20JavaScript%20y%20HTML%29%20%28Windows%29_files/PrintView.css"></head>
+    <body class="library FF"><div style="display: block;" id="ux-banner">
+        <div class="banner">
+            <div class="row">
+                <div class="left">Al usar este sitio acepta el uso de cookies para análisis, contenido personalizado y publicidad.</div>
+                <div class="middle"><a tabindex="1" href="http://www.microsoft.com/privacystatement/es-es/core/default.aspx">Saber más</a></div>
+                <div class="right"><a tabindex="1" title="Cerrar"></a></div>
+            </div>
+        </div>
+    </div>
+        <div id="page">
+            
+            
+  
+            
+    
+    
+
+    
+    
+    
+    
+    <div id="ux-header" class="FF ltr">
+        <div id="headerContainer">
+            <div id="logoAndSearchBox">
+                <div id="logo">
+                    <a href="http://msdn.microsoft.com/windows/apps/" title="Windows"><img alt="Windows" src="C%C3%B3mo%20animar%20gr%C3%A1ficos%20del%20Canvas%20%28aplicaciones%20de%20la%20Tienda%20Windows%20con%20JavaScript%20y%20HTML%29%20%28Windows%29_files/Windows_logo.png"></a>       
+                </div>
+              
+        <div id="selectedTab">
+            <a class="dropDownToggle" href="javascript:void(0);">Aplicaciones de la Tienda Windows</a>    
+        </div>
+    <div id="toclevel1_menu" style="display: none; left: 157px; top: 67px;">
+        <ul>
+                <li><a href="http://msdn.microsoft.com/windows/" title="Centro de desarrollo">Centro de desarrollo</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/apps/" title="Aplicaciones de la Tienda Windows">Aplicaciones de la Tienda Windows</a></li>
+                <li><a href="http://msdn.microsoft.com/ie/" title="Internet Explorer">Internet Explorer</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/desktop/" title="Escritorio">Escritorio</a></li>
+                <li><a href="http://msdn.microsoft.com/windows/hardware/" title="Hardware">Hardware</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div> 
+
+                
+                  
+
+    
+
+<div class="SearchBox">
+              <form id="HeaderSearchForm" name="HeaderSearchForm" method="get" action="http://social.msdn.microsoft.com/Search" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this, this.title);">
+            <input autocomplete="off" id="HeaderSearchTextBox" name="query" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(this, this.title, 'SearchBoxOnFocus')" onblur="Epx.Controls.SearchBox.watermarkBlur(this, this.title, 'SearchBoxOnFocus')" type="text">
+            <input id="RefinementId" name="refinement" value="180" type="hidden">
+            <button title="Search" id="HeaderSearchButton" value="" type="submit" class="header-search-button"></button>
+        <div style="display: none; text-align: left; border: 1px solid buttonshadow; position: absolute; z-index: 1000; padding: 2px; background-color: rgb(255, 255, 255); color: rgb(255, 255, 255); font-family: &quot;Segoe UI&quot;,&quot;Lucida Grande&quot;,Verdana,Arial,Helvetica,sans-serif; font-size: 12px;" id="SearchFlyoutContainer"><div id="SuggestionContainer"><ul style="list-style: none outside none; padding: 4px 2px 0px 1px; cursor: pointer; margin: 1px; white-space: nowrap;"></ul></div></div></form>
+        
+    
+</div>
+
+                <div class="Clear"></div>
+            </div>
+            <div class="Clear"></div>
+            <div class="ux-internav">
+    <div class="toclevel2"> 
+            <a class="normal" href="https://appdev.microsoft.com/storeportals/es-es" title="Panel de información">Panel de información</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/apps/br211386" title="Introducción">Introducción</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/apps/hh779072" title="Diseño">Diseño</a>
+            <a class="active" href="http://msdn.microsoft.com/windows/apps/br229519" title="Desarrollo">Desarrollo</a>
+            <a class="normal" href="http://msdn.microsoft.com/windows/apps/br230836" title="Mercado">Mercado</a>
+    </div>
+    <div class="clear"></div>
+
+            </div>
+            <div id="signIn"><a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1389901739&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fes-es%2flibrary%2fwindows%2fapps%2fhh465053.aspx&amp;lc=3082&amp;id=254354&amp;mkt=es-ES" title=" Iniciar sesión  "> Iniciar sesión  </a></div>
+        </div>  
+        <div id="blackBar">
+    <div class="toclevel3"> 
+            <a style="opacity: 1; left: 0px;" class="normal" href="http://msdn.microsoft.com/library/windows/apps/br211361" title="Arquitectura de la aplicación">Arquitectura de la aplicación</a>
+            <a style="opacity: 1; left: 0px;" class="active" href="http://msdn.microsoft.com/library/windows/apps/bg124284" title="Cómo">Cómo</a>
+            <a style="opacity: 1; left: 0px;" class="normal" href="http://code.msdn.microsoft.com/windowsapps" title="Muestras">Muestras</a>
+            <a style="opacity: 1; left: 0px;" class="normal" href="http://msdn.microsoft.com/library/windows/apps/bg125378" title="Referencia">Referencia</a>
+            <a style="opacity: 1; left: 0px;" class="normal" href="http://msdn.microsoft.com/library/windows/apps/dn436165" title="Portar tu aplicación">Portar tu aplicación</a>
+            <a style="opacity: 1; left: 0px;" class="normal" href="http://msdn.microsoft.com/windows/apps/br229516" title="Descargas">Descargas</a>
+            <a style="opacity: 1; left: 0px;" class="normal" href="http://social.msdn.microsoft.com/forums/windowsapps/en-us/home?category=windowsapps" title="Foros">Foros</a>
+    </div>
+    <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+        
+            <div id="body">
+                
+
+
+
+
+
+
+
+    <div style="height: auto;" id="leftNav">
+
+
+
+<div id="tocnav">
+            <div style="padding-left: 0px;" class="toclevel0" data-toclevel="0">
+<a class="toc_collapsed" href="#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/es-es/library/windows/apps/br229565.aspx" id="dn197136_Win.10_es-es" mtpsaliasid="" mtpsassetid="D081328E-064B-4415-B431-FADF72FA4C79_Win.10_es-es" mtpsshortid="br229565_Win.10_es-es" title="Desarrollar aplicaciones (JavaScript)">Desarrollar aplicaciones (JavaScript)</a>            </div>
+            <div style="padding-left: 0px;" class="toclevel0" data-toclevel="0">
+<a class="toc_collapsed" href="#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/es-es/library/windows/apps/br211362.aspx" id="dn197137_Win.10_es-es" mtpsaliasid="" mtpsassetid="2f0ea34d-ed18-42b3-914d-181846f4e023_Win.10_es-es" mtpsshortid="br211362_Win.10_es-es" title="Creación de una interfaz de usuario">Creación de una interfaz de usuario</a>            </div>
+            <div style="padding-left: 0px;" class="toclevel0" data-toclevel="0">
+<a class="toc_collapsed" href="#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/es-es/library/windows/apps/hh465393.aspx" id="hh686800_Win.10_es-es" mtpsaliasid="" mtpsassetid="CBB9F9B6-E01F-4954-962D-2C92429830A8_Win.10_es-es" mtpsshortid="hh465393_Win.10_es-es" title="Agregar controles y contenido">Agregar controles y contenido</a>            </div>
+            <div data-childrenloaded="true" style="padding-left: 13px;" class="toclevel1" data-toclevel="1">
+<a class="toc_expanded" href="#"></a><a data-tochassubtree="true" href="http://msdn.microsoft.com/es-es/library/windows/apps/hh465032.aspx" id="dn448466_Win.10_es-es" mtpsaliasid="" mtpsassetid="35B2265E-E709-468E-A80E-810F16F87E5F_Win.10_es-es" mtpsshortid="hh465032_Win.10_es-es" title="Uso de gráficos con Canvas, SVG y CSS3">Uso de gráficos con Canvas, SVG y CSS3</a>            </div>
+            <div style="padding-left: 26px;" class="toclevel2" data-toclevel="2">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/windows/apps/hh465064.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Inicio rápido: dibujar en un Canvas">Inicio rápido: dibujar en un Canvas</a>            </div>
+            <div style="padding-left: 26px;" class="toclevel2 current" data-toclevel="2">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/windows/apps/hh465053.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Cómo animar gráficos del Canvas">Cómo animar gráficos del Canvas</a>            </div>
+            <div style="padding-left: 26px;" class="toclevel2" data-toclevel="2">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/windows/apps/hh880851.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Cómo crear un degradado">Cómo crear un degradado</a>            </div>
+            <div style="padding-left: 26px;" class="toclevel2" data-toclevel="2">
+<span class="toc_empty"></span><a href="http://msdn.microsoft.com/es-es/library/windows/apps/hh880850.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Cómo mostrar una imagen">Cómo mostrar una imagen</a>            </div>
+</div>
+        
+
+        
+
+        
+        
+        <div id="toc-resizable-ew" class="toc-resizable-ew"></div>
+        
+    </div>
+<div id="content" class="content">
+
+
+
+
+
+
+
+        
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">Cómo animar gráficos del Canvas (aplicaciones de la Tienda Windows con JavaScript y HTML)</h1>
+  
+  <div id="mainSection">
+<div class="clsServerSDKContent">
+
+</div>
+<div class="Nav_Sidebar" xmlns=""><span class="sidebar_heading" xmlns="http://www.w3.org/1999/xhtml">En este artículo</span>
+<div class="sidebar_toc" xmlns="http://www.w3.org/1999/xhtml">
+<p>
+</p><ul>
+<li><a href="#prerequisites">Requisitos previos</a></li>
+<li><a href="#sincronizaci_n_de_la_animaci_n">Sincronización de la animación</a></li>
+<li><a href="#dibujar_la_imagen">Dibujar la imagen</a></li>
+<li><a href="#related_topics">Temas relacionados</a></li>
+</ul>
+
+</div>
+</div>
+<p>El elemento Canvas es una región en la que se puede dibujar dentro de
+ tu documento HTML y en la que puedes usar JavaScript para generar 
+gráficos como animaciones, dibujos y juegos.  Este tema comienza 
+describiendo los pasos necesarios para animar un dibujo básico con el 
+elemento Canvas. 
+
+</p>
+<p></p>
+<h3><a id="Prerequisites"></a><a id="prerequisites"></a><a id="PREREQUISITES"></a>Requisitos previos</h3>
+<p>Este tema presupone que tú:</p>
+<ul>
+<li>Sabes crear una aplicación de la Tienda&nbsp;Windows básica con 
+JavaScript que usa la plantilla Biblioteca de Windows para JavaScript.</li>
+<li>Comprendes los conceptos básicos de HTML y JavaScript. </li>
+</ul>
+<p> Para obtener instrucciones sobre cómo crear tu primera aplicación de la Tienda&nbsp;Windows con JavaScript, consulta <a href="http://msdn.microsoft.com/es-es/library/windows/apps/br211385.aspx">Crear la primera aplicación de la Tienda&nbsp;Windows con JavaScript</a>.
+ Para obtener instrucciones sobre el uso de la plantilla de WinJS, 
+consulta el tema sobre cómo obtener y usar el kit de herramientas de 
+WinJS.</p>
+<h2>Instrucciones</h2>
+<h3><a id="Sincronizaci_n_de_la_animaci_n"></a><a id="sincronizaci_n_de_la_animaci_n"></a><a id="SINCRONIZACI_N_DE_LA_ANIMACI_N"></a>Paso 1: Sincronización de la animación</h3>
+<p>Usando el método <a href="http://msdn.microsoft.com/es-es/library/windows/apps/hh920765.aspx">requestAnimationFrame</a>,
+ puedes comenzar una animación si especificas una función a la que 
+llamar (devolución de llamada) siempre que sea hora de actualizar la 
+animación para el próximo redibujado:</p>
+<p><code>requestAnimationFrame(animationFunction);</code></p>
+<p>
+<a href="http://msdn.microsoft.com/es-es/library/windows/apps/hh920765.aspx">requestAnimationFrame</a>
+ tiene en cuenta la visibilidad de la página y la frecuencia de 
+actualización de la pantalla para determinar cuántos fotogramas por 
+segundo se deben asignar a la animación (es decir, llamar a <code>animationFunction</code>). </p>
+<p>Nuestro ejemplo de JavaScript dibuja un círculo animado que se mueve en espiral alrededor de un círculo de mayor tamaño.</p>
+<p><code>requestAnimationFrame(draw);</code></p>
+<p>Esta es nuestra animación (los resultados pueden variar; con un 
+hardware más rápido, los círculos van a una velocidad más cercana):</p>
+<p><img id="qs_canvas_animation_spiral_circle_example" alt="Ejemplo de un círculo en espiral dibujado por una animación de Canvas." src="C%C3%B3mo%20animar%20gr%C3%A1ficos%20del%20Canvas%20%28aplicaciones%20de%20la%20Tienda%20Windows%20con%20JavaScript%20y%20HTML%29%20%28Windows%29_files/IC535886.png" title="Ejemplo de un círculo en espiral dibujado por una animación de Canvas." xmlns=""></p>
+<h3><a id="Dibujar_la_imagen"></a><a id="dibujar_la_imagen"></a><a id="DIBUJAR_LA_IMAGEN"></a>Paso 2: Dibujar la imagen</h3>
+<ol>
+<li>Borrar el Canvas<p>Deberás borrar el Canvas antes de dibujar cada fotograma.</p>
+<p>Existen varios métodos para borrar un Canvas, o partes de una imagen, como puede ser borrar ciertas áreas mediante la propiedad <code>globalCompositOperation</code> o recortando recorridos mediante el método <code>clip</code>.
+
+La forma más sencilla de borrar un Canvas es usando el método <code>clearRect</code>.
+
+
+</p>
+<p>En nuestro ejemplo, se usa el método <code>clearRect</code> para borrar todo el Canvas pero, para que sea más fácil ver los efectos de dibujar nuestra imagen, hemos convertido el método <code>clearRect</code>
+ en comentario.  Si elimináramos la marca de comentario de esta línea de
+ código, verías un único círculo dando vueltas en espiral alrededor de 
+una órbita circular de mayor tamaño y su rastro se borraría antes de que
+ se dibujara cada fotograma.
+ 
+         
+
+</p>
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>JavaScript</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copiar al portapapeles." href="javascript:if%20(window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_fb1353e2-c188-4d13-b3b7-0e419fb3e1a7');">Copiar</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_fb1353e2-c188-4d13-b3b7-0e419fb3e1a7" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+<span style="color:Green;">// The clearRect method clears the entire canvas.</span>
+context.clearRect(0, 0, 160, 160);
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</li>
+<li>Guardar el estado del Canvas<p>Al dibujar tu imagen, es posible que 
+cambies algunos valores de configuración como estilos o 
+transformaciones.  Si deseas usar la configuración original cada vez que
+ empiezas a redibujar la imagen, puedes usar el método <code>save</code>. 
+</p>
+<p>Los métodos <code>save</code> y <code>restore</code> se usan para 
+guardar y recuperar el estado del Canvas en una pila.  El estado del 
+Canvas se compone de todos los estilos y transformaciones que se han ido
+ aplicando. Cada vez que se llama al método <code>save</code>, se guarda el estado actual del Canvas en la pila.  El método <code>restore</code> devuelve el último estado guardado de la pila.</p>
+<p>En nuestro ejemplo, usamos el método <code>save</code> justo antes de definir algunas transformaciones para dibujar y mover el círculo animado.     
+
+        </p>
+
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>JavaScript</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copiar al portapapeles." href="javascript:if%20(window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_bdb04766-6d73-4b49-a2f6-89056c3af433');">Copiar</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_bdb04766-6d73-4b49-a2f6-89056c3af433" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+<span style="color:Green;">// Save the canvas state.</span>
+context.save();
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</li>
+<li>Dibujar la imagen<p>Mientras se dibuja la imagen en el Canvas, 
+puedes usar dos transformaciones para aplicar cambios a tu imagen: los 
+métodos translate y rotate.</p>
+<p>El método translate se usa para mover el Canvas y su origen a un punto diferente en la cuadrícula del Canvas: </p>
+
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>JavaScript</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copiar al portapapeles." href="javascript:if%20(window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_2ddbcf44-c8d2-427b-b2b6-6c76e4c6d17e');">Copiar</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_2ddbcf44-c8d2-427b-b2b6-6c76e4c6d17e" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+translate(x, y)
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>Este método toma dos argumentos, x es la cantidad que se mueve el 
+Canvas hacia la izquierda o hacia la derecha, e y es la cantidad que se 
+mueve hacia arriba o hacia abajo. 
+
+</p>
+<p>Te recomendamos guardar el estado del Canvas antes de aplicar ninguna transformación, porque es más fácil llamar al método <code>restore</code> que tener que hacer una traslación inversa para devolver el Canvas a su estado original. 
+
+El método <code>translate</code> te permite colocar la imagen en cualquier lugar del Canvas sin tener que ajustar manualmente las coordenadas. 
+</p>
+<p>El método <code>rotate</code> se usa para girar el Canvas alrededor 
+del origen actual.  Este método solo tiene un parámetro y es el ángulo 
+que gira el Canvas, medido en radianes. </p>
+
+<div id="code-snippet-4" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>JavaScript</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copiar al portapapeles." href="javascript:if%20(window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_8a5e8097-3ad1-412b-9742-5e68f05d3e32');">Copiar</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_8a5e8097-3ad1-412b-9742-5e68f05d3e32" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+rotate(angle)
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>La rotación se mueve en el sentido de las agujas del reloj y el punto
+ central de la rotación es siempre el origen del Canvas (la esquina 
+superior izquierda).  Para mover el punto central, deberás mover el 
+Canvas con el método <code>translate</code>.
+</p>
+<p>En nuestro ejemplo, vamos a alternar algunas llamadas a los métodos <code>translate</code> y <code>rotate</code>. La primera llamada al método <code>translate</code> centrará la animación en el Canvas.</p>
+<p>Después creamos dos conjuntos de llamadas a los métodos <code>rotate</code> y <code>translate</code>.  Las primeras llamadas a estos métodos <code>rotate</code> y <code>translate</code>
+ producirán un pequeño círculo que se dibuja alrededor del Canvas en un 
+gran bucle. El segundo conjunto de llamadas producirá un círculo pequeño
+ que se dibuja en una órbita mucho más pequeña.</p>
+<p>El tamaño del Canvas está configurado en 160 píxeles de alto por 160 
+píxeles de ancho, así que estableceremos las coordenadas x e y del 
+método translate igual a 80 de forma que toda nuestra animación esté 
+centrada en el Canvas.
+
+         
+</p>
+
+<div id="code-snippet-5" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>JavaScript</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copiar al portapapeles." href="javascript:if%20(window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_466ce2a1-b0a4-446f-ba08-8c6175ad5f99');">Copiar</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_466ce2a1-b0a4-446f-ba08-8c6175ad5f99" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+<span style="color:Green;">// centers the image on the canvas             </span>
+context.translate(80, 80);
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>Comenzamos nuestra primera llamada al método <code>rotate</code> usando el objeto <code>date</code> para calcular el parámetro del método <code>rotate</code>. Este parámetro es el ángulo que se girará el Canvas.  
+
+        </p>
+
+<div id="code-snippet-6" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>JavaScript</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copiar al portapapeles." href="javascript:if%20(window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_aa352b2c-2473-4509-82c3-e17d5ac243ce');">Copiar</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_aa352b2c-2473-4509-82c3-e17d5ac243ce" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+<span style="color:Blue;">var</span> time = <span style="color:Blue;">new</span> Date();
+context.rotate( ((2*Math.PI)/60)*time.getSeconds() + ((2*Math.PI)/60000)*time.getMilliseconds() );
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>Observa que el valor que se usa para calcular <code>getSeconds</code> es 60 y el valor para calcular <code>getMilliseconds</code> es 60.000.</p>
+<p>El método <code>translate</code> mueve la coordenada x que mueve el círculo giratorio alrededor del Canvas en una gran órbita.
+ 
+       </p>
+
+<div id="code-snippet-7" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>JavaScript</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copiar al portapapeles." href="javascript:if%20(window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_dd0d8722-bae1-4aa5-b976-6803a958ee82');">Copiar</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_dd0d8722-bae1-4aa5-b976-6803a958ee82" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+<span style="color:Green;">// Translate determines the size of the circle's orbit.</span>
+context.translate(50, 0);
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>Este es el efecto de los primeros métodos <code>rotate</code> y <code>translate</code>:</p><img id="qs_canvas_animation_non_looping_circle" alt="Un gran círculo sin bucles." src="C%C3%B3mo%20animar%20gr%C3%A1ficos%20del%20Canvas%20%28aplicaciones%20de%20la%20Tienda%20Windows%20con%20JavaScript%20y%20HTML%29%20%28Windows%29_files/IC535888.png" title="Un gran círculo sin bucles." xmlns=""><p>Las dos llamadas siguientes a los métodos <code>rotate</code> y <code>translate</code> crean una órbita más pequeña de círculos en bucle.</p>
+
+<div id="code-snippet-8" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>JavaScript</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copiar al portapapeles." href="javascript:if%20(window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_541003cd-c6df-4870-a1f5-975503303724');">Copiar</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_541003cd-c6df-4870-a1f5-975503303724" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+<span style="color:Green;">// Rotate causes the circle to move in a small orbit.</span>
+context.rotate( ((2*Math.PI)/6)*time.getSeconds() + ((2*Math.PI)/6000)*time.getMilliseconds() );
+
+<span style="color:Green;">// Translate determines the size of the orbit.</span>
+context.translate(0, 5);
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>Observa que, al calcular el ángulo de la segunda llamada al método rotate, el valor usado para calcular <code>getSeconds</code> es 6 y el valor para calcular <code>getMilliseconds</code> es 6.000.</p>
+<p>Si convirtiéramos en comentarios los primeros métodos <code>rotate</code> y <code>translate</code>, esto es lo que dibujarían nuestros segundos métodos <code>rotate</code> y <code>translate</code>:</p><img id="qs_canvas_animation_looping_circle" alt="Un círculo con bucles." src="C%C3%B3mo%20animar%20gr%C3%A1ficos%20del%20Canvas%20%28aplicaciones%20de%20la%20Tienda%20Windows%20con%20JavaScript%20y%20HTML%29%20%28Windows%29_files/IC535889.png" title="Un círculo con bucles." xmlns=""><p>Una vez definido todo el cambio de posición, se dibuja el círculo en el Canvas.
+
+        </p>
+
+<div id="code-snippet-9" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>JavaScript</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copiar al portapapeles." href="javascript:if%20(window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_bebd3447-f5a0-4ba4-9bc8-93b6e50a0357');">Copiar</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_bebd3447-f5a0-4ba4-9bc8-93b6e50a0357" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+<span style="color:Green;">// This draws the repositioned circle</span>
+context.beginPath();
+context.arc(5, 5, 4, 0, Math.PI*2, <span style="color:Blue;">true</span>); 
+context.stroke();
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</li>
+<li>Restaurar el estado del Canvas<p> 
+En el paso b guardamos el estado del Canvas, así que ahora restablecemos
+ el estado del Canvas para dibujar el siguiente fotograma. 
+
+ 
+</p>
+
+<div id="code-snippet-10" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>JavaScript</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copiar al portapapeles." href="javascript:if%20(window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_96040989-159f-4650-bcd8-5a21419a2c45');">Copiar</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_96040989-159f-4650-bcd8-5a21419a2c45" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+<span style="color:Green;">// Restores the canvas to the previous state</span>
+context.restore();
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</li>
+</ol>
+<h2>Ejemplos completos</h2>
+<p><strong>Gráfico animado</strong></p>
+<p>Este ejemplo de JavaScript dibuja un círculo animado que se mueve con
+ un movimiento en espiral alrededor de un círculo de mayor tamaño.</p>
+
+<div id="code-snippet-11" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        <div class="codeSnippetContainerTabSingle" dir="ltr"><a>JavaScript</a></div>
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copiar al portapapeles." href="javascript:if%20(window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_be4b6996-4974-4d7f-8782-0dfb98b64a9e');">Copiar</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_be4b6996-4974-4d7f-8782-0dfb98b64a9e" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+window.onload = init;
+  
+<span style="color:Green;">// As an optimization, make "context" a global variable that is only set once.</span>
+<span style="color:Blue;">var</span> context;
+  
+<span style="color:Blue;">function</span> init(){
+  context = document.getElementById(<span style="color:#A31515;">'canvas'</span>).getContext(<span style="color:#A31515;">'2d'</span>);    
+  window.requestAnimationFrame(draw);
+} <span style="color:Green;">// init</span>
+
+<span style="color:Blue;">function</span> draw() {
+  <span style="color:Green;">// Save the canvas state.</span>
+  context.save();         
+  
+  <span style="color:Green;">// context.clearRect(0, 0, 160, 160);</span>
+
+  <span style="color:Green;">// centers the image on the canvas             </span>
+  context.translate(80, 80); 
+  
+  <span style="color:Green;">// Rotate moves the spiraling circle around the canvas in a large orbit.</span>
+  <span style="color:Blue;">var</span> time = <span style="color:Blue;">new</span> Date();
+  context.rotate( ((2*Math.PI)/60)*time.getSeconds() + ((2*Math.PI)/60000)*time.getMilliseconds() );
+  
+  <span style="color:Green;">// Translate determines the location of the small circle.</span>
+  context.translate(50, 0);  
+  
+  <span style="color:Green;">// Rotate causes the circle to spiral as it circles around the canvas.</span>
+  context.rotate( ((2*Math.PI)/6)*time.getSeconds() + ((2*Math.PI)/6000)*time.getMilliseconds() );
+  
+  <span style="color:Green;">// determines the size of the loop</span>
+  context.translate(0, 5);  
+  
+  <span style="color:Green;">// This draws the circle</span>
+  context.beginPath();
+  context.arc(5, 5, 4, 0, Math.PI*2, <span style="color:Blue;">true</span>); 
+  context.stroke();
+  
+  <span style="color:Green;">// Restores the canvas to the previous state</span>
+  context.restore();
+  window.requestAnimationFrame(draw);
+}  <span style="color:Green;">// draw</span>
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>Este es un ejemplo de unas hojas de estilos en cascada (CSS) que crea un borde negro alrededor de un elemento Canvas.</p>
+
+<div id="code-snippet-12" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copiar al portapapeles." href="javascript:if%20(window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_e0e555a6-a663-470a-8c00-e1847497afb6');">Copiar</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_e0e555a6-a663-470a-8c00-e1847497afb6" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>/* style the canvas element with a black border. */
+canvas { border: 1px solid black; }
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+<p>Este archivo HTML crea un elemento Canvas y usa archivos JavaScript y CSS externos.</p>
+
+<div id="code-snippet-13" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copiar al portapapeles." href="javascript:if%20(window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_10ab1ec1-be2d-4a2a-9b7b-68933acf3a8d');">Copiar</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_10ab1ec1-be2d-4a2a-9b7b-68933acf3a8d" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;script type="text/javascript" src="myJavascript.js"&gt;&lt;/script&gt;
+        &lt;link Rel="stylesheet" Href="myStyle.css" Type="text/css"&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;canvas id="canvas" width="160" height="160" /&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+
+<h2><a id="related_topics"></a>Temas relacionados</h2>
+<dl>
+<dt><strong></strong></dt>
+<dt>
+<a href="http://msdn.microsoft.com/es-es/library/windows/apps/hh465064.aspx">Inicio rápido: Dibujar en un Canvas</a>
+</dt>
+</dl>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+</div>
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Mostrar:</span>
+        <label>
+            <input class="libraryFilterInherited" checked="checked" value="Inherit" type="checkbox">Heredado
+        </label>
+        <label>
+            <input class="libraryFilterProtected" checked="checked" value="Protected" type="checkbox">Protegido
+        </label>
+    </div>
+</div>
+    
+<input id="libraryMemberFilterEmptyWarning" value="No hay miembros disponibles que coincidan con la configuración de filtro actual." type="hidden">
+
+
+ 
+</div>
+
+
+
+
+            </div>
+            <div class="clear"></div>
+        
+            
+    
+<input name="__RequestVerificationToken" value="AfguH3x-BFoZNVaTFM3RCrEtg2MQXGcTPF-xxPBZxNg2WcK3ub0YZH5Ir2OKmRvSdXaLWS54U-h1mHM3MsxTvgYT_y2qj_N5yIN-tpVRNguCNiiwZBlpSh4dz5Nysyyr2jOyxQ2" type="hidden">
+<input id="ratingSubmitUrl" value="http://msdn.microsoft.com/es-es/library/feedback/add/hh465053.aspx" type="hidden">
+<input id="isTopicRated" value="false" type="hidden">
+
+
+
+
+    
+
+
+    <div id="ux-footer" class="FF ltr">
+        
+            <div id="footerSock">
+                <div id="footerSockInner">
+                    <a name="feedback"></a>
+                    <div data-fragmentname="Survey" id="Fragment_Survey" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="DetailedLink">
+    
+    <div class="Content"></div>
+  </div>
+</div>
+<div style="display: block;" class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            ¿Le resultó útil esta página?
+        </div>
+        <div class="description">
+            Sus comentarios sobre este contenido son muy importantes.<br>Háganos saber su opinión.
+        </div>
+        <div class="buttons">
+            <button id="ratingYes">Sí</button>
+            <button id="ratingNo">No</button>
+        </div>
+        <input id="ratingValue" value="" type="hidden">
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            ¿Tiene comentarios adicionales?
+        </div>
+        <textarea id="ratingText" rows="6" cols=""></textarea>
+        <div class="buttons">
+            <button id="ratingSubmit">Enviar</button>
+            <button id="ratingSkipThis">Pasar por alto</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Gracias.
+        </div>
+        <div class="description">
+            Agradecemos mucho su ayuda.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+
+
+                    <div data-fragmentname="SockLinks" id="Fragment_SockLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="LinkList">
+    <div class="Links">
+      <ul class="LinkColumn" style="width: 100%">
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317807" id="SockLinks_728_42" xmlns="http://www.w3.org/1999/xhtml">Encuéntrenos en Facebook</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?LinkId=317808" id="SockLinks_728_43" xmlns="http://www.w3.org/1999/xhtml">Síganos en Twitter</a>
+        </li>
+        <li>
+          <a href="http://go.microsoft.com/fwlink/p/?linkid=301425" id="SockLinks_728_56" xmlns="http://www.w3.org/1999/xhtml">Reciba el boletín</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <div id="footerContainer">
+            <div id="fourColumnFooter">
+                <div data-fragmentname="Column1" id="Fragment_Column1" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Centros</div>
+      <div class="LinkListDescription"></div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://msdn.microsoft.com/windows" id="Column1_35354_9" xmlns="http://www.w3.org/1999/xhtml">Centro de desarrollo</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/apps" id="Column1_35354_10" xmlns="http://www.w3.org/1999/xhtml">Aplicaciones para Windows Store</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/ie" id="Column1_35354_11" xmlns="http://www.w3.org/1999/xhtml">Internet Explorer</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/desktop" id="Column1_35354_12" xmlns="http://www.w3.org/1999/xhtml">Escritorio</a>
+          </li>
+          <li>
+            <a href="http://msdn.microsoft.com/windows/hardware" id="Column1_35354_13" xmlns="http://www.w3.org/1999/xhtml">Hardware</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentname="Column2" id="Fragment_Column2" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Sitios para desarrolladores relacionados</div>
+      <div class="LinkListDescription"></div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282086" id="Column2_35354_14" xmlns="http://www.w3.org/1999/xhtml">SkyDrive</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282089" id="Column2_35354_15" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282085" id="Column2_35354_16" xmlns="http://www.w3.org/1999/xhtml">Windows Azure</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280293" id="Column2_35354_17" xmlns="http://www.w3.org/1999/xhtml">Windows Phone</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=282087" id="Column2_35354_18" xmlns="http://www.w3.org/1999/xhtml">Windows Server</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Otros sitios de Windows</div>
+      <div class="LinkListDescription"></div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280294" id="Column2_35354_19" xmlns="http://www.w3.org/1999/xhtml">Empresa</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280295" id="Column2_35354_20" xmlns="http://www.w3.org/1999/xhtml">Pequeña empresa</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280296" id="Column2_35354_21" xmlns="http://www.w3.org/1999/xhtml">Estudiantes</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280297" id="Column2_35354_22" xmlns="http://www.w3.org/1999/xhtml">Usuarios particulares</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentname="Column3" id="Fragment_Column3" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Descargas</div>
+      <div class="LinkListDescription"></div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=267554" id="Column3_35354_23" xmlns="http://www.w3.org/1999/xhtml">Windows 8.1</a>
+          </li>
+          <li>
+            <a href="http://www.microsoft.com/click/services/Redirect2.ashx?CR_EAC=300135396" id="Column3_35354_24" xmlns="http://www.w3.org/1999/xhtml">Visual Studio Express 2013</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=328183" id="Column3_35354_25" xmlns="http://www.w3.org/1999/xhtml">Windows SDK</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=302156" id="Column3_728_57" xmlns="http://www.w3.org/1999/xhtml">Muestras de código</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285610" id="Column3_35354_26" xmlns="http://www.w3.org/1999/xhtml">Descargas de diseños</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280676" id="Column3_35354_27" xmlns="http://www.w3.org/1999/xhtml">Más descargas</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Soporte técnico</div>
+      <div class="LinkListDescription"></div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280308" id="Column3_728_58" xmlns="http://www.w3.org/1999/xhtml">Foros<span class="Apple-tab-span" style="white-space:pre;" xmlns=""></span></a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280309" id="Column3_728_59" xmlns="http://www.w3.org/1999/xhtml">Más opciones de soporte técnico</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+                <div data-fragmentname="Column4" id="Fragment_Column4" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="ListOfLinkLists">
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Conceptos básicos</div>
+      <div class="LinkListDescription"></div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=281903" id="Column4_728_60" xmlns="http://www.w3.org/1999/xhtml">Guía del producto</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285611" id="Column4_728_61" xmlns="http://www.w3.org/1999/xhtml">Para empezar</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280299" id="Column4_728_62" xmlns="http://www.w3.org/1999/xhtml">Directrices de diseño</a>
+          </li>
+          <li>
+            <a href="http://www.microsoft.com/click/services/Redirect2.ashx?CR_EAC=300098218" id="Column4_728_63" xmlns="http://www.w3.org/1999/xhtml">Cuentas para desarrollador</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=285613" id="Column4_728_64" xmlns="http://www.w3.org/1999/xhtml">Certificación de aplicaciones</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313905" id="Column4_728_65" xmlns="http://www.w3.org/1999/xhtml">Asociados destacados</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313906" id="Column4_728_66" xmlns="http://www.w3.org/1999/xhtml">Vídeos de un minuto para desarrolladores</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="LinkList" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="LinkListTitle">Mantente conectado</div>
+      <div class="LinkListDescription"></div>
+      <div class="Links">
+        <ul class="LinkColumn" style="width: 100%">
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=280304" id="Column4_728_54" xmlns="http://www.w3.org/1999/xhtml">Eventos de Microsoft</a>
+          </li>
+          <li>
+            <a href="http://go.microsoft.com/fwlink/p/?linkid=313895" id="Column4_728_55" xmlns="http://www.w3.org/1999/xhtml">Blog Windows App Builder</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>              
+            </div>
+
+            <div id="baseFooterLogos">
+                <span class="microsoftlogo" title="Microsoft"></span>
+                <a href="http://msdn.microsoft.com/es-es" class="msdnlogo" title="MSDN"></a>
+            </div>
+        
+            <div id="baseFooter">
+                <div id="FooterCopyright">© 2014 Microsoft</div>
+                <div data-fragmentname="BaseFooterContent" id="Fragment_BaseFooterContent" xmlns="http://www.w3.org/1999/xhtml">
+  <div xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns:mtps="http://msdn2.microsoft.com/mtps">
+      <div data-fragmentname="BaseFooter" id="Fragment_BaseFooter">
+        
+        <div class="LinkList">
+          <div class="LinkListDescription"></div>
+          <div class="Links">
+            <ul class="LinkColumn horizontal">
+              <li>
+                <a href="http://msdn.microsoft.com/windows/apps/cc300389" id="BaseFooter_35351_1" xmlns="http://www.w3.org/1999/xhtml">Términos de uso</a>
+              </li>
+              <li>
+                <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx" id="BaseFooter_35351_2" xmlns="http://www.w3.org/1999/xhtml">Marcas registradas</a>
+              </li>
+              <li>
+                <a href="http://go.microsoft.com/fwlink/?linkid=248681" id="BaseFooter_35351_3" xmlns="http://www.w3.org/1999/xhtml">Privacidad y cookies</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div data-fragmentname="HelloText" id="Fragment_HelloText">Saludos desde Seattle. 
+</div>
+    </div>
+  </div>
+</div>  
+                    <form class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/es-es/windows/apps/SelectLocale">
+        <input name="fromPage" value="http%3a%2f%2fmsdn.microsoft.com%2fes-es%2flibrary%2fwindows%2fapps%2fhh465053.aspx" type="hidden">
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Cambie su idioma">España (Español)</a>
+    </form>    
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div> 
+
+
+            <div class="footerPrintView">
+                <div class="footerCopyrightPrintView">© 2014 Microsoft. Reservados todos los derechos.</div>
+            </div>
+
+            
+            
+    
+
+
+        
+            <input id="MtpsDevice" value="Default" type="hidden">
+
+
+<!--[CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]-->
+        
+            
+            
+            
+            
+            
+        
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+
+<noscript>
+  <a href="http://www.omniture.com" title="Web Analytics">
+    <img src="//msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" />
+  </a>
+</noscript>
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" value="QlKgiFqqLYapAvv6lF0aUK32BWoShJ7RL7xtz6WZpaQgRqxN41FwADq5k-RgJ7duGF_ZknhKhNlw57htwJfihn0RFMeyn7G8F3Gn4dwXir4a6K_B7XUHC6ILqHkmIU0HP3Ywvw2" type="hidden">
+</div>
+
+
+        </div>
+    <script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/es-es/library/windows/apps/hh465053(d=default,l=es-es,v=win.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027es-es\u0027;\n  var wtsp = \u0027_msdn_\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"94051bbb-ef72-4be3-8cb9-5ba1084862ce\";\n/**/" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,1:Banner,0:Topic,2:webtrendsscript,3:omni_rsid_MSDN,4:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Epx/Shared/Content:1,/Areas/Global/Content/Webtrends/resources:2,/Areas/Global/Content/Omniture/resources/MSDN:3,/Areas/Epx/Themes/Base/Content:4\u0026amp;hashKey=2EF354E484DF792B5BFD0B5A42A4C1EE" },
+	{ url: "http://i2.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=MSDN\u0026loc=es-es\u0026Refinement=180\u0026focusOnInit=false\u0026iroot=windows%2fapps\u0026emptyWatermark=true\u0026searchButtonTooltip=Search" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Header,1:Toc,1:LibraryMemberFilter,2:Toc_Fixed,3:Rating,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Epx/Themes/Windows/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2,/Areas/Epx/Themes/Base/Content:3\u0026amp;hashKey=924875671D9646ADC0198BD0AEEE79F3" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script>
+<script src="C%C3%B3mo%20animar%20gr%C3%A1ficos%20del%20Canvas%20%28aplicaciones%20de%20la%20Tienda%20Windows%20con%20JavaScript%20y%20HTML%29%20%28Windows%29_files/broker-config.js"></script><div id="_WEDCSInsertedData" style="display: none;"><iframe id="_msnFrame" src="C%C3%B3mo%20animar%20gr%C3%A1ficos%20del%20Canvas%20%28aplicaciones%20de%20la%20Tienda%20Windows%20con%20JavaScript%20y%20HTML%29%20%28Windows%29_files/c.gif" style="z-index:-1;height:1px;width:1px;display:none;visibility:hidden;" onload="javascript:MscomBeacon();"></iframe></div></body></html>

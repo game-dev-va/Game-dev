@@ -1,0 +1,23 @@
+body{
+	background-image: url(img/fondo.png);
+}
+#contenedor{
+	width:480px;
+	height:320px;
+	position:fixed;
+	display:block;
+}
+#logo{
+	height:280px;
+	margin-left:40px;
+}
+#barracarga{
+	width:50%;
+	color:orange;
+	margin-left:120px;
+	 
+}
+
+
+canvas { position: relative; }
+    .precarga { position: fixed; left: -9999px; }
