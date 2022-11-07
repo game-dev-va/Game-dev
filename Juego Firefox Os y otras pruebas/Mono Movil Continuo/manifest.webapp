@@ -1,0 +1,20 @@
+
+		{
+"name": "Lil'ape rush V0.2",
+"description": "Tiembla Google",
+"launch_path" : "/index3.html",
+"icons": {
+
+     "64"  : "/img/img_64.png",
+     "128"  : "/img/img_128.png"
+},
+"type": "web",
+"developer": {
+"name": "PeroGrullo",
+"url" : "http://www.miwebsite.es"
+},
+
+"default_locale": "es",
+"version": "0.2",
+"orientation": "landscape"
+}

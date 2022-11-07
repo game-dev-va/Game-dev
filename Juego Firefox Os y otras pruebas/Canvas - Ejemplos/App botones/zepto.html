@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8">
+<script type="text/javascript" src="zepto.min.js" ></script>
+<script type="text/javascript" src="touch.js" ></script>
+<script type="text/javascript"> 
+  $(function(){
+    var a = $('#i1');
+	var b = $('#i2');
+	var c = $('#i3');
+	var d = $('#fo');
+	a.on('touchstart', function() 
+				{ d.attr('src', 'img/2.jpg');  
+				});
+	a.on('touchend', function() 
+				{ d.attr('src', 'img/1.gif');  
+				});
+	b.on('touchstart', function()
+				{ d.attr('src', 'img/3.jpg'); 
+				});
+	b.on('touchend', function()
+				{ d.attr('src', 'img/1.gif'); 
+				});
+	c.on('tap', function() { alert("Ahora Salto");
+				});
+	
+  });
+</script>
+<style>
+#contenedor
+	{
+	width:480px;
+	height:300px;
+	}
+#botones
+	{
+	width:20%;
+	height:100%;
+	float:left;
+	}
+#imagen
+	{
+	width:80%;
+	height:100%;
+	float:right;
+	}
+</style>
+</head>
+<body>
+<div id="contenedor">
+	<div id="botones">
+		<img src="img/izquierda.png" id="i1"/></br>
+		<img src="img/derecha.png"  id="i2"/></br>
+		<img src="img/salto.png"  id="i3"/></br>
+	</div>
+	<div id="imagen">
+	<CENTER><img src="img/1.gif" id="fo"/><CENTER>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="iso-8859-15" />
+  <title>Jugando con el Canvas</title>
+  <script>
+  	//Crea el objeto canvas
+  	var canvas = document.createElement('canvas');
+	//Lo pone en dos domensiones
+  	var ctx = canvas.getContext('2d');
+	//Crea el array de la imagen
+  	var imgList = new Array();
+	//variable para el DIV
+	var wrapper = null;
+	
+	var spriteIndex = 0;
+	var spriteX = 0;
+	var spriteY = 20;
+	var cont=0;
+	var salto=0;
+	var cont2=0;
+	var contSalt=0;
+	//posicion iniail del mono en la cordenada Y
+	var posicionY= 162;
+	
+	
+
+//funcion inical para crear el objeto canvas dentro del div (wrapper))
+
+init = function() {
+	//le damos tamaño al elemento canvas
+	canvas.width = 480;
+ 	canvas.height = 320;
+	//a la variable wrapper le pasamos el objeto DIV por su ID("wrapper")
+	wrapper = document.getElementById("wrapper");
+	//crea un hijo que cuelga del DIV(wrapper) llamado canvas con el tamaño asignado anteriormente
+  	wrapper.appendChild(canvas);
+	//introduce mediante un for las imagenes dentro de un array desde el 0 al 6, asignandole la ruta de la imagen
+  for (var i=0; i<7; ++i)
+  {
+	//se supone que le indicamos al array que le vamos a pasar una ruta de una imagen
+    imgList.push(new Image());
+	//le pasamos la ruta de la imagen al array, 6 rutas en total del 0 al 6
+    imgList[i].src = "img/Frame" + i + ".png";
+  }
+
+	//crea el objeto IMG dentro de la variable img
+  var img = document.createElement('IMG');
+  	//le pasamos el atributo src (ruta de la imagen primera) al objeto img, para cargarla en el onload
+  img.src=  imgList[0].src;
+  	//le damos una nombre de clase al objeto img
+  img.className = 'precarga';
+  	//creamos un atributo elemento que contiene un objeto (la primera imagen)
+  img.elemento = imgList[0];
+  
+  //Creamos un hijo img que contiene la ruta de la imagen, nombre de clase y elemento, dentro del body
+
+  document.getElementsByTagName('BODY')[0].appendChild(img);
+
+	//funcion que carga al arrancar el index
+  img.onload = function(){
+	//dibuja el rectangulo rojo
+    ctx.fillStyle ="rgba(255,0,0,1)";
+	//padding del contenedor (dos primeros parametros), tamaño del contenedor (dos ultimos)
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+	//pinta el dibijo (this.elemento) en la posicion (x=500; y=0), y el tamaño del elemento (this.width;this.height)
+    ctx.drawImage(this.elemento,0,0,this.width,this.height);
+	//Borra el hijo (img) del padre (Body), quita la barra roja
+    this.parentNode.removeChild(this);
+  }
+
+}
+
+	//Funcion para coger la tecla pulsada
+
+document.onkeydown = function (event) {
+	//Se crea una variable que va a contener el boton pulsado
+    var teclaC;
+	//
+    if ( event == null ) {
+        teclaC = window.event.keyCode;
+
+    }
+    else { 
+        teclaC = event.keyCode;
+    }
+
+	//Acciones a realizar con respecto a la tecla pulsada y recogida anteriormente en la variable teclaC 
+    switch (teclaC) {
+		//si el boton pulsado es flecha hacia la derecha (num:39), le pasamos un 1 a la funcion animateFrame
+        case 39:animateFrame(1);
+            break; 
+		//si el boton pulsado es flecha hacia la izquierda (num:37), le pasamos un -1 a la funcion animateFrame
+        case 37:animateFrame(-1);
+            break; 
+		//si se pulsa la flecha hacia arriba devuelve 0;
+		case 38:animateFrame(0);
+            break; 
+		//si no se ha pulsado ningún boton se llama a la funcion resetFrames
+        default: resetFrames();
+    }
+}
+
+	//a la funcion animateFrame le pasamos un 1 o un -1 dependiendo el boton pulsado y lo recogemos en la variable dir, solo entra si se pulsa la flecha hacia la izquierda o hacia la derecha
+animateFrame = function (dir) {
+	//si la variable contiene un 1 entra en este if
+   if ( dir > 0)
+   {
+	   //No se que hace
+        spriteIndex = ( spriteIndex >= 2 ) ? 0 : ++ spriteIndex;
+		//Esto sirve para indicar la velocidad de desplazamiento de la imagen por la coordenada x (spriteX) hacia adelante
+        spriteX = ( spriteX >= 1000 ) ? 1000 : spriteX + 5;
+   }
+   //si la variable contiene un -1 entra en este else
+   else if(dir < 0)
+   {
+	   cont++;
+	   if(cont==1)
+	   {
+		   spriteIndex=5;
+	   }
+	   //No se que hace
+        spriteIndex = ( spriteIndex <= 3 ) ? 5	 : -- spriteIndex;
+		//Esto sirve para indicar la velocidad de desplazamiento de la imagen por la coordenada x (spriteX) hacia atras
+        spriteX = ( spriteX <= 0 ) ? 0 : spriteX - 5;
+   }else{
+	cont2=1;
+   ++salto;
+	  /* //funcion para que el personaje salte
+
+	SALTAR= function(){
+		//si el personaje ya esta saltando entonces ignoramos la orden
+		if(!JUEGO.PERSONAJE.ESTADO.SALTANDO){
+			//indicamos que el mono esta saltando
+			JUEGO.PERSONAJE.ESTADO.SALTANDO=true;
+			//le damos la posicion predeterminada (ojo en los estilos de #divPersonaje en el CSS)
+			JUEGO.PERSONAJE.ELEMENTO.style.bottom='22px';
+			//funcion para emular un salto
+			function fntAnimar(){
+				//timeout para emular el salto
+				setTimeout(function(){
+					//si la posicion es menor que 66 (queremos moverlo hasta ahi)
+					if(parseInt(JUEGO.PERSONAJE.ELEMENTO.style.bottom)<66){
+						//sumamos 1px a la posicion para subirlo
+						JUEGO.PERSONAJE.ELEMENTO.style.bottom=(parseInt(JUEGO.PERSONAJE.ELEMENTO.style.bottom)+2)+'px';
+						//volvemos a llamar a la funcion que emula el salto
+						fntAnimar();
+					}else{
+						//el personaje debe volver al suelo
+						fntBajar();
+					}
+				});
+				//funcion interna para bajar el personaje del aire
+				function fntBajar(){
+					//timeout para simular que el personaje viene bajando
+					setTimeout(function(){
+						//si la posicion es mayor que 22 (22 es la posicion en la que debe estar en el suelo)
+						if(parseInt(JUEGO.PERSONAJE.ELEMENTO.style.bottom)>22){
+							//restamos 1px a la posicion para bajar la capa
+							JUEGO.PERSONAJE.ELEMENTO.style.bottom=(parseInt(JUEGO.PERSONAJE.ELEMENTO.style.bottom)-2)+'px';
+							//volvemos a llamar a la funcion para que el personaje siga bajando
+							fntBajar();
+						}else{
+							//el personaje ya esta en el suelo, entonces indicamos que ya no esta saltando...
+							//de esta forma podemos volver a saltar (si, mientras el personaje esta en el
+							//aire se ignora la tecla de salto)
+							JUEGO.PERSONAJE.ESTADO.SALTANDO=false;
+						}
+					});
+				}
+			}
+			//llamamos a la funcion que emula el salto de Mono
+			fntAnimar();
+		}
+	}*/
+   }
+   	//Se supone que borra el contenedor del fondo (rectángulo)
+   ctx.clearRect(0,0,canvas.width, canvas.height);
+ 	//crea el color del fondo superponiendolo al que estaba (rectangulo de fondo)
+   ctx.fillStyle = "blue";
+   	//Crea el tamaño y la posicion del fondo superponiendolo al que ya estaba (rectangulo de fondo)
+   ctx.fillRect(0,0,canvas.width,canvas.height);
+    //No se que hace, borra algo
+    ctx.fillStyle = "green";
+   	//Crea el tamaño y la posicion del fondo superponiendolo al que ya estaba (rectangulo de fondo)
+   ctx.fillRect(0,190,canvas.width,canvas.height);
+    //Borra el fondo desde la posicion x e y que desees y el tamaño que quieres (50-spriteX,spriteY,20,40
+   ctx.clearRect(50-spriteX,spriteY,20,40);
+   //Dibuja la imgen que tenemos con imgList y con nuestro indice spriteIndex sabemos qué imagen toca cargar, le damos la posicion x e y en la que va a cargar nuesta imagen (500;0) y le damos el tamaño de la imagen (imgList[spriteIndex].width,imgList[spriteIndex].height)
+   if(cont2==0){
+   ctx.drawImage(imgList[spriteIndex],220,posicionY,imgList[spriteIndex].width,imgList[spriteIndex].height);
+   }else{
+	   
+	  saltando();
+	   
+   }
+   cont2=0;
+   
+}
+
+//funcion del salto
+saltando = function () {
+	
+	var repe = setTimeout(saltando,1);
+			
+		    //if(this.value != 'null'){
+				if(posicionY-salto != 112 && contSalt == 0){
+					ctx.clearRect(0,0,canvas.width, canvas.height);
+					ctx.fillStyle = "blue";
+					ctx.fillRect(0,0,canvas.width,canvas.height);
+					ctx.fillStyle = "green";
+					ctx.fillRect(0,190,canvas.width,canvas.height);
+					ctx.clearRect(50-spriteX,spriteY,20,40);
+		   			ctx.drawImage(imgList[spriteIndex],220,posicionY-salto,imgList[spriteIndex].width,imgList[spriteIndex].height);
+					++salto;
+					
+				}else if(posicionY >= posicionY-salto){
+				contSalt=1;
+		   		ctx.clearRect(0,0,canvas.width, canvas.height);
+				ctx.fillStyle = "blue";
+				ctx.fillRect(0,0,canvas.width,canvas.height);
+				ctx.fillStyle = "green";
+				ctx.fillRect(0,190,canvas.width,canvas.height);
+				ctx.clearRect(50-spriteX,spriteY,20,40);
+		   		ctx.drawImage(imgList[spriteIndex],220,posicionY-salto,imgList[spriteIndex].width,imgList[spriteIndex].height);
+				--salto;}
+				else{
+				//this.value = 'null';
+				clearTimeout(repe);
+				contSalt=0;
+				//init();
+				}
+	   //}
+}
+
+
+	//llamada a la funcion resetFrames, entra si el valor es nulo que son cualquier tecla que no sea una flecha hacia la izquierda o derecha
+resetFrames = function()
+{
+	//Se supone que borra el contenedor del fondo (rectángulo) para volver a crealo más abajo
+   ctx.clearRect(0,0,canvas.width, canvas.height);
+   //cambia el indice a 0 para que coja la primera imagen
+   spriteIndex = 0;
+  //dibuja el rectangulo rojo
+   ctx.fillStyle = "blue";
+   //padding del contenedor (dos primeros parametros), tamaño del contenedor (dos ultimos)
+   ctx.fillRect(0,0,canvas.width,canvas.height);
+   //Dibuja la imgen que tenemos con imgList y con nuestro indice spriteIndex sabemos qué imagen toca cargar, le damos la posicion x e y en la que va a cargar nuesta imagen (500;0) y le damos el tamaño de la imagen (imgList[spriteIndex].width,imgList[spriteIndex].height)
+   ctx.drawImage(imgList[spriteIndex],spriteX,spriteY,imgList[spriteIndex].width,imgList[spriteIndex].height);
+}
+  </script>
+  <style type="text/css">
+    canvas { position: relative; }
+    .precarga { position: absolute; left: -9999px; }
+  </style> 
+</head>
+
+<body onload="init()">
+  <div id="wrapper"></div>
+  
+</body>
+
+</html>
