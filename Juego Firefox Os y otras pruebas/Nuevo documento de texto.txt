@@ -1,0 +1,48 @@
+//funcion para que el personaje salte
+	SALTAR: function(){
+		//si el personaje ya esta saltando entonces ignoramos la orden
+		if(!JUEGO.PERSONAJE.ESTADO.SALTANDO){
+			//indicamos que el mono esta saltando
+			JUEGO.PERSONAJE.ESTADO.SALTANDO=true;
+			//le damos la posicion predeterminada (ojo en los estilos de #divPersonaje en el CSS)
+			JUEGO.PERSONAJE.ELEMENTO.style.bottom='22px';
+			
+			//funcion para emular un salto
+			function fntAnimar(){
+				//timeout para emular el salto
+				setTimeout(function(){
+					//si la posicion es menor que 66 (queremos moverlo hasta ahi)
+					if(parseInt(JUEGO.PERSONAJE.ELEMENTO.style.bottom)<66){
+						//sumamos 1px a la posicion para subirlo
+						JUEGO.PERSONAJE.ELEMENTO.style.bottom=(parseInt(JUEGO.PERSONAJE.ELEMENTO.style.bottom)+2)+'px';
+						//volvemos a llamar a la funcion que emula el salto
+						fntAnimar();
+					}else{
+						//el personaje debe volver al suelo
+						fntBajar();
+					}
+				});
+				
+				//funcion interna para bajar el personaje del aire
+				function fntBajar(){
+					//timeout para simular que el personaje viene bajando
+					setTimeout(function(){
+						//si la posicion es mayor que 22 (22 es la posicion en la que debe estar en el suelo)
+						if(parseInt(JUEGO.PERSONAJE.ELEMENTO.style.bottom)>22){
+							//restamos 1px a la posicion para bajar la capa
+							JUEGO.PERSONAJE.ELEMENTO.style.bottom=(parseInt(JUEGO.PERSONAJE.ELEMENTO.style.bottom)-2)+'px';
+							//volvemos a llamar a la funcion para que el personaje siga bajando
+							fntBajar();
+						}else{
+							//el personaje ya esta en el suelo, entonces indicamos que ya no esta saltando...
+							//de esta forma podemos volver a saltar (si, mientras el personaje esta en el
+							//aire se ignora la tecla de salto)
+							JUEGO.PERSONAJE.ESTADO.SALTANDO=false;
+						}
+					});
+				}
+			}
+			//llamamos a la funcion que emula el salto de Mono
+			fntAnimar();
+		}
+	}

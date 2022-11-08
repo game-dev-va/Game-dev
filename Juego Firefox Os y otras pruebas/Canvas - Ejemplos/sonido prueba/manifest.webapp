@@ -1,0 +1,19 @@
+		{
+"name": "Prueba sonido",
+"description": "Tiembla Google",
+"launch_path" : "/index.html",
+"icons": {
+
+     "64"  : "/img/img_64.png",
+     "128"  : "/img/img_128.png"
+},
+"type": "web",
+"developer": {
+"name": "PeroGrullo",
+"url" : "http://www.miwebsite.es"
+},
+
+"default_locale": "es",
+
+"version": "1.0"
+}

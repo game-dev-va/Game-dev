@@ -1,0 +1,171 @@
+<html>
+	<head>
+		<style>
+			#recuadro1{
+				left:30px;
+				position: relative;
+				border-radius:20px;
+				background-color: #ddd;
+				width: 200px;
+				height: 100px;
+				padding: 4px;
+
+				animation-name: animacion1;
+				animation-duration: 4s;
+				animation-iteration-count: infinite;
+				/*animation-direction: alternate;*/
+
+				-moz-animation-name: animacion1;
+				-moz-animation-duration: 4s;
+				-moz-animation-iteration-count: infinite;
+				/*-moz-animation-direction: alternate;*/
+
+				-webkit-animation-name: animacion1;
+				-webkit-animation-duration: 4s;
+				-webkit-animation-iteration-count: infinite;
+				/*-webkit-animation-direction: alternate;*/
+				
+			}
+			
+			@keyframes animacion1{
+				from{
+					left:30px;
+					background-color:#ddd;
+				}
+
+				to{
+					left:30px;
+					background-color: #ff0;
+				}
+
+				0%{
+					left: 30px;
+					top:5px;
+				}
+
+				25%{
+					left: 300px;
+					top:5px;
+				}
+
+				50%{
+					left: 300px;
+					top:100px;
+				}
+
+				75%{
+					left: 30px;
+					top:100px;
+				}
+			}
+
+			@-moz-keyframes animacion1{
+				from{
+					left:30px;
+					background-color:#ddd;
+				}
+
+				to{
+					left:30px;
+					background-color: #ff0;
+				}
+
+				0%{
+					left: 30px;
+					top:5px;
+				}
+
+				25%{
+					left: 300px;
+					top:5px;
+				}
+
+				50%{
+					left: 300px;
+					top:100px;
+				}
+
+				75%{
+					left: 30px;
+					top:100px;
+				}
+			}
+
+			@-webkit-keyframes animacion1{
+				from{
+					left:30px;
+					background-color:#ddd;
+				}
+
+				to{
+					left:30px;
+					background-color: #ff0;
+				}
+
+				0%{
+					left: 30px;
+					top:5px;
+				}
+
+				25%{
+					left: 300px;
+					top:5px;
+				}
+
+				50%{
+					left: 300px;
+					top:100px;
+				}
+
+				75%{
+					left: 30px;
+					top:100px;
+				}
+			}
+		</style>
+
+		<script>
+			window.onload = function (){
+				cuadro=document.getElementById("recuadro1");
+			}
+
+			function parar(){
+				cuadro.style.animationPlayState = "paused";
+				cuadro.style.MozAnimationPlayState = "paused";
+				cuadro.style.WebkitAnimationPlayState = "paused";
+			}
+
+			function seguir (){
+				cuadro.style.animationPlayState = "running";
+				cuadro.style.MozAnimationPlayState = "running";
+				cuadro.style.WebkitAnimationPlayState = "running";
+			}
+
+			function velocidad(num){
+				valor=num + "s";
+				cuadro.style.animationDuration = valor;
+				cuadro.style.MozAnimationDuration = valor;
+				cuadro.style.WebkitAnimationDuration = valor;
+			}
+		</script>
+	</head>
+	<body>
+			<div id="recuadro1">
+				<h3>TITULO</h3>
+				<p>Nuestra primera animacion</p>
+			</div>
+			<p>
+				<input type="button" name="stop" value="stop" onclick="parar()" />
+				<input type="button" name="play" value="play" onclick="seguir()" />
+
+				<b>Elige la velocidad</b>
+				<select name="vel">
+						<option selected="selected" onclick="velocidad(4)">Normal</option>
+						<option onclick="velocidad(10)">Muy Lento</option>
+						<option onclick="velocidad(8)">Lento</option>
+						<option onclick="velocidad(2)">Rapido</option>
+						<option onclick="velocidad(1)">Muy rapido</option>
+				</select>
+			</p>
+	</body>
+</html>

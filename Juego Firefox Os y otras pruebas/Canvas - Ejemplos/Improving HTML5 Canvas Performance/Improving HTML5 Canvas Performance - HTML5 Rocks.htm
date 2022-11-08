@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html class=" js no-flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths adownload webaudio blobconstructor battery contenteditable cors csscalc mediaqueries no-regions no-cssfilters classlist no-details datalistelem no-track no-filesystem filereader fullscreen no-gamepads getusermedia xhr2 performance raf no-quotamanagement stylescoped no-webintents websocketsbinary todataurljpeg no-todataurlwebp no-webp" dir="ltr" itemscope="" itemtype="http://schema.org/Article" lang="es"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta property="twitter:account_id" content="1593210261">
+  <!-- Copyright (c) 2012 Google Inc.
+   *
+   * Licensed under the Apache License, Version 2.0 (the "License");
+   * you may not use this file except in compliance with the License.
+   * You may obtain a copy of the License at
+   *
+   *     http://www.apache.org/licenses/LICENSE-2.0
+   *
+   * Unless required by applicable law or agreed to in writing, software
+   * distributed under the License is distributed on an "AS IS" BASIS,
+   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   * See the License for the specific language governing permissions and
+   * limitations under the License.
+   *
+   * Author: Boris Smus
+   *
+   * 
+   *
+  -->
+  <title>Improving HTML5 Canvas Performance - HTML5 Rocks</title>
+  <meta name="description" content="Diez sugerencias para mejorar la velocidad de juegos y aplicaciones que utilizan el elemento canvas (con pruebas de rendimiento de cada técnica)">
+  <meta name="keywords" content="html5,html 5,html5 demos,html5 examples,javascript,css3,notifications,geolocation,web workers,apppcache,file api,filereader,indexeddb,offline,audio,video,drag and drop,chrome,sse,mobile">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+  <link rel="shortcut icon" href="http://www.html5rocks.com/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="Feed RSS de HTML5 Rocks" href="http://feeds.feedburner.com/html5rocks">
+
+  <meta itemprop="name" content="Mejora del rendimiento del elemento canvas de HTML5 - HTML5 Rocks">
+  <meta itemprop="description" content="Diez sugerencias para mejorar la velocidad de juegos y aplicaciones que utilizan el elemento canvas (con pruebas de rendimiento de cada técnica)">
+  
+  <meta itemprop="image" content="http://www.html5rocks.com/static/images/html5rocks-logo-wings.png">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@ChromiumDev">
+  <meta name="twitter:creator" content="@borismus">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Mejora del rendimiento del elemento canvas de HTML5 - HTML5 Rocks">
+  <meta property="og:url" content="http://www.html5rocks.com/es/tutorials/canvas/performance/">
+  <meta property="og:description" content="Diez sugerencias para mejorar la velocidad de juegos y aplicaciones que utilizan el elemento canvas (con pruebas de rendimiento de cada técnica)">
+  <meta property="og:image" content="http://www.html5rocks.com/static/images/profiles/smus.png">
+  <meta property="og:site_name" content="HTML5 Rocks - Un recurso para desarrolladores de HTML5 para una Web abierta">
+  
+
+  
+  <link rel="author" href="https://www.google.com/profiles/115694705577863745195">
+  
+  
+  <link rel="publisher" href="https://plus.google.com/111395306401981598462">
+
+  
+  
+  <link rel="alternate" hreflang="ru" href="http://www.html5rocks.com/ru/tutorials/canvas/performance/">
+  
+  <link rel="alternate" hreflang="ja" href="http://www.html5rocks.com/ja/tutorials/canvas/performance/">
+  
+  <link rel="alternate" hreflang="zh" href="http://www.html5rocks.com/zh/tutorials/canvas/performance/">
+  
+  <link rel="alternate" hreflang="de" href="http://www.html5rocks.com/de/tutorials/canvas/performance/">
+  
+  <link rel="alternate" hreflang="pt" href="http://www.html5rocks.com/pt/tutorials/canvas/performance/">
+  
+  <link rel="alternate" hreflang="en" href="http://www.html5rocks.com/en/tutorials/canvas/performance/">
+  
+  
+
+  
+    
+    <link rel="stylesheet" media="all" href="Improving%20HTML5%20Canvas%20Performance%20-%20HTML5%20Rocks_files/v2-combined.css">
+    
+  
+
+  <link href="Improving%20HTML5%20Canvas%20Performance%20-%20HTML5%20Rocks_files/css.css" rel="stylesheet">
+
+  <link rel="apple-touch-icon" href="http://www.html5rocks.com/static/images/identity/HTML5_Badge_64.png">
+  <link rel="apple-touch-icon-precomposed" href="http://www.html5rocks.com/static/images/identity/HTML5_Badge_64.png">
+
+  <script async="" src="Improving%20HTML5%20Canvas%20Performance%20-%20HTML5%20Rocks_files/count.js" type="text/javascript"></script><script src="Improving%20HTML5%20Canvas%20Performance%20-%20HTML5%20Rocks_files/ga.js" async="" type="text/javascript"></script><script src="Improving%20HTML5%20Canvas%20Performance%20-%20HTML5%20Rocks_files/modernizr.js"></script>
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5-els.js"></script>
+  <![endif]-->
+
+  
+<style>
+  iframe { width: 100%; height: 340px; border: 0; overflow: hidden; }
+</style>
+
+<script src="Improving%20HTML5%20Canvas%20Performance%20-%20HTML5%20Rocks_files/count-data.js" async=""></script></head>
+<body data-href="tutorials-canvas-performance" onload="" class="article tutorial">
+
+  <header class="main" id="siteheader">
+    <h1 id="title">
+      <a href="http://www.html5rocks.com/es/" title="HTML5 Rocks">HTML5 Rocks</a>
+    </h1>
+    <a href="#sitenav" id="navtoggle">Show navigation</a>
+
+    
+    <a id="toctoggle" href="#toc">Índice</a>
+    
+
+    <nav id="sitenav">
+      <ul>
+        
+        <li id="home_menu"><a href="http://www.html5rocks.com/es/" class="home">Página de inicio</a></li>
+        
+        <li id="tutorials_menu"><a href="http://www.html5rocks.com/es/tutorials/?page=1" class="tutorials">Tutoriales</a></li>
+        <li id="updates_menu"><a href="http://www.html5rocks.com/es/updates/" class="updates">Actualizaciones</a></li>
+        <li id="contrib_menu"><a href="https://github.com/html5rocks/www.html5rocks.com/blob/master/CONTRIBUTING.md" target="_blank">Contribuir</a></li>
+        <li id="slides_menu"><a href="http://www.html5rocks.com/es/slides" class="slides">Diapositivas</a></li>
+        <li id="resources_menu"><a href="http://www.html5rocks.com/es/resources" class="resources">Recursos</a></li>
+      </ul>
+    </nav>
+
+    
+    <nav class="toc" id="toc">
+      <h1>Índice</h1>
+
+      <ul><li><a href="#toc-intro">Introducción</a></li><li><a href="#toc-perf">Pruebas de rendimiento</a></li><li><a href="#toc-pre-render">Realiza una representación previa en un elemento canvas fuera de la pantalla</a></li><li><a href="#toc-batch">Agrupa las llamadas del elemento canvas</a></li><li><a href="#toc-avoid-state-change">Evita cambios de estado innecesarios del elemento canvas</a></li><li><a href="#toc-render-diff">Representa únicamente las diferencias de pantalla, no todo el estado nuevo</a></li><li><a href="#toc-mul-canvas">Utiliza elementos canvas de varias capas para escenas complejas</a></li><li><a href="#toc-avoid-blur">Evita shadowBlur</a></li><li><a href="#toc-clear-canvas">Descubre distintas formas de borrar el elemento canvas</a></li><li><a href="#toc-avoid-float">Evita coordenadas de puntos flotantes</a></li><li><a href="#toc-raf">Optimiza tus animaciones con "requestAnimationFrame"</a></li><li><a href="#toc-mobile">La mayoría de las implementaciones del elemento canvas son lentas</a></li><li><a href="#toc-conclusion">Conclusión</a></li><li><a href="#toc-ref">Referencias</a></li></ul>
+
+      <h1 class="visible-title">Traducciones:</h1>
+      <ul>
+        
+          
+          <li><a href="http://www.html5rocks.com/ru/tutorials/canvas/performance/">Pусский</a></li>
+          
+          <li><a href="http://www.html5rocks.com/ja/tutorials/canvas/performance/">日本語</a></li>
+          
+          <li><a href="http://www.html5rocks.com/zh/tutorials/canvas/performance/">中文 (简体)</a></li>
+          
+          <li><a href="http://www.html5rocks.com/de/tutorials/canvas/performance/">Deutsch</a></li>
+          
+          <li><a href="http://www.html5rocks.com/pt/tutorials/canvas/performance/">Português (Brasil)</a></li>
+          
+          <li><a href="http://www.html5rocks.com/en/tutorials/canvas/performance/">English</a></li>
+          
+          <li><a href="https://github.com/html5rocks/www.html5rocks.com/blob/master/CONTRIBUTING.md">Contribute another</a></li>
+        
+      </ul>
+    </nav>
+    
+  </header>
+
+  <div class="body-content">
+    
+
+  <section class="title">
+
+    
+
+    <section class="title-text container">
+      
+      <h1>Mejora del rendimiento del elemento canvas de HTML5</h1>
+      
+      
+
+      <a href="http://www.html5rocks.com/" class="watermark">HTML5 Rocks</a>
+    </section>
+  </section>
+
+  <article class="content-wrapper">
+
+    <section class="container">
+
+      
+
+      <div style="top: -324.283px;" class="article-meta sticky" id="article-meta">
+        <nav class="toc">
+          <h1>Índice</h1>
+
+          <ul><li><a href="#toc-intro">Introducción</a></li><li><a href="#toc-perf">Pruebas de rendimiento</a></li><li><a href="#toc-pre-render">Realiza una representación previa en un elemento canvas fuera de la pantalla</a></li><li><a href="#toc-batch">Agrupa las llamadas del elemento canvas</a></li><li><a href="#toc-avoid-state-change">Evita cambios de estado innecesarios del elemento canvas</a></li><li><a href="#toc-render-diff">Representa únicamente las diferencias de pantalla, no todo el estado nuevo</a></li><li><a href="#toc-mul-canvas">Utiliza elementos canvas de varias capas para escenas complejas</a></li><li><a href="#toc-avoid-blur">Evita shadowBlur</a></li><li><a href="#toc-clear-canvas">Descubre distintas formas de borrar el elemento canvas</a></li><li><a href="#toc-avoid-float">Evita coordenadas de puntos flotantes</a></li><li><a href="#toc-raf">Optimiza tus animaciones con "requestAnimationFrame"</a></li><li><a href="#toc-mobile">La mayoría de las implementaciones del elemento canvas son lentas</a></li><li><a href="#toc-conclusion">Conclusión</a></li><li><a href="#toc-ref">Referencias</a></li></ul>
+        </nav>
+
+        <aside class="localizations">
+          <h1>Traducciones</h1>
+          <ul>
+            
+              
+              <li><a href="http://www.html5rocks.com/ru/tutorials/canvas/performance/">Pусский</a></li>
+              
+              <li><a href="http://www.html5rocks.com/ja/tutorials/canvas/performance/">日本語</a></li>
+              
+              <li><a href="http://www.html5rocks.com/zh/tutorials/canvas/performance/">中文 (简体)</a></li>
+              
+              <li><a href="http://www.html5rocks.com/de/tutorials/canvas/performance/">Deutsch</a></li>
+              
+              <li><a href="http://www.html5rocks.com/pt/tutorials/canvas/performance/">Português (Brasil)</a></li>
+              
+              <li><a href="http://www.html5rocks.com/en/tutorials/canvas/performance/">English</a></li>
+              
+              <li><a href="https://github.com/html5rocks/www.html5rocks.com/blob/master/CONTRIBUTING.md">Contribute another</a></li>
+            
+          </ul>
+        </aside>
+      </div>
+      
+
+      <div class="content" id="article-content">
+
+        <section class="byline">
+
+          <div class="byline-content">
+            
+            <section class="author-images">
+              <a href="http://www.html5rocks.com/profiles/#smus">
+                <img src="Improving%20HTML5%20Canvas%20Performance%20-%20HTML5%20Rocks_files/smus.png" itemprop="photo" alt="Boris Smus" title="Boris Smus">
+              </a>
+
+              
+            </section>
+
+            <section class="meta">
+              <div class="authors">
+                <strong>By</strong> <a href="http://www.html5rocks.com/profiles/#smus">Boris Smus</a>
+                
+              </div>
+
+              
+
+              <div class="date">
+                <time pubdate=""><strong>Publicación:</strong> agosto 16th, 2011</time>
+                
+                <time class="updated"><strong>Actualización:</strong> octubre 29th, 2013</time>
+                <span><strong>Comments:</strong> <a href="#disqus_thread" class="load-comments" data-disqus-identifier="http://www.html5rocks.com/tutorials/canvas/performance/">40</a></span>
+              </div>
+
+              <div id="notcompatible" class="hidden">
+                Your browser may not support the functionality in this article.
+              </div>
+            </section>
+            <div class="clear"></div>
+
+            
+          </div>
+        </section>
+
+        
+
+<h2 id="toc-intro">Introducción</h2>
+
+<p>El elemento canvas de HTML5, que comenzó como un experimento de Apple, es el estándar más compatible para <a href="http://en.wikipedia.org/wiki/Immediate_mode">gráficos de modo inmediato</a>
+ en 2D en la Web. Actualmente, muchos desarrolladores lo utilizan para 
+gran variedad de juegos, visualizaciones y proyectos multimedia. Sin 
+embargo, a medida que las aplicaciones que creamos aumentan en 
+complejidad, los desarrolladores superan la barrera del rendimiento de 
+forma inadvertida. </p>
+<p>Existen muchos conocimientos inconexos sobre cómo optimizar el 
+rendimiento del elemento canvas. Con este artículo se pretende 
+consolidar parte de este conjunto de conocimientos y convertirlo en un 
+recurso más fácil de asimilar para los desarrolladores. En este 
+artículo, se incluyen optimizaciones fundamentales que se aplican a 
+todos los entornos relacionados con los gráficos por ordenador, así como
+ técnicas específicas del elemento canvas que están sujetas a cambios a 
+medida que mejoran las implementaciones de este elemento. En particular,
+ a medida que los desarrolladores de navegadores implementan la 
+aceleración por GPU del elemento canvas, aumentan las probabilidades de 
+que algunas de las técnicas de rendimiento mencionadas tengan menos 
+impacto. Este tema se tratará cuando corresponda.</p>
+<p>Ten en cuenta que este artículo no trata sobre el uso del elemento canvas de HTML5. Para ello, consulta estos <a href="http://www.html5rocks.com/es/tutorials/#canvas">artículos relacionados con el elemento canvas</a> en HTML5Rocks, este <a href="http://diveintohtml5.info/canvas.html">capítulo de Dive into HTML5</a> y el Tutorial de <a href="https://developer.mozilla.org/es/canvas_tutorial">Canvas de Mozilla Developer Network</a>.</p>
+<h2 id="toc-perf">Pruebas de rendimiento</h2>
+
+<p>Para abordar los rápidos cambios que afectan al entorno del elemento canvas de HTML5, las pruebas de <a href="http://jsperf.com/">JSPerf</a> (<a href="http://jsperf.com/">jsperf.com</a>)
+ verifican que cada una de las propuestas de optimización sigan 
+funcionando. JSPerf es una aplicación web que permite a los 
+desarrolladores crear pruebas de rendimiento mediante JavaScript. Cada 
+prueba se centra en un resultado que se intenta conseguir (por ejemplo, 
+borrar el elemento canvas) e incluye varios métodos con los que se 
+obtiene el mismo resultado. JSPerf ejecuta cada método tantas veces como
+ sea posible durante un breve período de tiempo y proporciona un número 
+de iteraciones por segundo que resulta significativo desde el punto de 
+vista estadístico. Las puntuaciones más altas siempre son las mejores.</p>
+<p>Los usuarios de la página de pruebas de rendimiento de JSPerf pueden 
+realizar la prueba en su propio navegador y obtienen los resultados 
+normalizados de la prueba en <a href="http://www.browserscope.org/">Browserscope</a> (<a href="http://www.browserscope.org/">browserscope.org</a>).
+ Debido a que las técnicas de optimización de este artículo están 
+respaldadas por un resultado de JSPerf, puedes volver para obtener 
+información actualizada sobre si la técnica se sigue aplicando. He 
+creado una pequeña <a href="https://github.com/borismus/jsperfview">aplicación de ayuda</a> que muestra estos resultados en forma de gráficos, que se han incluido a lo largo de este artículo.</p>
+
+<p>Todos los resultados de rendimiento de este artículo dependen de la 
+versión del navegador. Esto acaba siendo una limitación, ya que no se 
+sabe en qué sistema operativo se estaba ejecutando el navegador, o lo 
+que es más importante, si el elemento canvas de HTML5 se había acelerado
+ por hardware cuando se realizó la prueba de rendimiento. Para averiguar
+ si el elemento canvas de HTML5 de Chrome se ha acelerado por hardware, 
+introduce <code>about:gpu</code> en la barra de direcciones.</p>
+
+<h2 id="toc-pre-render">Realiza una representación previa en un elemento canvas fuera de la pantalla</h2>
+
+<p>Si estás dibujando de nuevo primitivas similares en la pantalla 
+utilizando varios fotogramas, como sucede a menudo cuando se crea un 
+juego, puedes obtener grandes beneficios de rendimiento al representar 
+previamente partes de gran tamaño de la escena. Realizar una 
+representación previa significa utilizar un elemento canvas (o varios 
+elementos canvas) fuera de la pantalla independiente para representar 
+imágenes temporales en él y luego volver a representar los elementos 
+canvas fuera de la pantalla en el elemento canvas visible. Para los 
+desarrolladores que estén familiarizados con los gráficos por ordenador,
+ esta técnica también se conoce como <a href="http://es.wikipedia.org/wiki/Lista_de_despliegue">lista de despliegue</a>.</p>
+<p>Por ejemplo, supongamos que estás redibujando a Mario ejecutándose a 
+60 fotogramas por segundo. Puedes redibujar su gorra, su bigote y la "M"
+ en cada fotograma o representar previamente a Mario antes de ejecutar 
+la animación. </p>
+<p>Sin representación previa:</p>
+<pre class="prettyprint"><code><span class="com">// canvas, context are defined</span><span class="pln">
+</span><span class="kwd">function</span><span class="pln"> render</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  drawMario</span><span class="pun">(</span><span class="pln">context</span><span class="pun">);</span><span class="pln">
+  requestAnimationFrame</span><span class="pun">(</span><span class="pln">render</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>Con representación previa:</p>
+<pre class="prettyprint"><code><span class="kwd">var</span><span class="pln"> m_canvas </span><span class="pun">=</span><span class="pln"> document</span><span class="pun">.</span><span class="pln">createElement</span><span class="pun">(</span><span class="str">'canvas'</span><span class="pun">);</span><span class="pln">
+m_canvas</span><span class="pun">.</span><span class="pln">width </span><span class="pun">=</span><span class="pln"> </span><span class="lit">64</span><span class="pun">;</span><span class="pln">
+m_canvas</span><span class="pun">.</span><span class="pln">height </span><span class="pun">=</span><span class="pln"> </span><span class="lit">64</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> m_context </span><span class="pun">=</span><span class="pln"> m_canvas</span><span class="pun">.</span><span class="pln">getContext</span><span class="pun">(‘</span><span class="lit">2d</span><span class="pun">’);</span><span class="pln">
+drawMario</span><span class="pun">(</span><span class="pln">m_context</span><span class="pun">);</span><span class="pln">
+
+</span><span class="kwd">function</span><span class="pln"> render</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  context</span><span class="pun">.</span><span class="pln">drawImage</span><span class="pun">(</span><span class="pln">m_canvas</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">);</span><span class="pln">
+  requestAnimationFrame</span><span class="pun">(</span><span class="pln">render</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>Ten en cuenta que debes utilizar <code>requestAnimationFrame</code>, 
+que se explica más detalladamente en una sección posterior. El siguiente
+ gráfico ilustra las ventajas de rendimiento que se obtienen al utilizar
+ la representación previa (de esta prueba de <a href="http://jsperf.com/render-vs-prerender">jsperf</a>):</p>
+<iframe src="Improving%20HTML5%20Canvas%20Performance%20-%20HTML5%20Rocks_files/embed.htm">
+</iframe>
+
+<p>Esta técnica es especialmente efectiva cuando la operación de representación (<code>drawMario</code>
+ en el ejemplo anterior) supone un desembolso económico elevado. Un buen
+ ejemplo de esto es la representación de texto, ya que se trata de una 
+operación muy costosa. A continuación, se muestra el drástico aumento 
+del rendimiento que puedes esperar si representas previamente esta 
+operación (procedente de esta prueba de <a href="http://jsperf.com/render-vs-prerender/3">jsperf</a>):</p>
+<iframe src="Improving%20HTML5%20Canvas%20Performance%20-%20HTML5%20Rocks_files/embed_002.htm">
+</iframe>
+
+<p>Sin embargo, en el ejemplo anterior se observa el bajo rendimiento 
+del caso de prueba con "holgura en la representación previa". Al 
+realizar la representación previa, es importante que te asegures de que 
+el elemento canvas se ajuste perfectamente alrededor de la imagen que 
+estés dibujando; de lo contrario, la mejora de rendimiento de la 
+representación fuera de la pantalla se anulará por la pérdida de 
+rendimiento que supone copiar un elemento canvas de gran tamaño en otro 
+(que varía en función del tamaño de origen y de destino). Los canvas 
+ajustados de la prueba anterior son simplemente más pequeños.</p>
+<pre class="prettyprint"><code><span class="pln">can2</span><span class="pun">.</span><span class="pln">width </span><span class="pun">=</span><span class="pln"> </span><span class="lit">100</span><span class="pun">;</span><span class="pln">
+can2</span><span class="pun">.</span><span class="pln">height </span><span class="pun">=</span><span class="pln"> </span><span class="lit">40</span><span class="pun">;</span></code></pre>
+<p>En comparación con el canvas holgado que obtiene un rendimiento más bajo.</p>
+<pre class="prettyprint"><code><span class="pln">can3</span><span class="pun">.</span><span class="pln">width </span><span class="pun">=</span><span class="pln"> </span><span class="lit">300</span><span class="pun">;</span><span class="pln">
+can3</span><span class="pun">.</span><span class="pln">height </span><span class="pun">=</span><span class="pln"> </span><span class="lit">100</span><span class="pun">;</span></code></pre>
+<h2 id="toc-batch">Agrupa las llamadas del elemento canvas</h2>
+
+<p>Debido a que el proceso de dibujo es una operación costosa, es más 
+eficiente cargar la máquina de estado de dibujo con un gran conjunto de 
+comandos y, a continuación, volcarlos todos en el búfer de vídeo.</p>
+
+<p>Por ejemplo, al dibujar varias líneas, resulta más eficiente crear un
+ trazado que contenga todas las líneas y dibujarlo con una única llamada
+ de dibujo. En otras palabras, en lugar de dibujar líneas por separado, 
+realiza lo siguiente:</p>
+<pre class="prettyprint"><code><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">var</span><span class="pln"> i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> points</span><span class="pun">.</span><span class="pln">length </span><span class="pun">-</span><span class="pln"> </span><span class="lit">1</span><span class="pun">;</span><span class="pln"> i</span><span class="pun">++)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">var</span><span class="pln"> p1 </span><span class="pun">=</span><span class="pln"> points</span><span class="pun">[</span><span class="pln">i</span><span class="pun">];</span><span class="pln">
+  </span><span class="kwd">var</span><span class="pln"> p2 </span><span class="pun">=</span><span class="pln"> points</span><span class="pun">[</span><span class="pln">i</span><span class="pun">+</span><span class="lit">1</span><span class="pun">];</span><span class="pln">
+  context</span><span class="pun">.</span><span class="pln">beginPath</span><span class="pun">();</span><span class="pln">
+  context</span><span class="pun">.</span><span class="pln">moveTo</span><span class="pun">(</span><span class="pln">p1</span><span class="pun">.</span><span class="pln">x</span><span class="pun">,</span><span class="pln"> p1</span><span class="pun">.</span><span class="pln">y</span><span class="pun">);</span><span class="pln">
+  context</span><span class="pun">.</span><span class="pln">lineTo</span><span class="pun">(</span><span class="pln">p2</span><span class="pun">.</span><span class="pln">x</span><span class="pun">,</span><span class="pln"> p2</span><span class="pun">.</span><span class="pln">y</span><span class="pun">);</span><span class="pln">
+  context</span><span class="pun">.</span><span class="pln">stroke</span><span class="pun">();</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>Se obtiene mayor rendimiento si se dibuja una única polilínea:</p>
+<pre class="prettyprint"><code><span class="pln">context</span><span class="pun">.</span><span class="pln">beginPath</span><span class="pun">();</span><span class="pln">
+</span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">var</span><span class="pln"> i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> points</span><span class="pun">.</span><span class="pln">length </span><span class="pun">-</span><span class="pln"> </span><span class="lit">1</span><span class="pun">;</span><span class="pln"> i</span><span class="pun">++)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">var</span><span class="pln"> p1 </span><span class="pun">=</span><span class="pln"> points</span><span class="pun">[</span><span class="pln">i</span><span class="pun">];</span><span class="pln">
+  </span><span class="kwd">var</span><span class="pln"> p2 </span><span class="pun">=</span><span class="pln"> points</span><span class="pun">[</span><span class="pln">i</span><span class="pun">+</span><span class="lit">1</span><span class="pun">];</span><span class="pln">
+  context</span><span class="pun">.</span><span class="pln">moveTo</span><span class="pun">(</span><span class="pln">p1</span><span class="pun">.</span><span class="pln">x</span><span class="pun">,</span><span class="pln"> p1</span><span class="pun">.</span><span class="pln">y</span><span class="pun">);</span><span class="pln">
+  context</span><span class="pun">.</span><span class="pln">lineTo</span><span class="pun">(</span><span class="pln">p2</span><span class="pun">.</span><span class="pln">x</span><span class="pun">,</span><span class="pln"> p2</span><span class="pun">.</span><span class="pln">y</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+context</span><span class="pun">.</span><span class="pln">stroke</span><span class="pun">();</span></code></pre>
+<p>Esto también se aplica al entorno del elemento canvas de HTML5. Al 
+dibujar un trazado complejo, por ejemplo, es más adecuado colocar todos 
+los puntos dentro del trazado en lugar de representar los segmentos por 
+separado (<a href="http://jsperf.com/batching-line-drawing-calls/2">jsperf</a>).</p>
+<iframe src="Improving%20HTML5%20Canvas%20Performance%20-%20HTML5%20Rocks_files/embed_003.htm">
+</iframe>
+
+<p>Ten en cuenta, sin embargo, que existe una excepción importante a 
+esta regla en lo que respecta al elemento canvas: si las primitivas 
+utilizadas para dibujar el objeto deseado tienen cuadros delimitadores 
+pequeños (por ejemplo, líneas verticales y horizontales), es posible que
+ sea más eficiente representarlos por separado (<a href="http://jsperf.com/batching-line-drawing-calls">jsperf</a>).</p>
+<iframe src="Improving%20HTML5%20Canvas%20Performance%20-%20HTML5%20Rocks_files/embed_004.htm">
+</iframe>
+
+<h2 id="toc-avoid-state-change">Evita cambios de estado innecesarios del elemento canvas</h2>
+
+<p>El elemento canvas de HTML5 se implementa en una máquina de estado 
+que controla aspectos como los estilos de relleno y de trazo, así como 
+puntos anteriores que forman el trazado actual. Al intentar optimizar el
+ rendimiento de los gráficos, se intenta centrar únicamente en los 
+gráficos que está representando. Sin embargo, si se manipula la máquina 
+de estado también se puede producir una sobrecarga de rendimiento.</p>
+<p>Por ejemplo, si utilizas varios colores de relleno para representar 
+una escena, es menos costoso representar cada uno de los colores que 
+colocarlos en el elemento canvas. Para representar un patrón de raya 
+diplomática, puedes representar una raya, cambiar los colores, 
+representar la siguiente raya, etc.:</p>
+<pre class="prettyprint"><code><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">var</span><span class="pln"> i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> STRIPES</span><span class="pun">;</span><span class="pln"> i</span><span class="pun">++)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  context</span><span class="pun">.</span><span class="pln">fillStyle </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="pln">i </span><span class="pun">%</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="pun">?</span><span class="pln"> COLOR1 </span><span class="pun">:</span><span class="pln"> COLOR2</span><span class="pun">);</span><span class="pln">
+  context</span><span class="pun">.</span><span class="pln">fillRect</span><span class="pun">(</span><span class="pln">i </span><span class="pun">*</span><span class="pln"> GAP</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> GAP</span><span class="pun">,</span><span class="pln"> </span><span class="lit">480</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>O representar todas las rayas impares y luego todas las pares:</p>
+<pre class="prettyprint"><code><span class="pln">context</span><span class="pun">.</span><span class="pln">fillStyle </span><span class="pun">=</span><span class="pln"> COLOR1</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">var</span><span class="pln"> i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> STRIPES</span><span class="pun">/</span><span class="lit">2</span><span class="pun">;</span><span class="pln"> i</span><span class="pun">++)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  context</span><span class="pun">.</span><span class="pln">fillRect</span><span class="pun">((</span><span class="pln">i</span><span class="pun">*</span><span class="lit">2</span><span class="pun">)</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> GAP</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> GAP</span><span class="pun">,</span><span class="pln"> </span><span class="lit">480</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+context</span><span class="pun">.</span><span class="pln">fillStyle </span><span class="pun">=</span><span class="pln"> COLOR2</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">var</span><span class="pln"> i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> STRIPES</span><span class="pun">/</span><span class="lit">2</span><span class="pun">;</span><span class="pln"> i</span><span class="pun">++)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  context</span><span class="pun">.</span><span class="pln">fillRect</span><span class="pun">((</span><span class="pln">i</span><span class="pun">*</span><span class="lit">2</span><span class="pun">+</span><span class="lit">1</span><span class="pun">)</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> GAP</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> GAP</span><span class="pun">,</span><span class="pln"> </span><span class="lit">480</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>En la siguiente prueba de rendimiento, se dibuja un patrón de raya diplomática intercalado utilizando los dos métodos (<a href="http://jsperf.com/changing-canvas-state/3">jsperf</a>).</p>
+<iframe src="Improving%20HTML5%20Canvas%20Performance%20-%20HTML5%20Rocks_files/embed_005.htm">
+</iframe>
+
+<p>Tal y como se esperaba, el método intercalado es más lento debido a que al cambio de la máquina de estado resulta costoso.</p>
+<h2 id="toc-render-diff">Representa únicamente las diferencias de pantalla, no todo el estado nuevo</h2>
+
+<p>Como sería de esperar, representar una cantidad reducida de elementos
+ en la pantalla es más barato que representar una cantidad mayor. Si 
+solo dispones de diferencias incrementales entre redibujos, puedes 
+obtener un aumento significativo del rendimiento simplemente dibujando 
+la diferencia. En otras palabras, en lugar de borrar toda la pantalla 
+antes de dibujar, realiza lo siguiente:</p>
+<pre class="prettyprint"><code><span class="pln">context</span><span class="pun">.</span><span class="pln">fillRect</span><span class="pun">(</span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> canvas</span><span class="pun">.</span><span class="pln">width</span><span class="pun">,</span><span class="pln"> canvas</span><span class="pun">.</span><span class="pln">height</span><span class="pun">);</span></code></pre>
+<p>Controla el cuadro delimitador dibujado y borra únicamente eso.</p>
+<pre class="prettyprint"><code><span class="pln">context</span><span class="pun">.</span><span class="pln">fillRect</span><span class="pun">(</span><span class="kwd">last</span><span class="pun">.</span><span class="pln">x</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">last</span><span class="pun">.</span><span class="pln">y</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">last</span><span class="pun">.</span><span class="pln">width</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">last</span><span class="pun">.</span><span class="pln">height</span><span class="pun">);</span></code></pre>
+<p>Esto se ilustra en la prueba de rendimiento que se muestra a continuación, en la que un punto blanco cruza la pantalla (<a href="http://jsperf.com/partial-re-rendering/2">jsperf</a>):</p>
+<iframe src="Improving%20HTML5%20Canvas%20Performance%20-%20HTML5%20Rocks_files/embed_006.htm">
+</iframe>
+
+<p>Si estás familiarizado con los gráficos por ordenador, es posible que
+ también conozcas esta técnica como "regiones de redibujo", mediante la 
+cual se guarda el cuadro delimitador representado previamente y, a 
+continuación, se borra en cada representación.</p>
+<p>Esta técnica también se aplica a los contextos de representación basados en píxeles, tal y como se ilustra en esta <a href="http://jsconf.eu/2010/speaker/lessons_learnt_pushing_browser.html">charla sobre el emulador de Nintendo</a> en JavaScript.</p>
+<h2 id="toc-mul-canvas">Utiliza elementos canvas de varias capas para escenas complejas</h2>
+
+<p>Como ya se ha mencionado, dibujar imágenes grandes es costoso y se 
+debe evitar en la medida de lo posible. Además de utilizar otro canvas 
+para la representación fuera de la pantalla, tal y como se ha ilustrado 
+en la sección sobre la representación previa, también podemos utilizar 
+elementos canvas con capas superpuestos. Si el elemento canvas de primer
+ plano es transparente, podremos confiar en que la GPU componga las 
+capas alfa en el momento de la representación. Puedes configurarlo como 
+se indica a continuación, utilizando dos canvas perfectamente 
+superpuestos.</p>
+<pre class="prettyprint"><code><span class="tag">&lt;canvas</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"bg"</span><span class="pln"> </span><span class="atn">width</span><span class="pun">=</span><span class="atv">"640"</span><span class="pln"> </span><span class="atn">height</span><span class="pun">=</span><span class="atv">"480"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="kwd">position</span><span class="pun">:</span><span class="pln"> absolute</span><span class="pun">;</span><span class="pln"> </span><span class="kwd">z-index</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0</span><span class="atv">"</span><span class="tag">&gt;</span><span class="pln">
+</span><span class="tag">&lt;/canvas&gt;</span><span class="pln">
+</span><span class="tag">&lt;canvas</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"fg"</span><span class="pln"> </span><span class="atn">width</span><span class="pun">=</span><span class="atv">"640"</span><span class="pln"> </span><span class="atn">height</span><span class="pun">=</span><span class="atv">"480"</span><span class="pln"> </span><span class="atn">style</span><span class="pun">=</span><span class="atv">"</span><span class="kwd">position</span><span class="pun">:</span><span class="pln"> absolute</span><span class="pun">;</span><span class="pln"> </span><span class="kwd">z-index</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1</span><span class="atv">"</span><span class="tag">&gt;</span><span class="pln">
+</span><span class="tag">&lt;/canvas&gt;</span></code></pre>
+<p>La ventaja de tener solo un elemento canvas es que al dibujar o 
+borrar el elemento canvas de primer plano, nunca se modifica el fondo. 
+Si tu juego o aplicación multimedia se puede dividir en primer plano y 
+fondo, considera representarlos en elementos canvas independientes para 
+conseguir un aumento significativo del rendimiento. En el siguiente 
+gráfico se compara el caso del elemento canvas simple con otro caso en 
+el que únicamente se redibuja y se borra el primer plano (<a href="http://jsperf.com/layered-canvases/3">jsperf</a>):</p>
+<iframe src="Improving%20HTML5%20Canvas%20Performance%20-%20HTML5%20Rocks_files/embed_007.htm">
+</iframe>
+
+<p>A menudo, podrás aprovechar la ventaja de que la percepción humana es
+ imperfecta para representar el fondo una sola vez o a una velocidad más
+ lenta en comparación con el primer plano (que probablemente requerirá 
+la mayor parte de la atención del usuario). Por ejemplo, puedes 
+representar el primer plano cada vez que se realice una representación, 
+pero representar el fondo solo cada cierto número de fotogramas.</p>
+<p>También debes tener en cuenta que, en general, este método se puede 
+aplicar a cualquier número de elementos canvas compuestos si tu 
+aplicación funciona mejor con este tipo de estructura.</p>
+<h2 id="toc-avoid-blur">Evita shadowBlur</h2>
+
+<p>Al igual que otros entornos gráficos, el elemento canvas de HTML5 
+permite a los desarrolladores desenfocar las primitivas, pero esta 
+operación puede ser muy costosa.</p>
+<pre class="prettyprint"><code><span class="pln">context</span><span class="pun">.</span><span class="pln">shadowOffsetX </span><span class="pun">=</span><span class="pln"> </span><span class="lit">5</span><span class="pun">;</span><span class="pln">
+context</span><span class="pun">.</span><span class="pln">shadowOffsetY </span><span class="pun">=</span><span class="pln"> </span><span class="lit">5</span><span class="pun">;</span><span class="pln">
+context</span><span class="pun">.</span><span class="pln">shadowBlur </span><span class="pun">=</span><span class="pln"> </span><span class="lit">4</span><span class="pun">;</span><span class="pln">
+context</span><span class="pun">.</span><span class="pln">shadowColor </span><span class="pun">=</span><span class="pln"> </span><span class="str">'rgba(255, 0, 0, 0.5)'</span><span class="pun">;</span><span class="pln">
+context</span><span class="pun">.</span><span class="pln">fillRect</span><span class="pun">(</span><span class="lit">20</span><span class="pun">,</span><span class="pln"> </span><span class="lit">20</span><span class="pun">,</span><span class="pln"> </span><span class="lit">150</span><span class="pun">,</span><span class="pln"> </span><span class="lit">100</span><span class="pun">);</span></code></pre>
+<p>La siguiente prueba de rendimiento muestra la misma escena 
+representada con sombra y sin sombra y la enorme diferencia entre ambas 
+representaciones (<a href="http://jsperf.com/shadowblur-performance">jsperf</a>):</p>
+<iframe src="Improving%20HTML5%20Canvas%20Performance%20-%20HTML5%20Rocks_files/embed_008.htm">
+</iframe>
+
+<h2 id="toc-clear-canvas">Descubre distintas formas de borrar el elemento canvas</h2>
+
+<p>Puesto que el elemento canvas de HTML5 es un paradigma de dibujo de <a href="http://en.wikipedia.org/wiki/Immediate_mode">modo inmediato</a>,
+ es necesario redibujar la escena de forma explícita en cada fotograma. 
+Por esta razón, borrar el elemento canvas es una operación 
+extremadamente importante para aplicaciones y juegos elaborados mediante
+ el elemento canvas de HTML5.</p>
+<p>Tal y como se ha mencionado en la sección <a href="#avoid-canvas-state-changes">Evita cambios de estado innecesarios del elemento canvas</a>, normalmente no es recomendable borrar todo el elemento canvas, pero si <em>debes</em> hacerlo, dispones de dos opciones: ejecutar <code>context.clearRect(0, 0, width, height)</code> o utilizar un código de pirateo específico de canvas (<code>canvas.width = canvas.width</code>) para hacerlo.</p>
+<p>En lo que respecta a la escritura de código, <code>clearRect</code> 
+suele ofrecer mejores resultados que la versión de restablecimiento de 
+ancho, pero en algunos casos, el uso del código de pirateo de 
+restablecimiento <code>canvas.width</code> es significativamente más rápido en Chrome 14 (<a href="http://jsperf.com/canvas-clear-speed">jsperf</a>).</p>
+<iframe src="Improving%20HTML5%20Canvas%20Performance%20-%20HTML5%20Rocks_files/embed_009.htm">
+</iframe>
+
+<p>Ten cuidado con esta sugerencia, ya que depende en gran medida de la 
+implementación del elemento canvas subyacente y está muy sujeta a 
+cambios. Para obtener más información, consulta el <a href="http://simonsarris.com/blog/346-how-you-clear-your-canvas-matters">artículo de Simon Sarris sobre cómo borrar un elemento canvas</a>.</p>
+<h2 id="toc-avoid-float">Evita coordenadas de puntos flotantes</h2>
+
+<p>El elemento canvas de HTML5 admite la representación por subpíxeles y
+ no es posible desactivarla. Si dibujas con coordenadas que no son 
+números enteros, este elemento utiliza de forma automática antialiasing 
+para tratar de suavizar las líneas. A continuación se muestra el efecto 
+visual, tomado de <a href="http://sebleedelisle.com/2011/02/html5-canvas-sprite-optimisation">este artículo sobre el rendimiento del elemento canvas con subpíxeles publicado por Seb Lee-Delisle</a>.</p>
+<p><img alt="subpíxeles" src="Improving%20HTML5%20Canvas%20Performance%20-%20HTML5%20Rocks_files/bunny.png"></p>
+<p>Si la atenuación del sprite no es el efecto que buscas, puede ser más
+ rápido convertir tus coordenadas en números enteros mediante <code>Math.floor</code> o <code>Math.round</code> (<a href="http://jsperf.com/drawimage-whole-pixels">jsperf</a>).</p>
+<iframe src="Improving%20HTML5%20Canvas%20Performance%20-%20HTML5%20Rocks_files/embed_010.htm">
+</iframe>
+
+<p>Para convertir las coordenadas de puntos flotantes en números 
+enteros, puedes utilizar varias técnicas ingeniosas, la más eficiente de
+ ellas implica añadir un medio al número de destino y, a continuación 
+realizar operaciones a nivel de bit en el resultado para eliminar la 
+parte fraccional.</p>
+<pre class="prettyprint"><code><span class="com">// With a bitwise or.</span><span class="pln">
+rounded </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="lit">0.5</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> somenum</span><span class="pun">)</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+</span><span class="com">// A double bitwise not.</span><span class="pln">
+rounded </span><span class="pun">=</span><span class="pln"> </span><span class="pun">~~</span><span class="pln"> </span><span class="pun">(</span><span class="lit">0.5</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> somenum</span><span class="pun">);</span><span class="pln">
+</span><span class="com">// Finally, a left bitwise shift.</span><span class="pln">
+rounded </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="lit">0.5</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> somenum</span><span class="pun">)</span><span class="pln"> </span><span class="pun">&lt;&lt;</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span></code></pre>
+<p>A continuación, se muestra el desglose de rendimiento completo (<a href="http://jsperf.com/math-round-vs-hack/3">jsperf</a>):</p>
+<iframe src="Improving%20HTML5%20Canvas%20Performance%20-%20HTML5%20Rocks_files/embed_011.htm">
+</iframe>
+
+<p>Ten en cuenta que este tipo de optimización ya no debe tener 
+importancia una vez se aceleren por GPU las implementaciones del 
+elemento canvas, ya que se podrán representar de forma rápida 
+coordenadas que no sean números enteros.</p>
+<h2 id="toc-raf">Optimiza tus animaciones con "requestAnimationFrame"</h2>
+
+<p>El API relativamente nueva <code>requestAnimationFrame</code> es el 
+método que se recomienda para implementar aplicaciones interactivas en 
+el navegador. En lugar de indicar al navegador que realice una 
+representación a una velocidad de marcado fija, puedes pedirle 
+educadamente que ejecute tu rutina de representación y que reciba una 
+llamada cuando se encuentre disponible. Como consecuencia, si la página 
+no se encuentra en primer plano, el navegador es lo suficientemente 
+listo como para no representarla.</p>
+<p>La devolución de llamada de <code>requestAnimationFrame</code> se 
+debe ejecutar a una velocidad de 60 fotogramas por segundo, pero eso no 
+significa que siempre sea así, por lo que tendrás que controlar el 
+tiempo transcurrido desde la última representación. Sería algo como 
+esto:</p>
+<pre class="prettyprint"><code><span class="kwd">var</span><span class="pln"> x </span><span class="pun">=</span><span class="pln"> </span><span class="lit">100</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> y </span><span class="pun">=</span><span class="pln"> </span><span class="lit">100</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> lastRender </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Date</span><span class="pun">();</span><span class="pln">
+</span><span class="kwd">function</span><span class="pln"> render</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">var</span><span class="pln"> delta </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Date</span><span class="pun">()</span><span class="pln"> </span><span class="pun">-</span><span class="pln"> lastRender</span><span class="pun">;</span><span class="pln">
+  x </span><span class="pun">+=</span><span class="pln"> delta</span><span class="pun">;</span><span class="pln">
+  y </span><span class="pun">+=</span><span class="pln"> delta</span><span class="pun">;</span><span class="pln">
+  context</span><span class="pun">.</span><span class="pln">fillRect</span><span class="pun">(</span><span class="pln">x</span><span class="pun">,</span><span class="pln"> y</span><span class="pun">,</span><span class="pln"> W</span><span class="pun">,</span><span class="pln"> H</span><span class="pun">);</span><span class="pln">
+  requestAnimationFrame</span><span class="pun">(</span><span class="pln">render</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+render</span><span class="pun">();</span></code></pre>
+<p>Ten en cuenta que este uso de <code>requestAnimationFrame</code> se aplica al elemento canvas y a otras tecnologías de representación como WebGL.</p>
+<p>En lo que respecta a la escritura de código, esta API solo se 
+encuentra disponible en Chrome, Safari y Firefox, por lo que debes 
+utilizar <a href="http://paulirish.com/2011/requestanimationframe-for-smart-animating/"> estas correcciones de compatibilidad</a>.</p>
+<h2 id="toc-mobile">La mayoría de las implementaciones del elemento canvas son lentas</h2>
+
+<p>Hablemos de dispositivos móviles. Desafortunadamente, en lo que 
+respecta a la escritura de código, solo el sistema operativo iOS 5.0 
+beta con Safari 5.1 cuenta con implementación de elementos canvas 
+acelerada por GPU para dispositivos móviles. Sin aceleración por GPU, 
+los navegadores para dispositivos móviles suelen disponer de CPU lo 
+suficientemente potentes como para admitir aplicaciones modernas basadas
+ en elementos canvas. Varias de las pruebas de JSPerf descritas 
+anteriormente ejecutan una orden de menor magnitud en dispositivos 
+móviles que en ordenadores, lo que reduce significativamente los tipos 
+de aplicaciones de diferentes dispositivos que se espera que funcionen 
+correctamente.</p>
+<h2 id="toc-conclusion">Conclusión</h2>
+
+<p>En resumen, en este artículo se ha tratado un completo conjunto de 
+técnicas de optimización útiles que te ayudarán a desarrollar proyectos 
+eficientes basados en elementos canvas de HTML5. Ahora que has aprendido
+ algo nuevo, ve más allá y optimiza tus increíbles creaciones. O si 
+todavía no tienes un juego o una aplicación que optimizar, puedes 
+obtener algunas ideas en <a href="http://www.chromeexperiments.com/">Chrome Experiments</a> y en <a href="http://creativejs.com/">Creative JS</a>.</p>
+<h2 id="toc-ref">Referencias</h2>
+
+<ul>
+<li>Modo <a href="http://en.wikipedia.org/wiki/Immediate_mode">inmediato</a> frente a modo <a href="http://en.wikipedia.org/wiki/Retained_mode">retenido</a></li>
+<li>Otros artículos de HTML5Rocks <a href="http://www.html5rocks.com/es/tutorials/#canvas"> sobre el elemento canvas</a></li>
+<li><a href="http://diveintohtml5.info/canvas.html">Sección sobre el elemento canvas</a> de Dive into HTML5</li>
+<li><a href="http://jsperf.com/">JSPerf</a> (permite a los desarrolladores crear pruebas de rendimiento mediante JavaScript)</li>
+<li><a href="http://www.browserscope.org/">Browserscope</a> (almacena datos de rendimiento del navegador)</li>
+<li><a href="https://github.com/borismus/jsperfview">JSPerfView</a> (que representa pruebas de JSPerf en forma de gráficos)</li>
+<li><a href="http://simonsarris.com/blog/346-how-you-clear-your-canvas-matters">Entrada de blog de</a> Simon sobre cómo borrar el elemento canvas</li>
+<li><a href="http://sebleedelisle.com/2011/02/html5-canvas-sprite-optimisation">Entrada de blog</a> de Sebastian sobre el rendimiento de representación por subpíxeles</li>
+<li><a href="http://paulirish.com/2011/requestanimationframe-for-smart-animating/">Entrada de blog</a> de Paul sobre cómo utilizar <code>requestAnimationFrame</code></li>
+<li><a href="http://jsconf.eu/2010/speaker/lessons_learnt_pushing_browser.html">Charla</a> de Ben sobre cómo optimizar un emulador de NES en JavaScript</li>
+
+      </ul></div>
+    </section>
+  </article>
+
+  
+  <section class="disqus pattern-bg-lighter">
+
+    <div id="disqus" class="container">
+
+      <h2>Comments</h2>
+
+      <div id="disqus_thread">
+
+        <a href="#disqus_thread" class="load-comments" data-disqus-identifier="http://www.html5rocks.com/tutorials/canvas/performance/">40</a>
+
+      </div>
+    </div>
+
+    <noscript>
+      <p class="center">
+        <strong>
+          <a href="http://disqus.com/?ref_noscript">Debes habilitar JavaScript para ver los comentarios con la tecnología de Disqus.</a>
+        </strong>
+      </p>
+    </noscript>
+
+    <script>
+
+      var disqus_shortname = 'html5rocks';
+      var disqus_identifier = 'http://www.html5rocks.com/tutorials/canvas/performance/';
+      var disqus_url = 'http://www.html5rocks.com/tutorials/canvas/performance/';
+      var disqus_developer = 0;
+
+      var disqus_config = function () {
+        var funky_language_code_mapping = {
+          'de': 'de_inf',
+          'es': 'es_ES',
+          'pt': 'pt_EU',
+          'sr': 'sr_CYRL',
+          'sv': 'sv_SE',
+          'zh': 'zh_HANT'
+        };
+        this.language = funky_language_code_mapping['es'] ||
+                        'es';
+
+        this.callbacks.onReady = [ function () {
+                                      try {
+                                        _gaq.push(['_trackEvent', 'View comments']);
+                                      } catch(err){}
+                                   } ];
+        this.callbacks.onNewComment = [ function (comment) {
+                                          try {
+                                            _gaq.push(['_trackEvent', 'Commented']);
+                                          } catch(err){}
+                                        } ];
+      };
+
+      window.addEventListener('load', function(e) {
+
+        var c = document.createElement('script');
+        c.type = 'text/javascript';
+        c.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        c.async = true;
+
+        var s = document.getElementsByTagName('script')[0], sp = s.parentNode;
+        sp.insertBefore(c, s);
+
+        if (window.location.hash === '#disqus_thread')
+          loadComments();
+
+      }, false);
+
+      var disqus_loaded = false;
+      function loadComments() {
+
+        if (disqus_loaded)
+          return;
+
+        disqus_loaded = true;
+
+        _gaq.push(['_trackEvent', 'Interactions', 'Comments', 'Comments Loaded']);
+
+        var s = document.getElementsByTagName('script')[0], sp = s.parentNode;
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+
+        var disqusContainer = document.getElementById('disqus');
+        disqusContainer.classList.add('active');
+
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        sp.insertBefore(dsq, s);
+      }
+
+      function outgoing(url) {
+        try {
+          _gaq.push(['_trackEvent', 'Outbound Links' , url]);
+        } catch(err){}
+      }
+      // Open external links (also that don't have a target defined) in a new tab.
+      var externLinks = document.querySelectorAll('article.tutorial a[href^="http"]:not([target])');
+      for(var i = 0, a; a = externLinks[i]; ++i) {
+        a.target = '_blank';
+        a.addEventListener('click', new Function('outgoing(' + '"' + a.href.replace(/.*?:\/\//g, "") + '"' + ');'));
+      }
+
+      var loadCommentsButtons = document.querySelectorAll('.load-comments');
+      for(var l = 0; l < loadCommentsButtons.length; l++)
+        loadCommentsButtons[l].addEventListener('click', loadComments);
+
+    </script>
+  </section>
+  
+
+  <footer>
+    <div class="container">
+
+      
+        <h1>Next steps</h1>
+
+        
+
+        <aside class="panel share">
+          <h2>Share</h2>
+
+            <a href="https://twitter.com/share?url=http://www.html5rocks.com/tutorials/canvas/performance/&amp;text=Mejora%20del%20rendimiento%20del%20elemento%20canvas%20de%20HTML5&amp;lang=es&amp;via=ChromiumDev&amp;related=ChromiumDev" class="twitter" target="_blank">Twitter</a>
+
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.html5rocks.com/tutorials/canvas/performance/" class="facebook" target="_blank">Facebook</a>
+
+            <a href="https://plus.google.com/share?url=http://www.html5rocks.com/tutorials/canvas/performance/" class="gplus" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">Google+</a>
+
+        </aside>
+
+        <aside class="panel rss">
+          <h2>Subscribe</h2>
+          <p>Enjoyed this article? Grab the <a href="http://feeds.feedburner.com/html5rocks">RSS feed</a> and stay up-to-date.</p>
+        </aside>
+
+      
+
+      <p class="licensing">
+      
+        Except as otherwise <a href="http://code.google.com/policies.html#restrictions">noted</a>, the content of this page is licensed under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>, and code samples are licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+      
+      </p>
+
+    </div>
+  </footer>
+
+  <script>
+    window.isCompatible = function() {
+      
+  return !!Modernizr.canvas
+
+    };
+
+    if (isCompatible() === false) {
+      document.getElementById('notcompatible').className = '';
+    }
+
+    function _prettyPrint() {
+      if (typeof customPrettyPrintLanguage != 'undefined') {
+        customPrettyPrintLanguage();
+      }
+      prettyPrint();
+    }
+  </script>
+  <script async="" src="Improving%20HTML5%20Canvas%20Performance%20-%20HTML5%20Rocks_files/prettify.js" onload="_prettyPrint()"></script>
+
+
+  </div>
+
+  <script>
+  (function() {
+
+    // Kill feedburner and marketing tracking arguments, but let them register
+    // before we do it.
+    setTimeout(function() {
+      if (/^\?utm_/.test(document.location.search) &&
+          window.history.replaceState) {
+        window.history.replaceState(
+            {}, '', document.location.href.replace(/\?utm_.*/, ''));
+      }
+    }, 2000);
+
+    var siteHeader = document.getElementById('siteheader');
+    var navToggle = document.getElementById('navtoggle');
+    var siteNav = document.getElementById('sitenav');
+
+    function toggle(target, forceActive) {
+
+      if (typeof toc !== 'undefined') {
+        // Switch off whichever one is not the
+        // current target
+        if (target === toc)
+          siteNav.classList.remove('active');
+        else
+          toc.classList.remove('active');
+      }
+
+      // Toggle if no force parameter is set
+      if (typeof forceActive === 'undefined') {
+        target.classList.toggle('active');
+      } else {
+        if (forceActive)
+          target.classList.add('active');
+        else
+          target.classList.remove('active');
+      }
+
+      // now find out what the set state ended up being
+      var isActive = target.classList.contains('active');
+
+      if (isActive)
+        siteHeader.classList.add('expanded');
+      else
+        siteHeader.classList.remove('expanded');
+
+    }
+
+    navToggle.addEventListener('click', function(e) {
+      toggle(siteNav);
+      e.preventDefault();
+    });
+
+    
+
+    var tocToggle = document.getElementById('toctoggle');
+    var toc = document.getElementById('toc');
+    var articleMeta = document.getElementById('article-meta');
+    var articleContent = document.getElementById('article-content');
+    var articleMetaHeight = 0;
+    var articleMetaMaxY = 0;
+    var articleMetaMinY = 0;
+    var articleContentPadding = 200;
+
+    var tocLinks = document.querySelectorAll('.toc a');
+    for (var t = 0; t < tocLinks.length; t++)
+      tocLinks[t].addEventListener('click', onTocLinkClick);
+
+    tocToggle.addEventListener('click', function(e) {
+      toggle(toc);
+      e.preventDefault();
+    });
+
+    toc.addEventListener('click', function(e) {
+      if (e.target !== siteNav)
+        toggle(toc, false);
+    });
+
+    function onTocLinkClick() {
+      _gaq.push(['_trackEvent', 'Interactions', 'TOC', 'TOC Clicked']);
+    }
+
+    function setMinScrollYFromMetaY() {
+      var scrollPosition = window.scrollY;
+
+      var articleMetaBounds = articleMeta.getBoundingClientRect();
+      var articleMetaTop = Math.max(352,
+          articleMetaBounds.top - 20 + scrollPosition);
+
+      articleMetaHeight = articleMetaBounds.bottom - articleMetaBounds.top;
+      articleMetaMinY = articleMetaTop;
+    }
+
+    function setMaxScrollYFromContentHeight() {
+
+      var scrollPosition = window.scrollY;
+
+      var articleContentBounds = articleContent.getBoundingClientRect();
+      var articleContentTop = articleContentBounds.top + scrollPosition;
+      var articleContentHeight = articleContentBounds.bottom - articleContentBounds.top;
+
+      articleMetaMaxY = articleContentTop +
+          articleContentHeight -
+          articleMetaHeight -
+          articleContentPadding;
+
+    }
+
+    function onScroll(e) {
+
+      if (window.scrollY >= articleMetaMinY) {
+
+        articleMeta.classList.add('sticky');
+
+        var articleMetaTop = 22 - Math.max(0, window.scrollY - articleMetaMaxY);
+        articleMeta.style.top = articleMetaTop + 'px';
+
+      } else {
+        articleMeta.classList.remove('sticky');
+        articleMeta.style.top = 'auto';
+      }
+    }
+
+    if (articleMeta.getBoundingClientRect) {
+      setMinScrollYFromMetaY();
+      setMaxScrollYFromContentHeight();
+      document.addEventListener('scroll', onScroll);
+      window.addEventListener('load', setMaxScrollYFromContentHeight, false);
+    }
+
+    
+  })();
+  </script>
+  <script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-15028909-1']);
+  _gaq.push(['_setSiteSpeedSampleRate', 50]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+
+
+
+</body></html>

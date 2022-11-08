@@ -1,0 +1,29 @@
+{
+  "name": "Lil' Ape Rush",
+  "version": "0,1",
+  "description": "A lil' ape vs the world.",
+  "launch_path": "/index.html",
+  "icons": {
+    "60": "/img/icon-60.png"
+  },
+  "developer": {
+    "name": "Wicket Games",
+  },
+  "locales": {
+"es": {
+  "description": "Un monete contra el mundo.",
+},
+"en": {
+  "description": "A lil' ape vs the world.",
+}
+},
+  "default_locale": "en",
+  "fullscreen": "true",
+  "orientation": "landscape",
+  
+  "permissions": {
+  "keyboard": {
+    "description": "Required for type the player's name",
+    },
+	}
+}

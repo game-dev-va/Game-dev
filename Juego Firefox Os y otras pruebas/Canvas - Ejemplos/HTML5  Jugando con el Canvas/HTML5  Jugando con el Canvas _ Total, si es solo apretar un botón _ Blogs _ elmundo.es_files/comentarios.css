@@ -1,0 +1,202 @@
+#comentarios { margin: 0 0 10px; clear: both; font-size: 12px; }
+#comentarios_lectores .wrap { background: none; overflow: hidden; width: 470px; padding: 0; float: none; border: 1px solid #eee; background: #f8f8f8; }
+#comentarios_lectores h3,
+#comentarios_lectores h5,
+#comentarios_lectores h6 { margin-bottom: 0; }
+#comentarios_lectores_login { clear: both; overflow: hidden; padding: 0; width: 450px; color: #666; background: transparent; margin: 0 auto; }
+#comentarios h5 { padding: 10px; font-size: 18px; font-weight: normal; line-height: 24px; }
+#comentarios_lectores_login .comentarios_lectores_paso { background: #fff; border: 3px solid #E0EAEF; margin-bottom: 10px; padding: 5px 5px 5px 80px; height: 1%; zoom: 1; }
+html>body #comentarios_lectores_login .comentarios_lectores_paso { height: auto; }
+#comentarios_lectores_login .app_mensaje { padding-left: 85px; background: url(http://estaticos01.elmundo.es/elmundo/iconos/v3.0/comentarios/warning.gif) no-repeat 20px 10px; }
+.app_mensaje { background: #FFFCDF; border: 1px solid #E0EAEF; padding: 10px; margin: 10px 0; color: #3F5974; clear: both; }
+.error { color: #c00; }
+.btn { clear: both; display: block; margin-top: 10px; overflow: hidden; text-align: center; width: 100%; }
+.btn input { background: #404A56 url(http://estaticos02.elmundo.es/elmundo/iconos/v3.0/acordeon/bg_acordeon.jpg) no-repeat scroll left top; color: #FFF!important; font-size: 12px; font-weight: bold; padding: 5px 40px!important; text-align: center; border: none!important; }
+.comprobacion { background: #fff; border: 3px solid #E0EAEF; padding: 10px; clear: both; overflow: hidden; position: relative; }
+.comprobacion input { border: 1px solid #A8C3CF; color: #666666; padding: 4px; margin: 0 0 5px 0; width: 180px; position: absolute; top: 40px; right: 25px; }
+.comprobacion img { border: 1px solid #A8C3CF; padding: 2px; margin: 12px 10px 5px 0; }
+.comprobacion .btn { display: inline; width: auto; clear: none; text-align: left; margin: 0; position: absolute; top: 70px; right: 25px; }
+.comprobacion .btn input { width: 190px; padding: 3px; position: relative; top: 0; right: 0; background: transparent url(http://estaticos03.elmundo.es/elmundo/iconos/v3.0/multimedia/bg_noticia.png) repeat-x scroll left center; border: 1px solid #A8C3CF !important; color: #035A89!important; }
+.comentarios_lectores_paso .btn input { padding: 3px!important; }
+#comentarios_lectores_login .unlock { background: #fff url(http://estaticos04.elmundo.es/elmundo/iconos/v3.0/comentarios/user_unlock.png) no-repeat 0 10px; }
+#comentarios_lectores_login .lock { background: #fff url(http://estaticos01.elmundo.es/elmundo/iconos/v3.0/comentarios/user_lock.png) no-repeat 0 10px; }
+#comentarios_lectores_login h5 { color: #3C81A2; font-size: 14px; font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #E0EAEF; padding: 0; }
+#navegante #comentarios_lectores_login h5 { color: #66A802; font-size: 14px; font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #E0EAEF; padding: 0; }
+#comentarios_lectores_login .check { border: none; width: auto; height: auto; margin-right: 5px; }
+#comentarios_lectores_login label { font-weight: bold; display: block; margin-bottom: 5px; text-align: right; }
+#comentarios_lectores_login input { border: 1px solid #A8C3CF; width: 250px; margin-right: 10px; padding: 4px; color: #666; }
+#comentarios_lectores_login label.pass input { width: 140px; margin-right: 120px; }
+#comentarios_lectores_login form { margin: 0 0 10px; position: relative; height: 1%; zoom: 1; }
+html>body #comentarios_lectores_login form { height: auto; }
+#comentarios_lectores_login .btn { position: absolute; top: 30px; right: 10px; width: 90px; margin-top: 0; }
+#comentarios_lectores_login .btn input { width: auto; padding: 0; background: transparent url(http://estaticos03.elmundo.es/elmundo/iconos/v3.0/multimedia/bg_noticia.png) repeat-x scroll left center; border: 1px solid #A8C3CF !important; color: #035A89!important; }
+#comentarios_lectores_login .aviso { padding: 5px 5px 0 5px; margin-top: 10px; font-size: 12px; text-align: right; font-weight: normal; color: #333; border-top: 1px dashed #E0EAEF; }
+.comentarios_lectores_paso { position: relative; }
+.unlock .nuevo_usuario { padding: 5px; text-align: right; position: absolute; top: 5px; right: 5px; font-size: 11px; }
+.lock .nuevo_usuario { padding: 5px; text-align: right; position: absolute; top: -35px; right: 5px; font-size: 11px; }
+#comentarios_lectores_login .recuperar { padding: 15px 0 0 0; text-align: right; }
+#comentarios_lectores_listado ol { padding: 0; background: #fff; }
+#comentarios_lectores_listado ol li { border: 1px solid #eee; -moz-border-radius-topleft: 6px; -moz-border-radius-topright: 6px; -webkit-border-top-right-radius: 6px; -webkit-border-top-left-radius: 6px; border-radius-topright: 6px; border-radius-topleft: 6px; clear: both; background: #fff; margin: 10px 0 20px; color: #035A89; padding: 0; position: relative !important;/*overflow: hidden;*/ /*para cuando algun usuario escribe por ej: "Noooooooooooooooooooooooooooooooooooooooooooooooooo" no siga hasta la columna siguiente*/ /* Lo he comentado porque me esta dando problemas para mostrar la etiqueta de perfil oficial. He probado a ponerle el overflow en el <p> pero entonces no se ven enteras las citas a otros mensajes. En cuanto tenga una solucion lo vuelvo a activar. -Simon- */
+}
+*:first-child+html #comentarios_lectores_listado ol li { border: 1px solid #eee; position: relative !important; }
+.fecha_hora { color: #3C81A2; font-size: 10px; font-style: italic; font-weight: normal; display: block; }
+#comentarios_lectores_listado ol li h4 { background: transparent url(http://estaticos03.elmundo.es/elmundo/iconos/v3.0/comentarios/comment_arrow.png) no-repeat right top; font-size: 24px; line-height: 35px; font-family: Georgia, "Times New Roman", Times, serif; font-style: normal; font-weight: bold; color: #555; position: relative; z-index: 30; float: right; top: 0; width: 100px!important; text-align: right; padding-right: 10px; padding-bottom: 10px; margin-bottom: -15px; /*	margin-right:-10px;*/
+margin-top: 0; border: 0; }
+#comentarios_lectores_listado ol li div.usuario { padding: 8px 0px 5px 10px; background: #F1F1F1; height: 46px; color: #555; }
+#comentarios_lectores_listado ol li div.usuario strong { font-size: 14px; }
+#comentarios_lectores_listado ol li p { font-size: 12px; line-height: 20px; padding: 15px; margin-bottom: 0; }
+#comentarios_lectores_listado ol li p a.ancla_referencia { position: relative; }
+.num_comentarios { clear: both; width: 100%; padding: 5px 0; margin: 0 0 10px 0; overflow: hidden; background: #fff; }
+.num_comentarios div { border: 1px solid #E0EAEF; background: none; color: #666; width: auto; float: left; padding: 2px 5px; font-weight: bold; }
+.nav_comentarios { width: auto; float: right; clear: none; }
+.nav_comentarios li { margin: 0 2px 0 0; border: 1px solid #e0e0e0; float: left; }
+.nav_comentarios li:hover { }
+.nav_comentarios li a { float: left; display: block; padding: 2px 5px; font-size: 11px; font-weight: normal; }
+.nav_comentarios li a:hover { color: #fff!important; background: #3F5974; }
+.nav_comentarios li span { float: left; display: block; color: #B4B4B4; font-weight: normal; font-size: 11px; padding: 2px 5px; }
+#comentarios_lectores_comentar textarea { width: 430px; border: 1px solid #A8C3CF; padding: 10px; font: 12px/18px Arial, Helvetica, sans-serif; color: #666; height: 120px; }
+#comentarios_lectores_comentar { margin-top: 0; padding: 10px; }
+#comentarios_lectores_comentar h6 { margin-bottom: 5px; }
+.aviso { font-size: 12px; font-weight: bold; color: #3C81A2; }
+/* referencia */
+
+#comentarios_lectores_listado ol li p a.link_ref { position: relative; }
+#comentarios_lectores_listado ol li { position: inherit; }
+#comentarios_lectores_listado ol li p { position: inherit; }
+#comentarios_lectores_listado ol { position: inherit; }
+#comentarios_lectores_listado { position: relative; margin-bottom: 10px; }
+span.referencia { display: block; color: #333; border: 1px dotted #ccc; background: #FFFCDF; padding: 7px; font-size: 11px; font-weight: normal; margin-top: 10px; margin-bottom: 10px; padding: 10px; position: absolute; top: 0px; left: 15px; width: 270px; text-decoration: none; z-index: 999999; }
+.publicidad_cuerpo_noticia { font-size: 12px; margin: 10px 0; }
+.off { filter: alpha(opacity=40)!important; -moz-opacity: 0.4!important; opacity: 0.4!important; }
+#comentarios_lectores_login .off { filter: alpha(opacity=40)!important; height: 1%; zoom: 1; }
+#comentarios_lectores_login .off form { filter: alpha(opacity=40)!important; height: 1%; zoom: 1; }
+.comenta { background: transparent url(http://estaticos04.elmundo.es/elmundo/iconos/v3.0/bubble_peq.gif) no-repeat scroll 5px 4px; clear: both; font-size: 12px; font-weight: normal !important; margin: 5px 0; padding: 3px 2px 8px 25px; position: absolute; right: 0; top: -3px; }
+.comenta span { color: #999; }
+.comenta a { color: #2D6A95 !important; }
+.comenta a:hover { color: #5A891A!important; }
+.metadata_noticia { height: 35px!important; }
+#navegante #comentarios_lectores_listado ol li,
+#navegante #comentarios_lectores_listado ol li .fecha_hora { color: #5A891A; }
+#comentarios_lectores h3 { border-bottom: 1px solid #eee; padding: 8px 0 2px; }
+#comentarios_lectores h3 span { color: #3C81A2; font-family: Georgia, "Times New Roman", Times, serif; }
+#contenido #comentarios_lectores h3 span.encabezado { color: #3F5974; font-size: 18px; font-weight: normal; letter-spacing: normal; }
+/* publi */
+
+.publicidad_comentarios { border: 1px solid #E0EAEF; padding: 5px; font-size: 11px; color: #999; width: 250px; margin-left: 25px; }
+/* Social */
+
+.float_left { float: left; }
+.float_right { float: right; }
+#contenido #comentarios h3 span.links_comentar { float: right; font-size: 11px; font-weight: normal; letter-spacing: normal; color: #555; padding-top: 10px; font-family: Arial, Helvetica, sans-serif; }
+#comentarios h3 span.links_comentar a { color: #035A89; }
+#comentarios h3 span.links_comentar a:hover { color: #770035; }
+#contenido #comentarios h3 span.links_comentar span { color: #555; font-family: Arial, Helvetica, sans-serif; }
+#comentarios_lectores ul.comentarios_nav { float: left; width: 100%; height: 22px; border-bottom: 1px solid #E0E0E0; margin: 5px 0 15px; }
+* html #comentarios_lectores ul.comentarios_nav { width: 467px; }
+#comentarios_lectores ul.comentarios_nav li { float: left; display: inline; margin-right: 10px; text-align: center; text-transform: uppercase; }
+#comentarios_lectores ul.comentarios_nav li.msg_mention span,
+#comentarios_lectores ul.comentarios_nav li.msg_net span { border-top: 1px solid #E0E0E0; border-left: 1px solid #E0E0E0; border-right: 1px solid #E0E0E0; background: #F3F2F8; font-family: Georgia, "Times New Roman", Times, serif; font-size: 10px; font-weight: normal; color: #C8C8C8; padding: 3px 15px 2px; display: block; }
+#comentarios_lectores ul.comentarios_nav li a { border-top: 1px solid #E0E0E0; border-left: 1px solid #E0E0E0; border-right: 1px solid #E0E0E0; background: #EDECF1; font-family: Georgia, "Times New Roman", Times, serif; font-size: 10px; font-weight: normal; color: #7C7C7C; padding: 3px 15px 2px; display: block; }
+#comentarios_lectores ul.comentarios_nav li a:hover { background: #F2F1F5; }
+#comentarios_lectores ul.comentarios_nav li.seleccionado { border-bottom: 1px solid #FFF; margin-top: 0; position: relative; top: 1px; }
+#comentarios_lectores ul.comentarios_nav li.seleccionado a { background: #FFF; font-weight: bold; }
+#comentarios_lectores ul.comentarios_nav li.seleccionado a:hover { background: #FFF; cursor: default; }
+#comentarios_lectores li img.avatar { float: left; padding: 3px 8px 0 0; }
+#comentarios_lectores_listado ol li div.usuario .usuario_nombre { float: left; width: 330px; }
+.col-5b #comentarios_lectores_listado ol li div.usuario .usuario_nombre { width: 280px; }
+#comentarios_lectores div small { display: block; font-size: 10px; color: #999; line-height: 14px; }
+#comentarios .interact { border-top: 1px dotted #C6C6C6; margin: 0 15px; padding: 10px 0; font-size: 11px; color: #CCC; height: 16px; }
+#comentarios .interact a { font-weight: normal; font-size: 11px; float: left; }
+#comentarios .interact a.responder,
+#comentarios .interact span.responder { background: url(http://estaticos01.elmundo.es/elmundo/iconos/v3.0/comentarios/ico_comentarios_responder.png) no-repeat 0 2px; padding-left: 18px; margin-right: 15px; float: left; }
+#comentarios .interact span.responder { filter: alpha(opacity=30); -moz-opacity: 0.3; -khtml-opacity: 0.3; opacity: 0.3; color: #333; }
+#comentarios .interact a.citar { background: url(http://estaticos02.elmundo.es/elmundo/iconos/v3.0/comentarios/ico_comentarios_citar.png) no-repeat 0 2px; padding: 0 0 0 18px; float: left; }
+#comentarios .interact .valorar { margin-left: 15px; padding-top: 1px; display: inline-block; float: left; }
+#comentarios .interact .valorar p,
+#comentarios .interact .denunciar p { padding: 0; margin: 0; float: left; line-height: normal; font-size: 11px; color: #888; }
+#comentarios .interact .valorar a,
+#comentarios .interact .valorar p { display: block; }
+#comentarios .interact .valorar a.valorar_positivo,
+#comentarios .interact .valorar p.valorar_positivo { background: url(http://estaticos03.elmundo.es/elmundo/iconos/v3.0/comentarios/ico_valorar_positivo.png) no-repeat; padding-right: 5px; width: 14px; height: 13px; }
+#comentarios .interact .valorar a.valorar_positivo { margin: -1px 0 0 8px; }
+#comentarios .interact .valorar p.valorar_positivo { background: url(http://estaticos03.elmundo.es/elmundo/iconos/v3.0/comentarios/ico_valorar_positivo.png) no-repeat right 0; padding: 1px 18px 0 0; width: auto; margin: -1px 5px 0 8px;/*color: #063;*/
+}
+#comentarios .interact .valorar a.valorar_negativo,
+#comentarios .interact .valorar p.valorar_negativo { background: url(http://estaticos01.elmundo.es/elmundo/iconos/v3.0/comentarios/ico_valorar_negativo.png) no-repeat 0 1px; width: 14px; height: 14px; }
+#comentarios .interact .valorar p.valorar_negativo { background: url(http://estaticos01.elmundo.es/elmundo/iconos/v3.0/comentarios/ico_valorar_negativo.png) no-repeat right 1px; padding-right: 18px; width: auto;/*color: #900;*/
+}
+#comentarios .interact .valorar a.valorar_positivo:hover { background: url(http://estaticos03.elmundo.es/elmundo/iconos/v3.0/comentarios/ico_valorar_positivo.png) no-repeat 0 -15px; }
+#comentarios .interact .valorar a.valorar_negativo:hover { background: url(http://estaticos01.elmundo.es/elmundo/iconos/v3.0/comentarios/ico_valorar_negativo.png) no-repeat 0 -13px; }
+#comentarios .interact .valorar a span { position: absolute; left: -1000000px; }
+#comentarios .interact .valorar span.separador { background: url(http://estaticos01.elmundo.es/elmundo/iconos/v3.0/comentarios/separador_votacion.png) no-repeat center 4px; width: 1px; height: 12px; display: block; float: left; margin: 0 8px 0 3px; }
+#comentarios .interact .denunciar { float: right; background: url(http://estaticos02.elmundo.es/elmundo/iconos/v3.0/comentarios/ico_denunciar.png) no-repeat 0 2px; padding-left: 18px; }
+#comentarios .interact span.denunciar { filter: alpha(opacity=30); -moz-opacity: 0.3; -khtml-opacity: 0.3; opacity: 0.3; color: #333; }
+#comentarios .interact .denunciado { background: none; font-size: 11px; line-height: normal; padding: 0; color: #888; float: right; }
+#comentarios small.valoracion { border-bottom: 1px dotted #C6C6C6; color: #990044; font-size: 11px; margin: 5px 15px -3px; padding-bottom: 2px; text-align: left; }
+#comentarios .info_usuario,
+#comentarios .mensaje_privado { width: 315px; position: absolute; left: -35px; top: 55px; clear: both; float: left; z-index: 200; }
+#comentarios span.info_top { background: url(http://estaticos03.elmundo.es/elmundo/iconos/v3.0/comentarios/ventana_usuario_top.png) no-repeat; display: block; height: 12px; width: 315px; float: left; }
+#comentarios span.info_bottom { background: url(http://estaticos04.elmundo.es/elmundo/iconos/v3.0/comentarios/ventana_usuario_bottom.png) no-repeat; display: block; height: 11px; width: 315px; float: left; }
+#comentarios .info_usuario .info_contenedor,
+#comentarios .contenido_mensaje_privado { background: url(http://estaticos01.elmundo.es/elmundo/iconos/v3.0/comentarios/ventana_usuario_bkg.png) repeat-y; width: 315px; float: left; }
+#comentarios a.cerrar_ventana { background: url(http://estaticos02.elmundo.es/elmundo/iconos/v3.0/comentarios/ventana_usuario_cerrar.png) no-repeat; display: block; width: 18px; height: 18px; /*margin: -15px 4px 0 0;*/
+outline: none; position: absolute; right: -3px; top: -1px; }
+#comentarios a.cerrar_ventana span { position: absolute; top: -10000px; }
+.info_usuario .info_usuario_contenido,
+.info_usuario .actividades { padding: 12px 16px 0 11px; width: 288px; }
+.info_usuario .actividades { padding-top: 5px; }
+#comentarios .info_usuario .nombre a.avatar { width: 107px; float: left; margin-bottom: 10px; }
+#comentarios .info_usuario .nombre h5 { font-weight: bold; padding: 0 0 5px; line-height: 18px; overflow: hidden; }
+#comentarios .info_usuario .nombre h5 a { font-size: 18px; color: #035A89; }
+#comentarios .info_usuario .nombre h5 a:hover { color: #770035; }
+#comentarios .info_usuario .nombre span.nick { color: #999; font-size: 11px; display: block; }
+#comentarios .info_usuario .nombre .seguir_usuario,
+#comentarios .info_usuario .nombre .enviar_mensaje { background: url(http://estaticos03.elmundo.es/elmundo/iconos/v3.0/comentarios/ventana_usuario_botones_bkg.png) repeat-x; border: 1px solid #CFCFCF; float: left; padding: 2px; margin-top: 10px; }
+#comentarios .info_usuario .nombre .enviar_mensaje { margin-left: 4px; }
+#comentarios .info_usuario .nombre .seguir_usuario a,
+#comentarios .info_usuario .nombre .enviar_mensaje a { color: #555; font-weight: normal; font-size: 11px; display: block; }
+#comentarios .info_usuario .nombre .seguir_usuario a { background: url(http://estaticos04.elmundo.es/elmundo/iconos/v3.0/comentarios/ico_seguir_usuario.png) no-repeat; padding-left: 19px; }
+#comentarios .info_usuario .nombre .enviar_mensaje a { background: url(http://estaticos01.elmundo.es/elmundo/iconos/v3.0/comentarios/ico_mensaje_privado.png) no-repeat 0 3px; padding-left: 20px; }
+#comentarios .info_usuario .nombre .seguir_usuario a:hover,
+#comentarios .info_usuario .nombre .enviar_mensaje a:hover { color: #770035; }
+#comentarios .info_usuario .nombre .datos_usuario { width: 170px; float: left; margin-top: 10px }
+#comentarios .info_usuario .nombre .datos_usuario a { font-size: 11px; }
+#comentarios .info_usuario .nombre .datos_usuario a.ver_seguidores { padding-right: 4px; }
+#comentarios .info_usuario .nombre .datos_usuario a.ver_perfil { background: url(http://estaticos02.elmundo.es/elmundo/iconos/v3.0/comentarios/separador_enlaces.png) no-repeat 0 5px; padding-left: 13px; }
+#comentarios .info_usuario .nombre span { color: #555; }
+#comentarios .info_usuario .actividades { font-size: 11px; clear: both; float: left; }
+#comentarios .info_usuario .actividades h6 { font-size: 11px; font-weight: normal; padding-bottom: 2px; border-bottom: 1px dotted #BABABA; margin-bottom: 5px; }
+#comentarios .info_usuario .actividades ul li { background: #F5F5F5; border-bottom: 1px solid #D5D5D5; color: #555; margin: 0 0 5px 0; padding: 2px 5px; -moz-border-radius-topleft: 0; -moz-border-radius-topright: 0; -webkit-border-top-right-radius: 0; -webkit-border-top-left-radius: 0; border-radius-topright: 0; border-radius-topleft: 0; }
+#comentarios .info_usuario .actividades ul li a { font-weight: normal; }
+#comentarios .info_usuario .actividades ul li span { font-family: Georgia, "Times New Roman", Times, serif; text-transform: uppercase; font-weight: bold; font-size: 10px; margin-right: 3px; color: #666; }
+#comentarios .info_usuario .actividades ul li small { display: inline; font-size: 9px; }
+/* Mensaje privado */
+#comentarios .contenido_mensaje_privado { padding: 5px 18px 12px; }
+#comentarios .contenido_mensaje_privado h5 { font-size: 16px; padding: 0; margin: 0 0 10px 0; font-weight: bold; }
+#comentarios .contenido_mensaje_privado p { border: medium none; float: none; padding: 0 0 10px !important; width: auto !important; }
+#comentarios .contenido_mensaje_privado label { color: #666; display: block; font: bold 14px Arial, Helvetica, sans-serif; padding: 0 5px 5px 0; }
+#comentarios .contenido_mensaje_privado input,
+#comentarios .contenido_mensaje_privado textarea { border: 1px solid #A5ACB2; color: #666; font: 13px Arial, Helvetica, sans-serif; margin-bottom: 10px; padding: 4px 2px; width: 260px; }
+#comentarios .contenido_mensaje_privado textarea { height: 100px; }
+#comentarios .contenido_mensaje_privado .boton { background: none repeat scroll 0 0 #FFF; border: 1px solid #CCC; color: #496E92; cursor: pointer; font-size: 11px; font-weight: bold; height: 27px; margin: 0 0 0 176px; text-decoration: none; text-transform: uppercase; vertical-align: bottom; width: 90px; }
+/* Perfil oficial */
+#comentarios ol li.perfil_oficial { /*background: url(http://estaticos03.elmundo.es/elmundo/iconos/v3.0/comentarios/perfil_oficial_bkg.png) repeat;*/
+background: #F1F1F1; margin-top: 30px; }
+#comentarios ol li.perfil_oficial .sello_oficial { width: 77px; height: 14px; background: url(http://estaticos04.elmundo.es/elmundo/iconos/v3.0/comentarios/perfil_oficial.png) no-repeat; position: absolute; top: -15px; left: 10px; }
+#comentarios ol li.perfil_oficial .sello_oficial span { position: absolute; top: -10000px; }
+/* Errores y avisos */
+div.info_special_tabs,
+div.info_special_candado { margin-bottom: 10px; clear: both; background: #F8F8F8; border: 1px solid #EEE; }
+div.info_special_candado { border: none; margin-bottom: 0; }
+div.info_special_tabs p,
+div.info_special_candado p { font-size: 14px; line-height: 18px; color: #999; padding: 10px 10px 10px 45px; margin-bottom: 0; font-weight: bold; }
+div.info_special_tabs p.aviso { background: url(http://estaticos01.elmundo.es/elmundo/iconos/v3.0/comentarios/ico_aviso.png) no-repeat 12px 8px; }
+div.info_special_candado p.candado { background: url(http://estaticos02.elmundo.es/elmundo/iconos/v3.0/comentarios/ico_candado.png) no-repeat 15px 7px; }
+/* Estilos especificos para cambiar palabras clave en los comentarios, hay que acordarse de cambiar estas propiedades si se realiza algun cambio que les pueda afectar */
+#texto_listado_comentarios_todos:before,
+#texto_listado_comentarios_mejor_valorados:before { font-size: 10px !important; }
+#texto_numero_comentarios:before { font-size: 22px !important; }
+#texto_numero_comentarios_valorados:before { font-size: 22px !important; }
+#texto_quieres_comentar:before { font-size: 11px !important; }
+#texto_titular_comentario:before { font-size: 14px !important; }
+#texto_queremos_tu_opinion:before { font-size: 18px !important; }
